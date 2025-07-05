@@ -1,0 +1,1607 @@
+# List of images that needed to be edited
+class 5: ILSVRC2012_val_00008640 and ILSVRC2012_val_00027633 needed to be cropped
+due to frame surrounding the image.
+
+class 12: ILSVRC2012_val_00031171 and ILSVRC2012_val_00001336 need to be cropped
+due to smaller watermarks. ILSVRC2012_val_00048437 removed due to visible
+noise within image.
+
+class 13: ILSVRC2012_val_00013504 removed due to visible noise. 
+
+class 14: ILSVRC2012_val_00047272 removed due to apparent modification.
+ILSVRC2012_val_00039571 removed due to visible noise.
+
+class 16: ILSVRC2012_val_00030283 removed due to apparent modification. 
+ILSVRC2012_val_00028230 removed due to watermark
+
+class 17: ILSVRC2012_val_00045062 removed due to apparent modification.
+ILSVRC2012_val_00010240 removed due to watermark
+
+class 18: ILSVRC2012_val_00011501 removed due to it being a drawing.
+
+class 19: ILSVRC2012_val_00020660 removed due to watermark.
+
+class 22: ILSVRC2012_val_00003330 removed due to watermark. 
+ILSVRC2012_val_00042380 removed due to white frame within image
+
+class 26: ILSVRC2012_val_00023488 removed due to watermark.
+
+class 29: ILSVRC2012_val_00003860 and ILSVRC2012_val_00022113 need to be
+cropped due to watermark
+
+class 30: ILSVRC2012_val_00011664 removed due to apparent modification.
+ILSVRC2012_val_00024938 removed due to watermark.
+
+class 31: ILSVRC2012_val_00003846 needs to be cropped due to outer frame.
+
+class 34: ILSVRC2012_val_00043504 and ILSVRC2012_val_00034960 removed
+due to watermarks.
+
+class 38: ILSVRC2012_val_00008509 removed due to watermark.
+
+class 40: ILSVRC2012_val_00033120 removed due to watermark.
+
+class 42: ILSVRC2012_val_00037510 removed due to watermark.
+
+class 43: ILSVRC2012_val_00045510 removed due to apparent modification.
+
+class 47: ACTION REQUIRED -- ONE MORE IMAGE NEEDED
+ILSVRC2012_val_00025511, ILSVRC2012_val_00048675, and ILSVRC2012_val_00003560
+contain watermark in center of image.
+X-Tra: ILSVRC2012_val_00034600.JPEG -- all images ranked higher either are
+part of the initial top 5, contain watermarks or visible noise.
+
+class 48: ILSVRC2012_val_00003865 removed due to frame.
+
+class 53: ILSVRC2012_val_00040777 removed due to apparent modification.
+
+class 56: ILSVRC2012_val_00015762 removed due to apparent modification.
+ILSVRC2012_val_00005676 needed to be cropped due to frame/border.
+
+class 57: ILSVRC2012_val_00016144 removed due to watermark.
+
+class 58: ILSVRC2012_val_00046131 removed due to apparent modification.
+
+class 59: ILSVRC2012_val_00008579 and ILSVRC2012_val_00008888 removed due
+to watermark.
+
+class 60: ILSVRC2012_val_00034612 removed due to watermark.
+
+class 62: ILSVRC2012_val_00024851 and ILSVRC2012_val_00002645 removed due to
+frame/border.
+
+class 63: ILSVRC2012_val_00014457 and ILSVRC2012_val_00027824 removed due to
+watermark. ILSVRC2012_val_00020161 and ILSVRC2012_val_00014181 require
+cropping.
+
+class 66: ILSVRC2012_val_00048041 removed due to watermark.
+
+class 67: ILSVRC2012_val_00014114 removed due to watermark.
+
+class 68: ILSVRC2012_val_00047000 removed due to watermark.
+
+class 71: ILSVRC2012_val_00032992.JPEG and ILSVRC2012_val_00047434.JPEG
+removed due to watermarks.
+
+class 73: ILSVRC2012_val_00009216.JPEG removed due to watermark.
+
+class 75: ILSVRC2012_val_00004295.JPEG and ILSVRC2012_val_00022205.JPEG
+removed due to apparent modifications.
+
+class 76: ILSVRC2012_val_00006549.JPEG and ILSVRC2012_val_00003838.JPEG
+removed due to apparent modifications.
+
+class 77: ILSVRC2012_val_00017277.JPEG removed due to watermark.
+
+class 78: ILSVRC2012_val_00003577.JPEG removed due to low resolution.
+
+class 81: ILSVRC2012_val_00001596.JPEG needs to be cropped due to watermark.
+
+class 82: ILSVRC2012_val_00047230.JPEG removed due to watermark.
+
+class 83: ILSVRC2012_val_00022211.JPEG and ILSVRC2012_val_00046239.JPEG
+removed due to watermarks.
+
+class 84: ILSVRC2012_val_00017068.JPEG removed due to apparent modification.
+
+class 86: ILSVRC2012_val_00009226.JPEG removed due to watermark.
+
+class 88: ILSVRC2012_val_00013768.JPEG removed due to watermark.
+ILSVRC2012_val_00009146.JPEG needed to be cropped due to border.
+
+class 89: ILSVRC2012_val_00044966.JPEG removed due to watermark.
+
+class 90: ILSVRC2012_val_00022148.JPEG removed due to watermark.
+ILSVRC2012_val_00045836.JPEG removed due to border.
+
+class 92: ILSVRC2012_val_00001678.JPEG removed as it is a collage of images.
+ILSVRC2012_val_00011237.JPEG needed to cropped due to watermark.
+
+class 93: ILSVRC2012_val_00026085.JPEG and ILSVRC2012_val_00009994.JPEG
+removed due to watermarks.
+
+class 94: ILSVRC2012_val_00024336.JPEG removed due to watermark.
+
+class 95: ILSVRC2012_val_00039281.JPEG removed due to poor position of
+watermark. Remaining 3 images need to be cropped due to watermark.
+
+class 97: ILSVRC2012_val_00045837.JPEG removed due to border.
+
+class 98: ILSVRC2012_val_00037572.JPEG removed due to watermark.
+
+class 99: ILSVRC2012_val_00045728.JPEG removed due to watermark.
+
+class 101: ILSVRC2012_val_00031269.JPEG needed to be cropped.
+
+class 103: ILSVRC2012_val_00011213.JPEG removed due to watermark.
+
+class 107: ILSVRC2012_val_00035964.JPEG removed due to noise.
+ILSVRC2012_val_00009993.JPEG needed to be cropped due to watermark.
+
+class 111: ILSVRC2012_val_00004923.JPEG and ILSVRC2012_val_00007860.JPEG
+removed due to them being collages.
+
+class 113: ILSVRC2012_val_00023958.JPEG removed due to watermark.
+
+class 120: ILSVRC2012_val_00010412.JPEG removed due to watermark.
+ILSVRC2012_val_00038534.JPEG removed due to it being a collage.
+
+class 121: ILSVRC2012_val_00015402.JPEG removed due to watermark.
+
+class 122: ILSVRC2012_val_00045926.JPEG removed due to apparent modification.
+
+class 126: ILSVRC2012_val_00008707.JPEG removed due to watermark.
+
+class 129: ILSVRC2012_val_00029736.JPEG and ILSVRC2012_val_00020933.JPEG
+removed due to watermarks.
+
+class 130: ILSVRC2012_val_00024551.JPEG removed due to watermark.
+
+class 132: ILSVRC2012_val_00020875.JPEG and ILSVRC2012_val_00048053.JPEG
+removed due to watermarks.
+ILSVRC2012_val_00023400.JPEG needed to be cropped.
+
+class 133: ILSVRC2012_val_00004016.JPEG removed due to watermark.
+ILSVRC2012_val_00014103.JPEG needed to be cropped.
+
+class 135: ILSVRC2012_val_00045054.JPEG removed due to watermark.
+
+class 136: ILSVRC2012_val_00014083.JPEG removed due to watermark.
+
+class 139: ILSVRC2012_val_00010988.JPEG removed due to watermark.
+
+class 142: ILSVRC2012_val_00041054.JPEG and ILSVRC2012_val_00023977.JPEG
+removed due to watermarks.
+
+class 143: ILSVRC2012_val_00031760.JPEG and ILSVRC2012_val_00049227.JPEG
+needed to be cropped watermarks.
+ 
+class 144: ILSVRC2012_val_00048346.JPEG removed due to watermarks.
+
+class 145: ILSVRC2012_val_00013402.JPEG and ILSVRC2012_val_00021330.JPEG
+removed due to watermarks.
+
+class 147: ILSVRC2012_val_00001490.JPEG removed due to apparent modification.
+
+class 151: ILSVRC2012_val_00001049.JPEG removed due to visible noise.
+ILSVRC2012_val_00043872.JPEG removed due to white frame.
+
+class 152: ILSVRC2012_val_00014911.JPEG removed due to watermark.
+
+class 157: ILSVRC2012_val_00012161.JPEG removed due to watermark.
+
+class 158: ILSVRC2012_val_00015845.JPEG removed due to visible noise.
+
+class 159: ILSVRC2012_val_00044140.JPEG removed due to apparent modification.
+
+class 160: ILSVRC2012_val_00044644.JPEG removed due to apparent modification.
+
+class 161: ILSVRC2012_val_00019581.JPEG removed due to apparent modification.
+
+class 162: ILSVRC2012_val_00008675.JPEG removed due to watermark.
+
+class 163: ILSVRC2012_val_00040708.JPEG and ILSVRC2012_val_00020740.JPEG
+removed due to watermarks.
+
+class 166: ILSVRC2012_val_00031118.JPEG removed as it is a collage.
+
+class 167: ILSVRC2012_val_00043391.JPEG removed due to apparent modification.
+
+class 169: ACTION REQUIRED: one additional image required
+ILSVRC2012_val_00040908.JPEG, ILSVRC2012_val_00040878.JPEG and 
+ILSVRC2012_val_00006495.JPEG removed due to apparent modifications.
+X-Tra: ILSVRC2012_val_00004261.JPEG -- all images ranked higher either are
+part of the initial top 5 or contain apparent modification.
+
+class 172: ILSVRC2012_val_00023697.JPEG removed due to watermark.
+ILSVRC2012_val_00012262.JPEG needed to be cropped due to watermark.
+
+class 175: ILSVRC2012_val_00014787.JPEG and ILSVRC2012_val_00001812.JPEG 
+removed due to apparent modification.
+
+class 177: ILSVRC2012_val_00010398.JPEG removed due to watermark.
+
+class 181: ILSVRC2012_val_00004060.JPEG removed due to visible noise.
+ILSVRC2012_val_00026808.JPEG removed due to watermark.
+
+class 182: ILSVRC2012_val_00033226.JPEG removed due to too prominent edges
+ILSVRC2012_val_00020865.JPEG removed due to white frame.
+
+class 183: ILSVRC2012_val_00008258.JPEG removed due to it being a
+monochrome (greyscale) image.
+
+class 184: ILSVRC2012_val_00025429.JPEG removed due to apparent modification.
+
+class 186: ILSVRC2012_val_00018809.JPEG and ILSVRC2012_val_00042205.JPEG removed due
+to apparent modifications.
+
+class 188: ILSVRC2012_val_00020399.JPEG removed due to it being a 
+monochrome (greyscale) image.
+
+class 190: ILSVRC2012_val_00022681.JPEG removed due to watermark.
+
+class 191: ILSVRC2012_val_00018912.JPEG removed due to visible noise.
+
+class 194: ACTION REQUIRED: really not sure about this one...
+ILSVRC2012_val_00015182.JPEG and ILSVRC2012_val_00000725.JPEG
+removed due to apparent modification. ILSVRC2012_val_00036443.JPEG 
+needed to be cropped.
+X-Tra: ILSVRC2012_val_00035844.JPEG -- all higher ranked images
+were already part of the initial top 5.
+
+class 195: ACTION REQUIRED: new images needed!
+ILSVRC2012_val_00010290.JPEG removed due to apparent modification.
+ILSVRC2012_val_00021914.JPEG and ILSVRC2012_val_00048157.JPEG due to
+them being monochrome (greyscale) images.
+X-Tra: ILSVRC2012_val_00039926.JPEG -- all higher ranked images
+contained apparent modifications.
+
+class 198: ILSVRC2012_val_00041605.JPEG removed due to visible noise.
+ILSVRC2012_val_00040613.JPEG removed due to apparent modification.
+ILSVRC2012_val_00025606.JPEG needed to be cropped.
+
+class 199: ILSVRC2012_val_00047572.JPEG removed due to poor resolution.
+
+class 200: ILSVRC2012_val_00039144.JPEG removed due to visible noise.
+ 
+class 201: ILSVRC2012_val_00004744.JPEG removed due to poor quality.
+
+class 202: ILSVRC2012_val_00025970.JPEG removed due to is being a collage.
+ILSVRC2012_val_00029277.JPEG needed to be cropped due to watermark.
+
+class 205: ILSVRC2012_val_00021456.JPEG and ILSVRC2012_val_00049834.JPEG
+removed due to apparent modifications.
+
+class 206: ILSVRC2012_val_00046466.JPEG removed as it is drawing.
+ILSVRC2012_val_00038920.JPEG removed due to apparent modification.
+ILSVRC2012_val_00019607.JPEG required cropping.
+
+class 207: ILSVRC2012_val_00045701.JPEG and ILSVRC2012_val_00035252.JPEG 
+removed due to watermarks.
+
+class 210: ILSVRC2012_val_00043413.JPEG removed due to apparent modification.
+
+class 211: ILSVRC2012_val_00041393.JPEG removed due to apparent modification.
+
+class 212: ILSVRC2012_val_00043313.JPEG removed due to it being a painting.
+ILSVRC2012_val_00008349.JPEG removed due to apparent modification.
+ILSVRC2012_val_00026666.JPEG required cropping.
+X-Tra: ILSVRC2012_val_00014446.JPEG -- all higher ranked images
+were already part of the initial top 5.
+
+class 214: ILSVRC2012_val_00010283.JPEG removed due to apparent modification.
+
+class 216: ILSVRC2012_val_00008527.JPEG removed due to apparent modification.
+
+class 220: ILSVRC2012_val_00025181.JPEG removed due to white frame
+
+class 222: ILSVRC2012_val_00039806.JPEG removed due to apparent modification.
+
+class 224: ILSVRC2012_val_00044277.JPEG and ILSVRC2012_val_00046287.JPEG
+removed due to watermarks.
+
+class 226: ILSVRC2012_val_00046477.JPEG removed due to white frame.
+
+class 227: ILSVRC2012_val_00043275.JPEG removed due to watermark.
+
+class 228: ILSVRC2012_val_00043511.JPEG and ILSVRC2012_val_00023582.JPEG
+removed due to watermarks.
+
+class 232: ILSVRC2012_val_00046867.JPEG removed due to watermark.
+
+class 236: ILSVRC2012_val_00043835.JPEG removed due to white frame.
+
+class 239: ILSVRC2012_val_00026717.JPEG and ILSVRC2012_val_00027912.JPEG removed
+due to apparent modification (brightness).
+
+class 241: All five images were removed due to being either too small or
+to containing watermarks.
+X-Tra: ILSVRC2012_val_00037858.JPEG, ILSVRC2012_val_00048383.JPEG
+and ILSVRC2012_val_00012733.JPEG -- every other high(er) ranked image
+is either from the initial Top-5 or contains apparent modification. 
+
+class 242: ILSVRC2012_val_00031818.JPEG removed due to visible noise.
+
+class 243: ILSVRC2012_val_00007190.JPEG removed due to it being a
+monochrome (greyscale) image.
+ILSVRC2012_val_00008061.JPEG removed due to watermark.
+
+class 244: ILSVRC2012_val_00039115.JPEG and ILSVRC2012_val_00006957.JPEG
+
+class 246: ILSVRC2012_val_00043452.JPEG removed due to it being a
+monochrome (greyscale) image.
+
+class 248: ILSVRC2012_val_00010011.JPEG removed due to watermark.
+
+class 252: ILSVRC2012_val_00048373.JPEG removed due to it being a
+monochrome (greyscale) image.
+ILSVRC2012_val_00006545.JPEG removed due to its low resolution.
+
+class 254: ILSVRC2012_val_00014500.JPEG removed due to watermark.
+
+class 260: ILSVRC2012_val_00020626.JPEG removed due to watermark.
+ILSVRC2012_val_00015350.JPEG removed due to apparent modification.
+
+class 265: ILSVRC2012_val_00000867.JPEG removed due to watermark.
+
+class 267: ILSVRC2012_val_00022911.JPEG removed due to apparent modification.
+ILSVRC2012_val_00029775.JPEG removed due to it being a drawing.
+
+class 270: ILSVRC2012_val_00035908.JPEG and ILSVRC2012_val_00042098.JPEG
+due to watermarks.
+
+class 271: All images but ILSVRC2012_val_00033911.JPEG removed due to
+small size or apparent modifications.
+X-Tra: ILSVRC2012_val_00024356.JPEG and ILSVRC2012_val_00025448.JPEG
+-- other higher ranked images were either part of the initial Top-5, 
+contained watermarks or other apparent modifications.
+
+class 272: ILSVRC2012_val_00045318.JPEG removed due to low resolution.
+ILSVRC2012_val_00029186.JPEG and ILSVRC2012_val_00032758.JPEG
+removed due to watermarks.
+X-Tra: ILSVRC2012_val_00037275.JPEG -- every higher ranked image was either
+in the initial top-5, apparently modified, or too small.
+
+class 273: ILSVRC2012_val_00038489.JPEG removed due to white frame.
+
+class 274: ILSVRC2012_val_00020566.JPEG and ILSVRC2012_val_00035212.JPEG
+removed due to watermarks.
+
+class 276: ILSVRC2012_val_00003038.JPEG and ILSVRC2012_val_00006431.JPEG 
+removed due to watermarks.
+ILSVRC2012_val_00039990.JPEG needed to be cropped.
+
+class 277: ILSVRC2012_val_00001260.JPEG removed due to it being a drawing.
+ILSVRC2012_val_00034084.JPEG, ILSVRC2012_val_00003449.JPEG and
+ILSVRC2012_val_00025207.JPEG removed due to watermarks.
+ILSVRC2012_val_00014861.JPEG removed due to apparent modification.
+X-Tra: ILSVRC2012_val_00000157.JPEG, ILSVRC2012_val_00049298.JPEG
+and ILSVRC2012_val_00003974.JPEG -- all higher ranked images were either part
+of the initial top-5 or contained watermarks.
+
+class 279: ILSVRC2012_val_00020481.JPEG removed due to watermark.
+
+class 280: ILSVRC2012_val_00022726.JPEG removed due to apparent modification.
+ILSVRC2012_val_00043219.JPEG needed to be cropped.
+
+class 281: ILSVRC2012_val_00025876.JPEG removed due to visible noise.
+ILSVRC2012_val_00013673.JPEG removed as it is a collage.
+
+class 282: ILSVRC2012_val_00040251.JPEG removed due to white frame.
+
+class 284: ILSVRC2012_val_00046572.JPEG removed due to apparent modification.
+
+class 287: ILSVRC2012_val_00013798.JPEG needed to be cropped.
+
+class 288: ILSVRC2012_val_00045139.JPEG removed due to low resolution.
+ILSVRC2012_val_00012399.JPEG needed to be cropped.
+
+class 290: ILSVRC2012_val_00009297.JPEG removed due to visible noise.
+ILSVRC2012_val_00029126.JPEG removed due to low resolution.
+ILSVRC2012_val_00040208.JPEG and ILSVRC2012_val_00002931.JPEG needed to be cropped.
+
+class 291: ILSVRC2012_val_00003788.JPEG removed due to visible noise.
+ILSVRC2012_val_00026880.JPEG removed due to watermark.
+ILSVRC2012_val_00030269.JPEG and ILSVRC2012_val_00033659.JPEG needed to be cropped.
+
+class 292: All images but ILSVRC2012_val_00048186.JPEG contained watermarks,
+visible noise or apparent modifications.
+X-Tra: ILSVRC2012_val_00034686.JPEG and ILSVRC2012_val_00024050.JPEG -- higher ranked 
+images either were too small, contained watermarks or were clearly modified.
+
+class 293: ILSVRC2012_val_00009133.JPEG removed due to apparent modification.
+ILSVRC2012_val_00041740.JPEG needed to be cropped.
+
+class 294: ILSVRC2012_val_00038263.JPEG removed due to watermark.
+ILSVRC2012_val_00036597.JPEG and ILSVRC2012_val_00011447.JPEG needed to be cropped.
+
+class 295: ILSVRC2012_val_00033693.JPEG removed due to apparent modification.
+ILSVRC2012_val_00043432.JPEG removed due to watermark.
+ILSVRC2012_val_00026962.JPEG requires cropping.
+
+class 296: All five images were removed due to either their size, visible watermarks,
+or visible noise!
+X-Tra: ILSVRC2012_val_00031877.JPEG, ILSVRC2012_val_00021883.JPEG 
+and ILSVRC2012_val_00020441.JPEG -- higher ranked images were either 
+part of the top-5, too small, or contained watermarks.
+
+class 297: ILSVRC2012_val_00045672.JPEG and ILSVRC2012_val_00045098.JPEG
+removed due to low resolution.
+
+class 299: ILSVRC2012_val_00001742.JPEG removed due to white frame.
+
+class 301: ILSVRC2012_val_00005343.JPEG needed to be cropped.
+
+class 302: ILSVRC2012_val_00042610.JPEG and ILSVRC2012_val_00003440.JPEG
+removed due to artificial background.
+ILSVRC2012_val_00010028.JPEG requires cropping.
+
+class 306: ILSVRC2012_val_00000819.JPEG removed due to watermark.
+
+class 307: ILSVRC2012_val_00039612.JPEG and ILSVRC2012_val_00010610.JPEG
+removed due to watermarks.
+
+class 310: ILSVRC2012_val_00000407.JPEG and ILSVRC2012_val_00003814.JPEG
+removed due to watermarks.
+ILSVRC2012_val_00029818.JPEG requires cropping.
+
+class 311: ILSVRC2012_val_00042223.JPEG removed due to visible noise.
+
+class 313: ILSVRC2012_val_00006095.JPEG removed due to watermark.
+
+class 314: ILSVRC2012_val_00017845.JPEG removed due to artificial appearance.
+ILSVRC2012_val_00032443.JPEG removed due to low quality.
+ILSVRC2012_val_00033788.JPEG and ILSVRC2012_val_00025580.JPEG require cropping.
+
+class 315: ILSVRC2012_val_00011079.JPEG removed due to visible noise.
+
+class 316: ILSVRC2012_val_00040805.JPEG removed due to watermark.
+
+class 317: ILSVRC2012_val_00021086.JPEG removed due to visible noise.
+
+class 318: ILSVRC2012_val_00034274.JPEG removed due to watermark.
+
+class 319: ILSVRC2012_val_00024823.JPEG removed due to watermark.
+remaining images require cropping.
+
+class 321: ILSVRC2012_val_00036738.JPEG removed due to watermark.
+
+class 323: ILSVRC2012_val_00019714.JPEG removed due to watermark.
+ILSVRC2012_val_00047039.JPEG removed due to visible noise.
+
+class 324: ILSVRC2012_val_00016780.JPEG removed due to white frame.
+
+class 325: ILSVRC2012_val_00005117.JPEG removed due to apparent modification.
+ILSVRC2012_val_00038064.JPEG removed due to white frame.
+
+class 326: ILSVRC2012_val_00044300.JPEG and ILSVRC2012_val_00048827.JPEG
+removed due to watermarks.
+
+class 327: ILSVRC2012_val_00001740.JPEG removed due to watermark.
+
+class 330: ILSVRC2012_val_00033548.JPEG removed due to low resolution.
+
+class 331: ILSVRC2012_val_00005118.JPEG and ILSVRC2012_val_00042759.JPEG
+removed due to watermarks.
+
+class 334: ILSVRC2012_val_00010410.JPEG removed due to watermark.
+
+class 335: ILSVRC2012_val_00009363.JPEG removed due to watermark.
+ILSVRC2012_val_00038993.JPEG required cropping.
+
+class 337: ILSVRC2012_val_00043893.JPEG removed due to white frame.
+
+class 340: ILSVRC2012_val_00012340.JPEG removed due to apparent modification.
+
+class 342: ILSVRC2012_val_00029618.JPEG removed due to white frame.
+
+class 343: ILSVRC2012_val_00023920.JPEG removed due to watermark.
+
+class 344: ILSVRC2012_val_00031293.JPEG removed due to white frame.
+
+class 349: ILSVRC2012_val_00032956.JPEG removed due to white frame.
+
+class 353: ILSVRC2012_val_00003655.JPEG removed due to watermark.
+
+class 355: ILSVRC2012_val_00014548.JPEG and ILSVRC2012_val_00037380.JPEG
+removed due to apparent modifications.
+
+class 356: ILSVRC2012_val_00022744.JPEG removed due to small size.
+ILSVRC2012_val_00022832.JPEG requires cropping.
+
+class 357: ILSVRC2012_val_00028413.JPEG removed due to small size.
+ILSVRC2012_val_00013635.JPEG removed due to watermark.
+
+class 360: ILSVRC2012_val_00024190.JPEG removed due to white frame.
+
+class 361: ILSVRC2012_val_00004601.JPEG removed due to watermark.
+ 
+class 362: All images but ILSVRC2012_val_00009254.JPEG had to be removed
+due to either being too small or due to containing watermarks.
+X-Tra: ILSVRC2012_val_00038987.JPEG and ILSVRC2012_val_00017114.JPEG
+-- higher ranked images were either part of the top-5,
+or contained visible noise / watermarks.
+
+class 366: ACTION REQUIRED -- ONE NEW IMAGE NEEDED.
+ILSVRC2012_val_00010853.JPEG and ILSVRC2012_val_00027670.JPEG
+removed due to white frame.
+ILSVRC2012_val_00020811.JPEG removed due to artificial background.
+X-Tra: ILSVRC2012_val_00028049.JPEG -- higher ranked images were
+either of low resolution or part of the top-5.
+
+class 367: ILSVRC2012_val_00020727.JPEG removed due to small size.
+ILSVRC2012_val_00039545.JPEG requires cropping.
+
+class 368: ILSVRC2012_val_00004058.JPEG removed due to small size.
+
+class 369: ILSVRC2012_val_00042719.JPEG removed due to small size.
+
+class 371: ILSVRC2012_val_00015084.JPEG removed due to small size.
+
+class 372: ILSVRC2012_val_00016706.JPEG removed due to white frame.
+ILSVRC2012_val_00047520.JPEG removed due to small size.
+
+class 374: ILSVRC2012_val_00002477.JPEG removed due to small size.
+
+class 375: ILSVRC2012_val_00008175.JPEG and ILSVRC2012_val_00007151.JPEG
+removed due to watermarks.
+
+class 377: ILSVRC2012_val_00007182.JPEG removed due to watermark.
+ILSVRC2012_val_00001099.JPEG and ILSVRC2012_val_00031989.JPEG
+require cropping.
+
+class 378: ILSVRC2012_val_00021490.JPEG removed due to artificial background.
+
+class 379: ILSVRC2012_val_00035886.JPEG removed due to watermark.
+
+class 380: ILSVRC2012_val_00038087.JPEG removed due to white frame.
+ILSVRC2012_val_00022082.JPEG removed due to watermark.
+
+class 381: ILSVRC2012_val_00013015.JPEG removed due to watermark.
+
+class 385: ILSVRC2012_val_00021618.JPEG removed due to watermark.
+
+class 386: ILSVRC2012_val_00010078.JPEG removed due to watermark.
+
+class 387: ILSVRC2012_val_00008712.JPEG removed due to visible noise.
+ILSVRC2012_val_00018367.JPEG removed due to apparent modification.
+
+class 389: ILSVRC2012_val_00045652.JPEG removed due to watermark.
+ILSVRC2012_val_00026932.JPEG requires cropping.
+
+class 393: ILSVRC2012_val_00047999.JPEG and ILSVRC2012_val_00021994.JPEG
+removed due to watermarks.
+ILSVRC2012_val_00034042.JPEG requires cropping.
+
+class 395: ILSVRC2012_val_00021699.JPEG removed due to watermark.
+
+class 397: ILSVRC2012_val_00025407.JPEG removed due to watermark.
+
+class 398: ACTION REQUIRED -- ONE NEW IMAGE NEEDED.
+ILSVRC2012_val_00036258.JPEG and ILSVRC2012_val_00038792.JPEG
+and ILSVRC2012_val_00048775.JPEG removed due to watermarks.
+ILSVRC2012_val_00047691.JPEG required cropping.
+X-Tra: ILSVRC2012_val_00000499.JPEG -- higher ranked images
+were part of the initial top-5.
+
+class 399: ILSVRC2012_val_00005691.JPEG removed due to it being a collage.
+ILSVRC2012_val_00040700.JPEG removed due to watermark.
+
+class 401: ILSVRC2012_val_00005924.JPEG and ILSVRC2012_val_00016925.JPEG
+removed due to them being monochromatic (greyscale) images.
+ILSVRC2012_val_00009350.JPEG requires cropping.
+
+class 404: ILSVRC2012_val_00016995.JPEG removed due to brown frame.
+ILSVRC2012_val_00047829.JPEG requires cropping.
+
+class 405: ILSVRC2012_val_00036051.JPEG and ILSVRC2012_val_00033251.JPEG
+removed due to apparent modifications.
+
+class 408: ILSVRC2012_val_00015806.JPEG removed due to watermark.
+
+class 409: ILSVRC2012_val_00015108.JPEG removed due to watermark.
+
+class 410: ILSVRC2012_val_00015327.JPEG removed due to apparent modification.
+
+class 411: ILSVRC2012_val_00015637.JPEG removed due to watermarks.
+
+class 413: ILSVRC2012_val_00012081.JPEG removed due to watermark.
+
+class 416: ILSVRC2012_val_00030753.JPEG and ILSVRC2012_val_00018746.JPEG
+removed due to small size.
+
+class 419: ILSVRC2012_val_00038503.JPEG removed due to watermarks.
+
+class 421: ILSVRC2012_val_00049054.JPEG removed due to small size.
+
+class 425: ILSVRC2012_val_00000234.JPEG removed due to grey frame.
+
+class 426: ILSVRC2012_val_00034750.JPEG removed due to artificial background.
+
+class 427: ACTION REQUIRED -- ONE NEW IMAGE NEEDED.
+ILSVRC2012_val_00041862.JPEG, ILSVRC2012_val_00044303.JPEG and
+ILSVRC2012_val_00008425.JPEG removed due to watermarks.
+X-Tra: ILSVRC2012_val_00005245.JPEG -- higher ranked images
+were either part of the initial top-5 or contained visible noise.
+
+class 430: ACTION REQUIRED -- all 5 images removed due to watermarks
+X-Tra: ILSVRC2012_val_00037508.JPEG, ILSVRC2012_val_00010909.JPEG,
+and ILSVRC2012_val_00044958.JPEG -- higher ranked images contained watermarks.
+
+class 432: ACTION REQUIRED -- One more image needed
+ILSVRC2012_val_00005955.JPEG, ILSVRC2012_val_00026219.JPEG, and
+ILSVRC2012_val_00029252.JPEG removed due to apparent modifications.
+X-Tra: ILSVRC2012_val_00011274.JPEG -- higher ranked images
+were either part of initial top-5 or too small.
+
+class 434: ILSVRC2012_val_00027541.JPEG removed due to watermark.
+
+class 435: ILSVRC2012_val_00015996.JPEG removed due to apparent modification.
+
+class 437: ILSVRC2012_val_00025050.JPEG removed due to watermark.
+ILSVRC2012_val_00000569.JPEG removed due to apparent modification.
+
+class 438: ILSVRC2012_val_00043930.JPEG removed due to apparent modification.
+
+class 440: ILSVRC2012_val_00044326.JPEG and ILSVRC2012_val_00008121.JPEG
+removed due to watermarks.
+
+class 441: ILSVRC2012_val_00010158.JPEG removed due to watermark.
+
+class 445: ILSVRC2012_val_00043179.JPEG removed due to it being a
+monochrome (greyscale) image.
+
+class 446: ILSVRC2012_val_00003446.JPEG removed due to watermark.
+
+class 447: ILSVRC2012_val_00034377.JPEG removed due to watermark.
+ILSVRC2012_val_00043828.JPEG requires cropping.
+
+class 448: ILSVRC2012_val_00013736.JPEG removed due to it being a
+monochrome (greyscale) image.
+
+class 449: ILSVRC2012_val_00025892.JPEG removed due to apparent modification.
+
+class 450: ILSVRC2012_val_00042115.JPEG and ILSVRC2012_val_00001443.JPEG
+removed due to small size.
+
+class 451: ILSVRC2012_val_00015171.JPEG and ILSVRC2012_val_00000763.JPEG
+removed due to apparent modification.
+
+class 452: ILSVRC2012_val_00044375.JPEG removed due to watermark.
+
+class 453: ILSVRC2012_val_00024694.JPEG removed due to inconsistent background.
+(BTW: Is that a absurdly large cockroach on the right side?!)
+
+class 455: ILSVRC2012_val_00006672.JPEG removed due to watermark.
+
+class 456: ILSVRC2012_val_00002758.JPEG removed due to small size.
+
+class 457: ILSVRC2012_val_00012923.JPEG removed due to watermark.
+ILSVRC2012_val_00031215.JPEG removed due to it being a monochrome
+(greyscale) image.
+
+class 459: ACTION REQUIRED -- all 5 images removed!
+X-Tra: ILSVRC2012_val_00028757.JPEG, ILSVRC2012_val_00026321.JPEG
+and ILSVRC2012_val_00026163.JPEG -- higher ranked images
+either were part of the top-5 or contained apparent modifications.
+
+class 460: ILSVRC2012_val_00001941.JPEG removed due to visible noise.
+
+class 462: ILSVRC2012_val_00003397.JPEG removed due to apparent modification.
+
+class 463: ACTION REQUIRED -- two new images needed
+Apart from ILSVRC2012_val_00013226.JPEG, every other image was removed
+due to either watermarks or poor quality.
+X-Tra: ILSVRC2012_val_00033388.JPEG and ILSVRC2012_val_00042290.JPEG --
+higher ranked images were either part of the top-5 or contained visible noise.
+
+class 464: ACTION REQUIRED -- one new image needed
+ILSVRC2012_val_00007920.JPEG, ILSVRC2012_val_00032039.JPEG and
+ILSVRC2012_val_00035865.JPEG removed due to apparent modification.
+X-Tra: ILSVRC2012_val_00004324.JPEG -- higher ranked images were
+either part of the top-5 or contained apparent modifications.
+
+class 465: ILSVRC2012_val_00018897.JPEG removed due to watermark.
+ILSVRC2012_val_00007787.JPEG required cropping.
+
+class 472: FINAL REMARK -- only two valid images exist! 
+all five images removed due to watermark.
+X-Tra: ILSVRC2012_val_00033316.JPEG, ILSVRC2012_val_00043133.JPEG --
+all other images contained the very same watermark!
+
+class 473: ACTION REQUIRED -- one more image needed
+ILSVRC2012_val_00019528.JPEG and ILSVRC2012_val_00009761.JPEG
+removed due watermarks and ILSVRC2012_val_00008563.JPEG due
+to small size.
+X-Tra: ILSVRC2012_val_00044327.JPEG -- higher ranked images either
+were too small, contained visible modifications or were part of the top-5
+
+class 475: ILSVRC2012_val_00042821.JPEG removed due to apparent modification.
+
+class 477: ILSVRC2012_val_00049282.JPEG removed due to watermark.
+
+class 479: ILSVRC2012_val_00021616.JPEG and ILSVRC2012_val_00007384.JPEG
+removed due to apparent modification.
+ILSVRC2012_val_00002053.JPEG required cropping.
+
+class 480: ILSVRC2012_val_00019338.JPEG removed due to apparent modification.
+
+class 482: FINAL REMARK -- only two valid images exist!
+Apart from ILSVRC2012_val_00023625.JPEG, all images were removed
+due to their small size.
+X-Tra: ILSVRC2012_val_00012468.JPEG -- every other images was either too
+small, contained visible modifications, or watermarks.
+
+class 483: ILSVRC2012_val_00014955.JPEG removed due to apparent modification.
+ILSVRC2012_val_00023875.JPEG and ILSVRC2012_val_00004647.JPEG required cropping.
+
+class 485: ILSVRC2012_val_00011788.JPEG removed due to watermark.
+ILSVRC2012_val_00043416.JPEG due to visible noise.
+
+class 487: ILSVRC2012_val_00011809.JPEG removed due to small size.
+
+class 488: ILSVRC2012_val_00017849.JPEG removed due to it being greyscale.
+
+class 491: ACTION REQUIRED -- two new images needed
+All images, apart from ILSVRC2012_val_00045501.JPEG, either
+were too small, contained watermarks or apparent modifications.
+X-Tra: ILSVRC2012_val_00000537.JPEG and ILSVRC2012_val_00025063.JPEG
+-- higher ranked images contained watermarks or apparent modifications.
+
+class 492: ILSVRC2012_val_00018540.JPEG removed due to it being greyscale.
+
+class 493: ILSVRC2012_val_00007893.JPEG removed due to it being greyscale.
+
+class 494: ILSVRC2012_val_00011842.JPEG removed due to it being greyscale.
+
+class 497: ILSVRC2012_val_00036229.JPEG removed due to apparent modification.
+ILSVRC2012_val_00016854.JPEG removed due to watermark.
+
+class 499: ILSVRC2012_val_00029833.JPEG removed due to apparent modification.
+
+class 501: FINAL REMARK -- Only two valid images exist.
+ILSVRC2012_val_00040125.JPEG and ILSVRC2012_val_00038702.JPEG removed
+due to apparent modifications.
+ILSVRC2012_val_00042333.JPEG required cropping.
+
+class 503: ACTION REQUIRED -- Two new images needed!
+ILSVRC2012_val_00023147.JPEG removed due to artificial background.
+ILSVRC2012_val_00038514.JPEG required cropping.
+ILSVRC2012_val_00038514.JPEG and ILSVRC2012_val_00038313.JPEG removed due to
+confusing background design.
+X-Tra: ILSVRC2012_val_00031619.JPEG and ILSVRC2012_val_00032428.JPEG
+-- higher ranked images contained apparent modifications.
+
+class 505: ILSVRC2012_val_00014387.JPEG and ILSVRC2012_val_00016755.JPEG
+removed due to apparent modification.
+
+class 507: ILSVRC2012_val_00005906.JPEG removed due to it being greyscale.
+ILSVRC2012_val_00019056.JPEG removed due to it being a collage.
+
+class 508: ILSVRC2012_val_00026428.JPEG removed due to visible noise.
+
+class 511: ILSVRC2012_val_00020524.JPEG removed due to watermark.
+
+class 513: ILSVRC2012_val_00023807.JPEG and ILSVRC2012_val_00015331.JPEG
+removed due to them being greyscale.
+
+class 517: ILSVRC2012_val_00015188.JPEG removed due to watermark.
+
+class 518: ILSVRC2012_val_00017591.JPEG removed due to it being greyscale.
+ILSVRC2012_val_00028240.JPEG removed due to apparent modification.
+
+class 521: ILSVRC2012_val_00024436.JPEG removed due to visible noise.
+ILSVRC2012_val_00010875.JPEG removed due to apparent modification.
+
+class 522: ILSVRC2012_val_00025931.JPEG removed due to watermark.
+
+class 523: ILSVRC2012_val_00005672.JPEG removed due to watermark.
+ILSVRC2012_val_00016620.JPEG due to it being greyscale.
+
+class 525: ILSVRC2012_val_00012427.JPEG removed due to visible noise.
+
+class 527: ILSVRC2012_val_00007210.JPEG removed due to visible noise.
+
+class 529: ILSVRC2012_val_00039509.JPEG and ILSVRC2012_val_00046665.JPEG
+removed due to visible noise.
+ILSVRC2012_val_00013732.JPEG required cropping.
+
+class 530: ACTION REQUIRED -- three new images needed!
+all images were removed for either containg apparent modifcations,
+or for not displaying any visible object (ILSVRC2012_val_00003721.JPEG).
+X-Tra: ILSVRC2012_val_00028481.JPEG, ILSVRC2012_val_00010019.JPEG,
+and ILSVRC2012_val_00013767.JPEG -- higher ranked images were in top-5
+
+class 531: ILSVRC2012_val_00034547.JPEG and ILSVRC2012_val_00024672.JPEG
+removed due to apparent modification.
+
+class 535: ILSVRC2012_val_00026157.JPEG removed due to visible noise.
+
+class 537: ILSVRC2012_val_00004822.JPEG removed due to watermark.
+
+class 538: ILSVRC2012_val_00039519.JPEG and ILSVRC2012_val_00007941.JPEG
+removed due to visible noise.
+
+class 540: ILSVRC2012_val_00017475.JPEG removed due to watermark.
+
+class 541: ILSVRC2012_val_00003719.JPEG removed due to small size.
+
+class 542: ILSVRC2012_val_00021839.JPEG and ILSVRC2012_val_00020232.JPEG
+removed due to apparent modifications.
+
+class 543: ACTION REQUIRED -- two new images needed
+Apart from ILSVRC2012_val_00041644.JPEG, all images contain watermarks!
+X-Tra: ILSVRC2012_val_00034805.JPEG and ILSVRC2012_val_00046478.JPEG --
+higher ranked images contained watermarks or apparent modifications.
+
+class 545: ACTION REQUIRED -- one new image needed
+ILSVRC2012_val_00022054.JPEG removed due to visible noise.
+ILSVRC2012_val_00019814.JPEG and ILSVRC2012_val_00002312.JPEG removed
+due to watermarks.
+X-Tra: ILSVRC2012_val_00015074.JPEG -- higher ranked images are from top-5.
+
+class 546: ACTION REQUIRED -- one new image needed!
+ILSVRC2012_val_00009952.JPEG removed due to watermark.
+ILSVRC2012_val_00008326.JPEG required cropping.
+X-Tra: ILSVRC2012_val_00013540.JPEG -- higher ranked images contained watermarks.
+
+class 547: ILSVRC2012_val_00024842.JPEG removed due to white border.
+ILSVRC2012_val_00006515.JPEG removed due to watermark.
+ILSVRC2012_val_00044592.JPEG required cropping.
+
+class 548: ACTION REQUIRED -- three new images needed!
+all five images were either too small or contained visible noise/watermarks.
+X-Tra: ILSVRC2012_val_00038152.JPEG, ILSVRC2012_val_00013092.JPEG, and
+ILSVRC2012_val_00011108.JPEG -- higher ranked images were either too small,
+contained visible noise or were apparently modified.
+
+class 549: ILSVRC2012_val_00029928.JPEG removed due to it being a collage.
+
+class 550: FINAL REMARK -- only two valid images exist
+all five images were either too small or displayed artificial backgrounds.
+X-Tra: ILSVRC2012_val_00009613.JPEG and ILSVRC2012_val_00017876.JPEG --
+all other images were either too small or contained an artificial background.
+
+class 551: ILSVRC2012_val_00025243.JPEG and ILSVRC2012_val_00044750.JPEG
+removed due to their small size.
+ILSVRC2012_val_00004170.JPEG required cropping.
+
+class 553: ILSVRC2012_val_00033539.JPEG removed due to greyscale.
+ILSVRC2012_val_00045967.JPEG removed due to visible noise.
+
+class 558: ILSVRC2012_val_00018402.JPEG removed due to its small size.
+
+class 559: ILSVRC2012_val_00028185.JPEG and ILSVRC2012_val_00035229.JPEG
+removed due to visible noise.
+
+class 561: ILSVRC2012_val_00018938.JPEG required cropping.
+
+class 564: ILSVRC2012_val_00026172.JPEG removed due to its small size.
+
+class 565: ILSVRC2012_val_00046790.JPEG removed due to watermark.
+
+class 567: ILSVRC2012_val_00015984.JPEG removed due to visible noise.
+
+class 570: ILSVRC2012_val_00015601.JPEG removed due to low quality.
+ILSVRC2012_val_00026832.JPEG removed due to apparent modification.
+
+class 573: ILSVRC2012_val_00037460.JPEG removed due to border.
+
+class 578: ILSVRC2012_val_00007280.JPEG removed due to being a collage.
+ILSVRC2012_val_00040155.JPEG required cropping.
+
+class 579: ILSVRC2012_val_00037045.JPEG removed due to greyscale.
+
+class 581: ILSVRC2012_val_00036409.JPEG required cropping.
+
+class 582: ILSVRC2012_val_00019818.JPEG removed due to apparent modification.
+ILSVRC2012_val_00039430.JPEG removed due to watermark.
+
+class 583: ILSVRC2012_val_00016636.JPEG removed due to greyscale.
+
+class 584: ILSVRC2012_val_00043418.JPEG due to watermark.
+
+class 585: ILSVRC2012_val_00044434.JPEG removed due to visible noise.
+ILSVRC2012_val_00002196.JPEG removed due to visible noise.
+
+class 586: ILSVRC2012_val_00041158.JPEG removed due to watermark.
+
+class 587: ILSVRC2012_val_00010847.JPEG and ILSVRC2012_val_00009070.JPEG 
+removed due to apparent modifications.
+
+class 590: ACTION REQUIRED -- two new images needed!
+Apart from ILSVRC2012_val_00001456.JPEG, every image either contains
+an artificial background, watermarks or visible noise.
+X-Tra: ILSVRC2012_val_00023380.JPEG and ILSVRC2012_val_00013665.JPEG
+-- higher ranked images were part of the top-5.
+
+class 593: ILSVRC2012_val_00013904.JPEG removed due to visible noise.
+ILSVRC2012_val_00031725.JPEG removed due to watermark.
+
+class 594: ILSVRC2012_val_00027190.JPEG removed due to white border.
+
+class 599: ILSVRC2012_val_00041787.JPEG and ILSVRC2012_val_00043405.JPEG
+removed due to watermark.
+
+class 600: ILSVRC2012_val_00006060.JPEG required cropping.
+
+class 601: ILSVRC2012_val_00012716.JPEG removed due to apparent modification.
+ILSVRC2012_val_00037682.JPEG removed due to white boarder.
+
+class 603: ILSVRC2012_val_00003194.JPEG removed due to watermark.
+ILSVRC2012_val_00028983.JPEG removed due to greyscale.
+
+class 604: ACTION REQUIRED -- three new images needed!
+All five images either contained an artificial background or were too small.
+X-Tra: ILSVRC2012_val_00033351.JPEG, ILSVRC2012_val_00032075.JPEG, and
+ILSVRC2012_val_00018841.JPEG -- higher ranked images were either too small,
+contained visible noise, apparent modifications or displayed virtual renditions
+of the object. 
+
+class 605: ILSVRC2012_val_00045699.JPEG removed due to visible noise.
+
+class 606: ACTION REQUIRED -- two new images needed!
+Apart from ILSVRC2012_val_00044167.JPEG, all images either contain watermarks,
+or display an artificial background.
+X-Tra: ILSVRC2012_val_00041067.JPEG and ILSVRC2012_val_00047091.JPEG
+-- higher ranked images contained watermarks or displayed virtual renditions.
+
+class 607: ILSVRC2012_val_00024022.JPEG removed due to watermark.
+
+class 608: ILSVRC2012_val_00024322.JPEG removed due to watermark.
+
+class 611: ACTION REQUIRED -- three new images needed!
+all five images were not photos of a puzzle, but images to which a "puzzle
+filter" was applied on.
+X-Tra: ILSVRC2012_val_00019011.JPEG, ILSVRC2012_val_00031576.JPEG, and
+ILSVRC2012_val_00020394.JPEG -- higher ranked images had similar issues
+as before!
+
+class 613: ILSVRC2012_val_00035468.JPEG removed due to watermark.
+
+class 614: ILSVRC2012_val_00004848.JPEG and ILSVRC2012_val_00030754.JPEG
+removed due to white borders.
+
+class 615: ILSVRC2012_val_00004214.JPEG removed due to white border.
+
+class 616: ILSVRC2012_val_00011109.JPEG required cropping.
+
+class 617: ILSVRC2012_val_00004537.JPEG and ILSVRC2012_val_00009127.JPEG
+removed due to apparent modification.
+
+class 618: FINAL REMARK -- only two valid images exist!
+
+class 619: ILSVRC2012_val_00021095.JPEG removed due to colored border.
+
+class 620: FINAL REMARK -- only one valid image exists!
+ILSVRC2012_val_00047506.JPEG removed due to apparent modification.
+
+class 622: ILSVRC2012_val_00007009.JPEG removed due to watermark.
+
+class 623: ILSVRC2012_val_00010684.JPEG and ILSVRC2012_val_00039211.JPEG
+removed due to watermarks.
+
+class 625: ILSVRC2012_val_00031200.JPEG and ILSVRC2012_val_00004492.JPEG
+removed due to watermarks.
+
+class 626: ILSVRC2012_val_00032083.JPEG removed due to visible noise.
+ILSVRC2012_val_00041936.JPEG removed due to white border.
+
+class 627: ILSVRC2012_val_00011987.JPEG removed due to it being a collage.
+
+class 629: ILSVRC2012_val_00002419.JPEG and ILSVRC2012_val_00048415.JPEG
+removed due to watermark.
+
+class 631: ILSVRC2012_val_00013371.JPEG removed due to white border.
+ILSVRC2012_val_00012010.JPEG removed due to watermark.
+
+class 632: ILSVRC2012_val_00004050.JPEG removed due to watermark.
+ILSVRC2012_val_00016910.JPEG removed due to white boarder.
+
+class 633: ILSVRC2012_val_00002045.JPEG removed due to greyscale.
+
+class 636: ILSVRC2012_val_00038067.JPEG removed due to its small size.
+
+class 637: ILSVRC2012_val_00038533.JPEG removed due to watermark.
+
+class 638: FINAL REMARK -- only one valid image exists!
+
+class 639: ACTION REQUIRED -- one new image needed
+ILSVRC2012_val_00010063.JPEG, ILSVRC2012_val_00026035.JPEG and
+ILSVRC2012_val_00048893.JPEG removed due to monochromatic colors.
+X-Tra: ILSVRC2012_val_00039972.JPEG -- higher ranked images contained
+colored borders.
+
+class 640: ILSVRC2012_val_00002223.JPEG removed due to watermark.
+
+class 641: ILSVRC2012_val_00047069.JPEG removed due artificial background.
+
+class 643: ILSVRC2012_val_00001334.JPEG and ILSVRC2012_val_00021718.JPEG
+removed due to apparent modifications.
+
+class 644: ILSVRC2012_val_00030416.JPEG required cropping.
+
+class 647: ILSVRC2012_val_00044935.JPEG removed due to apparent modification.
+
+class 650: ILSVRC2012_val_00049526.JPEG removed due to greyscale.
+ILSVRC2012_val_00035371.JPEG removed due to watermark.
+
+class 651: ILSVRC2012_val_00037721.JPEG removed due to visible noise.
+
+class 653: ILSVRC2012_val_00044392.JPEG removed due to apparent modification.
+ILSVRC2012_val_00037823.JPEG removed due to colored border.
+ILSVRC2012_val_00033374.JPEG required cropping.
+
+class 654: ILSVRC2012_val_00012837.JPEG removed due to watermark.
+
+class 661: ILSVRC2012_val_00022145.JPEG removed due to watermark.
+
+class 663: ILSVRC2012_val_00025012.JPEG removed due to white border.
+
+class 664: FINAL REMARK -- only one valid image.
+ILSVRC2012_val_00017128.JPEG removed due to visible noise.
+ILSVRC2012_val_00023618.JPEG removed due to artificial background.
+
+class 665: ILSVRC2012_val_00006691.JPEG and ILSVRC2012_val_00009171.JPEG
+removed due to watermarks.
+
+class 666: ACTION REQUIRED -- one new image needed
+ILSVRC2012_val_00047915.JPEG removed due to watermark.
+X-Tra: ILSVRC2012_val_00021312.JPEG -- higher ranked images were in top-5.
+
+class 667: ILSVRC2012_val_00028869.JPEG and ILSVRC2012_val_00016856.JPEG
+removed due to watermarks.
+
+class 669: ILSVRC2012_val_00025408.JPEG and ILSVRC2012_val_00008243.JPEG
+removed due to watermarks.
+
+class 670: ILSVRC2012_val_00001980.JPEG and ILSVRC2012_val_00010636.JPEG
+removed due to colored borders.
+
+class 673: ILSVRC2012_val_00012780.JPEG removed due to it being a collage.
+
+class 675: ILSVRC2012_val_00037199.JPEG removed due to watermark.
+
+class 676: ILSVRC2012_val_00027961.JPEG removed due to apparent modification.
+
+class 677: ILSVRC2012_val_00043239.JPEG removed due to greyscale.
+
+class 680: ACTION REQUIRED -- three new images needed
+all 5 images were removed due to being too small.
+X-Tra: ILSVRC2012_val_00007804.JPEG, ILSVRC2012_val_00023059.JPEG,
+and ILSVRC2012_val_00041199.JPEG -- higher ranked images were either
+too small or contained visible noise.
+
+class 681: FINAL REMARK -- there are no valid images for this class!
+
+class 682: ILSVRC2012_val_00041269.JPEG removed due to visible noise.
+
+class 683: ACTION REQUIRED -- three new images needed
+all five images were removed due to apparent modifications or small size.
+X-Tra: ILSVRC2012_val_00041986.JPEG, ILSVRC2012_val_00024492.JPEG,
+and ILSVRC2012_val_00032349.JPEG -- higher ranked images were
+either too small or contained visible modifications (filters or watermarks)
+
+class 684: ILSVRC2012_val_00047219.JPEG removed due to watermark.
+
+class 686: ILSVRC2012_val_00008315.JPEG removed due to white border.
+
+class 687: ILSVRC2012_val_00007206.JPEG removed due to white border.
+
+class 695: ILSVRC2012_val_00014969.JPEG removed due to apparent modification.
+
+class 697: ILSVRC2012_val_00040480.JPEG removed as it is a collage.
+ILSVRC2012_val_00010560.JPEG removed due to artificial background.
+
+class 698: ILSVRC2012_val_00049831.JPEG removed due to watermark.
+
+class 700: ILSVRC2012_val_00002545.JPEG and ILSVRC2012_val_00048821.JPEG
+removed due to apparent modification.
+
+class 701: ILSVRC2012_val_00047147.JPEG removed due to watermark.
+ILSVRC2012_val_00015689.JPEG removed due to visible noise.
+remaining images required cropping.
+
+class 702: ILSVRC2012_val_00037689.JPEG removed due to visible noise.
+ILSVRC2012_val_00019889.JPEG removed due to watermark.
+
+class 703: ILSVRC2012_val_00049422.JPEG removed due to greyscale.
+ILSVRC2012_val_00008733.JPEG removed due to apparent modification.
+
+class 704: ILSVRC2012_val_00029440.JPEG removed due to it being a collage.
+
+class 705: ILSVRC2012_val_00030803.JPEG and ILSVRC2012_val_00000560.JPEG
+removed due to greyscale.
+
+class 708: ILSVRC2012_val_00021571.JPEG removed due to apparent modification.
+ILSVRC2012_val_00027628.JPEG removed due to visible noise.
+
+class 710: ILSVRC2012_val_00034380.JPEG removed due to artificial background.
+
+class 711: ILSVRC2012_val_00023872.JPEG removed due to watermark.
+
+class 713: ACTION REQUIRED -- one new image needed
+ILSVRC2012_val_00048387.JPEG removed due to watermark.
+ILSVRC2012_val_00044214.JPEG removed due to apparent modification.
+X-Tra: ILSVRC2012_val_00047607.JPEG
+
+class 715: ACTION REQUIRED -- one more image needed
+ILSVRC2012_val_00013575.JPEG, ILSVRC2012_val_00035355.JPEG and
+ILSVRC2012_val_00005403.JPEG removed due to monochrome colors.
+X-Tra: ILSVRC2012_val_00011883.JPEG -- higher ranked images were
+all monochrome (black&white) images.
+
+class 717: ILSVRC2012_val_00010012.JPEG removed due to apparent modification.
+
+class 720: ILSVRC2012_val_00034596.JPEG removed due to inconsistent coloring.
+ILSVRC2012_val_00036795.JPEG removed due to watermark.
+
+class 722: All remaining images needed to be cropped.
+
+class 724: ILSVRC2012_val_00014705.JPEG removed due to watermark.
+
+class 725: ILSVRC2012_val_00033857.JPEG and ILSVRC2012_val_00005459.JPEG
+removed due to watermark.
+
+class 726: ILSVRC2012_val_00037757.JPEG removed due to colored border.
+
+class 727: ILSVRC2012_val_00001969.JPEG removed due to apparent modification.
+
+class 730: ILSVRC2012_val_00028236.JPEG required cropping.
+
+class 732: ILSVRC2012_val_00045344.JPEG removed due to apparent modification.
+ILSVRC2012_val_00031616.JPEG removed due to white border.
+
+class 733: ILSVRC2012_val_00039631.JPEG removed due to white border.
+ILSVRC2012_val_00035364.JPEG removed due to artificial background.
+ILSVRC2012_val_00043573.JPEG required cropping.
+
+class 735: ACTION REQUIRED -- one more image needed
+ILSVRC2012_val_00011490.JPEG removed due to artificial background.
+ILSVRC2012_val_00048407.JPEG removed due to being a collage.
+X-Tra: ILSVRC2012_val_00028456.JPEG -- higher ranked images
+were part of the top-5.
+
+class 737: ILSVRC2012_val_00032636.JPEG removed due to apparent modification.
+ILSVRC2012_val_00027359.JPEG removed due to greyscale.
+
+class 742: ILSVRC2012_val_00008345.JPEG removed due to its small size.
+ILSVRC2012_val_00026874.JPEG removed due to watermark.
+
+class 743: ILSVRC2012_val_00017788.JPEG removed due to apparent modification.
+
+class 744: FINAL REMARK -- only two valid images exist
+
+class 745: All five images contain watermarks. The following two images were
+removed: ILSVRC2012_val_00049074.JPEG and ILSVRC2012_val_00023510.JPEG
+Reason: Required cropping would delete parts of the relevant object.
+Remaining three images were cropped.
+
+class 747: ILSVRC2012_val_00040578.JPEG removed due to watermark.
+
+class 748: ILSVRC2012_val_00039205.JPEG removed as it is a collage.
+
+class 749: ILSVRC2012_val_00039401.JPEG removed due apparent modification.
+ILSVRC2012_val_00031768.JPEG required cropping.
+
+class 753: ILSVRC2012_val_00039056.JPEG removed due to apparent modification.
+
+class 754: ILSVRC2012_val_00003512.JPEG and ILSVRC2012_val_00002756.JPEG
+removed due to apparent modification.
+
+class 757: ILSVRC2012_val_00020702.JPEG removed due to watermark.
+
+class 758: ILSVRC2012_val_00034096.JPEG removed due to watermark.
+
+class 759: ILSVRC2012_val_00035133.JPEG required cropping.
+
+class 762: ILSVRC2012_val_00015102.JPEG removed due to visible noise.
+ 
+class 765: ACTION REQUIRED -- one more image needed.
+ILSVRC2012_val_00029809.JPEG removed due to apparent modification.
+X-Tra: ILSVRC2012_val_00018206.JPEG -- higher ranked images contained watermarks.
+
+class 766: ILSVRC2012_val_00005817.JPEG removed due to watermark.
+
+class 768: ILSVRC2012_val_00017229.JPEG and ILSVRC2012_val_00024619.JPEG
+removed due to watermark.
+ILSVRC2012_val_00027616.JPEG and ILSVRC2012_val_00046140.JPEG needed to be cropped.
+
+class 770: ILSVRC2012_val_00048619.JPEG removed due to it being a collage.
+ILSVRC2012_val_00016428.JPEG removed due to apparent modification.
+
+class 771: ACTION REQUIRED -- three new images needed
+all five images need to be removed due to watermarks.
+X-Tra: ILSVRC2012_val_00018545.JPEG, ILSVRC2012_val_00001169.JPEG
+and ILSVRC2012_val_00041163.JPEG (required cropping) -- higher ranked images
+contain prominent watermark.
+
+class 772: ILSVRC2012_val_00024718.JPEG removed due to apparent modification.
+
+class 774: ILSVRC2012_val_00003763.JPEG and ILSVRC2012_val_00032242.JPEG
+removed due to watermark.
+
+class 775: ILSVRC2012_val_00012959.JPEG removed due to colored border.
+
+class 776: ILSVRC2012_val_00047864.JPEG and ILSVRC2012_val_00028809.JPEG
+removed due to apparent modification.
+ILSVRC2012_val_00014641.JPEG required cropping.
+
+class 778: ACTION REQUIRED -- one new image needed.
+ILSVRC2012_val_00008150.JPEG removed due to small size.
+ILSVRC2012_val_00038468.JPEG and ILSVRC2012_val_00006686.JPEG removed due
+to watermarks.
+ILSVRC2012_val_00009182.JPEG required cropping.
+X-Tra: ILSVRC2012_val_00008190.JPEG -- higher ranked images are from top-5.
+
+class 780: ILSVRC2012_val_00007607.JPEG removed due to visible noise.
+ILSVRC2012_val_00045694.JPEG removed due to apparent modification.
+
+class 782: FINAL REMARK -- only two valid images exist.
+one of the classes we initially excluded due to small no. images.
+X-Tra: ILSVRC2012_val_00029541.JPEG and ILSVRC2012_val_00002810.JPEG
+-- remaining images is of artificial nature.
+
+class 783: ACTION REQUIRED -- three new images needed
+all five images removed due to watermarks.
+X-Tra: ILSVRC2012_val_00046660.JPEG, ILSVRC2012_val_00022048.JPEG,
+and ILSVRC2012_val_00041327.JPEG -- higher ranked images contain
+watermarks.
+
+class 784: ILSVRC2012_val_00029403.JPEG removed due to greyscale.
+ILSVRC2012_val_00009970.JPEG removed due to apparent modification.
+ILSVRC2012_val_00015633.JPEG required cropping.
+
+class 785: ILSVRC2012_val_00010752.JPEG removed due to visible noise.
+
+class 787: ILSVRC2012_val_00005038.JPEG removed due to unnatural discoloration
+
+class 789: ILSVRC2012_val_00013109.JPEG removed due to visible noise.
+
+class 790: ACTION REQUIRED -- one new image needed.
+ILSVRC2012_val_00027185.JPEG removed due to artificial background.
+ILSVRC2012_val_00034126.JPEG and ILSVRC2012_val_00049804.JPEG removed due to
+apparent modification.
+X-Tra: ILSVRC2012_val_00037482.JPEG -- higher ranked images contained were
+either too small or contained visible modifications.
+
+class 791: ILSVRC2012_val_00032770.JPEG removed due to watermark.
+
+class 792: ILSVRC2012_val_00017743.JPEG removed due to apparent modification.
+ILSVRC2012_val_00025749.JPEG required cropping.
+
+class 794: ILSVRC2012_val_00013908.JPEG removed due to watermark.
+
+class 795: ILSVRC2012_val_00003918.JPEG removed due to watermark.
+
+class 796: ILSVRC2012_val_00022708.JPEG removed due to apparent modification.
+
+class 797: ILSVRC2012_val_00014451.JPEG and ILSVRC2012_val_00009372.JPEG
+removed due to watermark.
+
+class 802: ILSVRC2012_val_00004489.JPEG removed due to watermark.
+
+class 804: ILSVRC2012_val_00028718.JPEG removed due to apparent modification.
+
+class 805: ACTION REQUIRED -- three new images needed
+all five images removed due to either their small size, visible noise,
+or apparent modifications.
+X-Tra: ILSVRC2012_val_00037179.JPEG, ILSVRC2012_val_00024334.JPEG and
+ILSVRC2012_val_00009301.JPEG -- higher ranked images either were apparently
+modified or contained an artificial background.
+
+class 808: ILSVRC2012_val_00044166.JPEG removed due to apparent modification.
+
+class 809: ILSVRC2012_val_00023205.JPEG removed due to apparent modification.
+ILSVRC2012_val_00001361.JPEG removed due to watermark.
+
+class 811: ILSVRC2012_val_00009962.JPEG and ILSVRC2012_val_00034838.JPEG
+removed due to visible noise.
+
+class 812: ILSVRC2012_val_00028211.JPEG removed due to watermark.
+
+class 813: ILSVRC2012_val_00045450.JPEG removed due to apparent modification.
+
+class 814: ILSVRC2012_val_00002696.JPEG removed as it is video game material.
+ILSVRC2012_val_00026763.JPEG removed due to watermark.
+
+class 816: ILSVRC2012_val_00008507.JPEG removed due to watermark.
+ILSVRC2012_val_00007435.JPEG removed due to apparent modification.
+
+class 818: ACTION REQUIRED -- two new images needed.
+Apart from ILSVRC2012_val_00015036.JPEG, all images contained an
+artificial background.
+X-Tra: ILSVRC2012_val_00033190.JPEG and ILSVRC2012_val_00045112.JPEG
+-- higher ranked images were in top-5.
+
+class 819: ILSVRC2012_val_00037236.JPEG removed due to colored border.
+ILSVRC2012_val_00019297.JPEG removed due to visible noise.
+
+class 821: ILSVRC2012_val_00026633.JPEG and ILSVRC2012_val_00005280.JPEG
+removed due to apparent modifications.
+
+class 822: ILSVRC2012_val_00015014.JPEG removed due to watermark.
+
+class 823: ILSVRC2012_val_00021595.JPEG removed due to being monochrome.
+
+class 824: ILSVRC2012_val_00021921.JPEG removed due to visible noise.
+
+class 826: ILSVRC2012_val_00045015.JPEG removed due to apparent modification.
+
+class 827: ILSVRC2012_val_00001174.JPEG removed due to visible noise.
+ILSVRC2012_val_00042091.JPEG removed due to apparent modification.
+
+class 828: ILSVRC2012_val_00035739.JPEG removed due to artificial background.
+ILSVRC2012_val_00005036.JPEG removed due to apparent modification.
+
+class 829: ILSVRC2012_val_00028630.JPEG removed due to watermark.
+ILSVRC2012_val_00014433.JPEG removed due to apparent modification.
+
+class 831: ILSVRC2012_val_00007894.JPEG removed due to ambiguous background.
+
+class 832: ILSVRC2012_val_00002085.JPEG removed due to greyscale.
+
+class 834: ILSVRC2012_val_00002541.JPEG removed due to visible noise.
+
+class 835: ILSVRC2012_val_00020395.JPEG removed due to apparent modification.
+
+class 836: FINAL REMARK -- no valid image exists
+
+class 837: FINAL REMARK -- no valid image exists
+
+class 839: ILSVRC2012_val_00006769.JPEG and ILSVRC2012_val_00006269.JPEG
+removed due to apparent modification.
+
+class 840: ACTION REQUIRED -- two new images needed
+Apart from ILSVRC2012_val_00018831.JPEG, all images contained watermarks.
+X-Tra: ILSVRC2012_val_00049559.JPEG and ILSVRC2012_val_00049045.JPEG
+-- higher ranked images contained watermarks.
+
+class 841: ILSVRC2012_val_00010879.JPEG removed due to watermark.
+
+class 843: ILSVRC2012_val_00049445.JPEG removed due to apparent modification.
+
+class 846: ILSVRC2012_val_00027098.JPEG and ILSVRC2012_val_00034241.JPEG
+removed due to white border.
+
+class 847: ILSVRC2012_val_00021989.JPEG and ILSVRC2012_val_00030454.JPEG
+removed due to watermarks.
+
+class 848: FINAL REMARK -- no valid image exists
+ILSVRC2012_val_00030409.JPEG removed due to apparent modification.
+
+class 849: ILSVRC2012_val_00022840.JPEG removed due to artificial texture.
+
+class 851: ILSVRC2012_val_00020424.JPEG removed due to apparent modification.
+
+class 852: ILSVRC2012_val_00034028.JPEG removed due to depicting a virtual object.
+ILSVRC2012_val_00017452.JPEG removed due to watermark.
+ILSVRC2012_val_00025081.JPEG required cropping.
+
+class 857: ILSVRC2012_val_00017571.JPEG removed due to apparent modification.
+ILSVRC2012_val_00019420.JPEG removed due to watermark.
+
+class 858: ILSVRC2012_val_00035492.JPEG removed due to apparent modification.
+
+class 860: ILSVRC2012_val_00043330.JPEG removed due to greyscale.
+ILSVRC2012_val_00010184.JPEG removed due to white border.
+
+class 861: ILSVRC2012_val_00039407.JPEG and ILSVRC2012_val_00010605.JPEG
+removed due to visible noise.
+
+class 864: ILSVRC2012_val_00046241.JPEG removed due to apparent modification.
+
+class 866: ILSVRC2012_val_00039910.JPEG removed due to apparent modification.
+
+class 868: ILSVRC2012_val_00036870.JPEG removed due to apparent modification.
+ILSVRC2012_val_00034739.JPEG removed due to visible noise.
+
+class 869: ILSVRC2012_val_00018282.JPEG removed due to being a collage.
+ILSVRC2012_val_00014627.JPEG removed due to apparent modification.
+
+class 871: ILSVRC2012_val_00033339.JPEG and ILSVRC2012_val_00022507.JPEG
+removed due to watermark.
+
+class 872: ILSVRC2012_val_00015283.JPEG and ILSVRC2012_val_00022346.JPEG
+removed due to apparent modification.
+ILSVRC2012_val_00002455.JPEG required cropping.
+
+class 873: ILSVRC2012_val_00040446.JPEG removed due to watermark.
+
+class 876: FINAL REMARK -- only one valid image exists
+
+class 877: ILSVRC2012_val_00041779.JPEG removed due to apparent modification.
+
+class 878: ILSVRC2012_val_00036957.JPEG and ILSVRC2012_val_00016584.JPEG
+required cropping.
+
+class 879: ILSVRC2012_val_00042720.JPEG removed due to apparent modification.
+ILSVRC2012_val_00040984.JPEG removed due to watermark.
+
+class 881: ACTION REQUIRED -- two new images needed
+Apart from ILSVRC2012_val_00016309.JPEG, all images were too small.
+X-Tra: ILSVRC2012_val_00006958.JPEG and ILSVRC2012_val_00018323.JPEG
+-- higher ranked images contained visible modifications and watermarks.
+
+class 885: FINAL REMARK -- only one valid image exists
+ILSVRC2012_val_00025160.JPEG was removed due to artificial background.
+
+class 886: ILSVRC2012_val_00036336.JPEG removed due to apparent modification.
+
+class 888: ILSVRC2012_val_00009742.JPEG removed due to greyscale.
+
+class 890: ILSVRC2012_val_00008354.JPEG removed due to watermark.
+
+class 891: ILSVRC2012_val_00048545.JPEG removed due to apparent modification.
+ILSVRC2012_val_00040294.JPEG removed due to visible noise.
+
+class 895: ILSVRC2012_val_00037204.JPEG removed due to watermark.
+
+class 896: ILSVRC2012_val_00039981.JPEG removed due to apparent modification.
+
+class 897: ACTION REQUIRED -- one new image needed
+ILSVRC2012_val_00000280.JPEG removed due to visible noise.
+ILSVRC2012_val_00014846.JPEG removed due to apparent modification.
+ILSVRC2012_val_00049921.JPEG removed due to watermark.
+X-Tra: ILSVRC2012_val_00032300.JPEG -- higher ranked images contained
+visible noise.
+
+class 898: ILSVRC2012_val_00043875.JPEG removed due to unnatural shadow.
+ILSVRC2012_val_00003429.JPEG removed due to apparent modification.
+
+class 899: FINAL REMARK -- only one valid image exists
+ILSVRC2012_val_00040157.JPEG removed due to artificial background
+ILSVRC2012_val_00032981.JPEG removed due to visible noise.
+ILSVRC2012_val_00041304.JPEG required cropping.
+
+class 901: ILSVRC2012_val_00042297.JPEG removed due to white border.
+
+class 902: ACTION REQUIRED -- three new images needed
+all five images were removed for either containing watermarks or visible noise.
+X-Tra: ILSVRC2012_val_00005350.JPEG, ILSVRC2012_val_00048926.JPEG, and
+ILSVRC2012_val_00016786.JPEG -- higher ranked images contain watermarks/visible noise.
+
+class 903: ACTION REQUIRED -- three new images needed
+all five images were removed for either containing an artificial background
+or other types of apparent modification.
+X-Tra: ILSVRC2012_val_00026357.JPEG, ILSVRC2012_val_00027010.JPEG, and
+ILSVRC2012_val_00009116.JPEG (required cropping) -- higher ranked images
+contained watermarks, visible noise, and other apparent modifications.
+
+class 905: ILSVRC2012_val_00036760.JPEG removed due to visible noise.
+
+class 906: ILSVRC2012_val_00041022.JPEG removed due to apparent modification.
+ILSVRC2012_val_00000106.JPEG required cropping.
+
+class 907: ILSVRC2012_val_00021988.JPEG removed due to watermark.
+
+class 915: ILSVRC2012_val_00012991.JPEG removed due to it being a virtual object.
+
+class 916: FINAL REMARK -- this class ("web site, website, internet site, site") is excluded!
+Reason: The class is inherently digital, and we do not believe it makes sense to just keep
+photos of monitors/screens depicting a web page (this would also conflict with other ImageNet classes)
+
+class 917: ILSVRC2012_val_00007131.JPEG and ILSVRC2012_val_00046379.JPEG
+removed due to ambiguous backgrounds.
+
+class 920: ILSVRC2012_val_00037932.JPEG removed due to watermark.
+
+class 921: ILSVRC2012_val_00013429.JPEG removed due to apparent modification.
+
+class 923: ILSVRC2012_val_00026528.JPEG removed due to visible noise.
+
+class 926: ILSVRC2012_val_00040624.JPEG removed due to apparent modification.
+
+class 927: ILSVRC2012_val_00015261.JPEG removed due to apparent modification.
+
+class 928: ILSVRC2012_val_00025209.JPEG removed due to visible noise.
+
+class 929: ILSVRC2012_val_00033375.JPEG removed due to apparent modification.
+
+class 932: ILSVRC2012_val_00014958.JPEG removed due to watermark.
+
+class 935: ACTION REQUIRED -- three new images needed
+all five images contained visible noise or apparent modifications.
+X-Tra: ILSVRC2012_val_00039371.JPEG, ILSVRC2012_val_00012153.JPEG, and
+ILSVRC2012_val_00033636.JPEG -- higher ranked images contained visible modifications.
+
+class 936: ILSVRC2012_val_00038733.JPEG removed due to visible noise.
+
+class 937: ILSVRC2012_val_00043347.JPEG and ILSVRC2012_val_00033534.JPEG
+removed due to artificial background (the objects were "pasted" into 
+a white background)
+
+class 940: ILSVRC2012_val_00019934.JPEG removed due to watermark.
+
+class 942: ILSVRC2012_val_00038404.JPEG removed due to artificial
+background (the objects was "pasted" into a black background)
+
+class 943: ILSVRC2012_val_00023388.JPEG and ILSVRC2012_val_00017489.JPEG
+removed due to apparent modification.
+
+class 945: ILSVRC2012_val_00015907.JPEG removed due to visible noise.
+ILSVRC2012_val_00043991.JPEG removed due to apparent modification.
+ILSVRC2012_val_00037424.JPEG required cropping.
+
+class 946: ILSVRC2012_val_00042427.JPEG removed due to watermark.
+ILSVRC2012_val_00011844.JPEG removed due to white border.
+
+class 948: ILSVRC2012_val_00005747.JPEG removed due to watermark.
+
+class 953: ILSVRC2012_val_00009015.JPEG removed due to apparent modification.
+
+class 956: ACTION REQUIRED -- one new image needed
+ILSVRC2012_val_00017457.JPEG and ILSVRC2012_val_00012440.JPEG removed due to small size.
+ILSVRC2012_val_00047777.JPEG removed due to watermark.
+X-Tra: ILSVRC2012_val_00047640.JPEG -- higher ranked images contained visible noise.
+
+class 957: ACTION REQUIRED -- one new image needed
+ILSVRC2012_val_00021310.JPEG removed due to artificial background.
+ILSVRC2012_val_00009129.JPEG removed due to apparent modification.
+X-Tra: ILSVRC2012_val_00041999.JPEG -- higher ranked images are from top-5.
+
+class 958: ILSVRC2012_val_00008421.JPEG removed due to greyscale.
+
+class 962: ILSVRC2012_val_00042577.JPEG and ILSVRC2012_val_00017771.JPEG
+removed due to visible noise.
+
+class 964: ILSVRC2012_val_00034100.JPEG and ILSVRC2012_val_00009509.JPEG
+removed due to watermark.
+
+class 966: ILSVRC2012_val_00037863.JPEG and ILSVRC2012_val_00049928.JPEG
+removed due to watermarks.
+
+class 968: ILSVRC2012_val_00041900.JPEG removed due to greyscale.
+ILSVRC2012_val_00029908.JPEG removed due to apparent modification.
+
+class 969: ILSVRC2012_val_00019689.JPEG removed due to white border.
+
+class 971: ACTION REQUIRED -- two more images needed
+ILSVRC2012_val_00000697.JPEG removed (looks like an oil painting).
+ILSVRC2012_val_00025713.JPEG removed due to apparent modification.
+ILSVRC2012_val_00010016.JPEG and ILSVRC2012_val_00009029.JPEG removed
+due to visible noise.
+X-Tra: ILSVRC2012_val_00049716.JPEG and ILSVRC2012_val_00031968.JPEG
+-- higher ranked images contained apparent modifications.
+
+class 977: ILSVRC2012_val_00033187.JPEG removed due to watermarks.
+
+class 978: ILSVRC2012_val_00011270.JPEG and ILSVRC2012_val_00001153.JPEG
+removed due to watermarks.
+
+class 979: ILSVRC2012_val_00007658.JPEG required cropping.
+
+class 980: ILSVRC2012_val_00016019.JPEG and ILSVRC2012_val_00034472.JPEG
+removed due to watermark.
+ILSVRC2012_val_00009828.JPEG and ILSVRC2012_val_00018560.JPEG required cropping.
+
+class 981: ILSVRC2012_val_00032275.JPEG and ILSVRC2012_val_00019854.JPEG
+removed due to greyscale.
+ILSVRC2012_val_00007596.JPEG required cropping.
+
+class 982: ILSVRC2012_val_00043162.JPEG removed due to apparent modification.
+
+class 985: ILSVRC2012_val_00037066.JPEG removed due to visible noise.
+
+class 986: ILSVRC2012_val_00009076.JPEG and ILSVRC2012_val_00046332.JPEG
+removed due to apparent modification.
+ILSVRC2012_val_00018363.JPEG and ILSVRC2012_val_00038796.JPEG required cropping.
+
+class 987: ILSVRC2012_val_00038919.JPEG removed due to visible noise.
+
+class 988: ILSVRC2012_val_00044926.JPEG removed due to watermark.
+
+class 996: ILSVRC2012_val_00022641.JPEG and ILSVRC2012_val_00032695.JPEG
+removed due to watermark.
+
+class 997: ILSVRC2012_val_00049524.JPEG removed due to watermark.
+ILSVRC2012_val_00022512.JPEG removed due to apparent modification.
+
+
+
+
+
+
+
+
+
