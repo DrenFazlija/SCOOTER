@@ -1,0 +1,18 @@
+ui.main\_study package
+======================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ui.main_study.main_study
+
+Module contents
+---------------
+
+.. automodule:: ui.main_study
+   :members:
+   :undoc-members:
+   :show-inheritance:

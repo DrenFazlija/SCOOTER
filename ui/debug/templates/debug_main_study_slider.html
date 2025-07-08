@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Annotation Task</title>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='slider.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='perceived_researcher_unfairness.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <style>
+      .container {
+        overflow: hidden; /* Prevents overflow of child elements (including the slideshow container!) */
+      }
+
+      /* Completion bar styling */
+      #completion-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 40px; /* Increased height */
+        background-color: #e0e0e0; /* Light grey background for the incomplete portion */
+        line-height: 40px; /* Vertically center the text */
+        color: white;
+        font-weight: bold;
+        text-align: center; /* Center the percentage text */
+        position: relative; /* Set as relative to absolutely position the percentage inside */
+      }
+
+      #completion-bar {
+        height: 40px; /* Increased height */
+        width: 0%; /* Adjust this value to represent the actual completion rate */
+        background-color: #4caf50; /* Green background for the completed portion */
+        transition: width 0.5s ease; /* Smooth transition for width change */
+      }
+
+      #completion-percentage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: black;
+      }
+
+      .centered-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%; /* Ensure it takes full height of the slideshow container */
+        margin-bottom: 5%; /* Add some space between the image and the slider */
+      }
+
+      .centered-image-container img {
+        width: 85%;
+        object-fit: contain; /* Ensure the image scales while maintaining aspect ratio */
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 100%;
+        max-height: 100%;
+        position: relative;
+        margin: auto;
+        margin-top: 5.5%;
+      }
+      /* Next & previous buttons */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        padding: 16px;
+        background-color: #38803a;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+      }
+      /* Position the "previous button" to the left */
+      .prev {
+        left: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      /* Position the "next button" to the right */
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      /* On hover, add a black background color with a little bit see-through */
+      .prev:hover,
+      .next:hover {
+        background-color: #0c640f;
+      }
+      /* Adjust dot styles for better visibility */
+      .dot {
+        cursor: pointer;
+        height: 20px; /* Increased size */
+        width: 20px; /* Increased size */
+        margin: 0 5px; /* Increased spacing */
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+        z-index: 1001; /* Set above slideshow -- TODO: Fix slideshow container */
+        margin-top: 10px;
+      }
+
+      /* Flex container for dots */
+      .dot-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; /* Allow multiple lines of dots if needed */
+        padding: 20px;
+      }
+      .active,
+      .dot:hover {
+        /*background-color: #717171;*/
+        filter: brightness(68%);
+      }
+      /* Fading animation */
+      .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+      @-webkit-keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="finish-study" disabled>
+      Finish Study
+      <span class="material-symbols-outlined"> lock </span>
+    </button>
+
+    {% include 'perceived_researcher_unfairness.html' %}
+
+    <div id="completion-bar-container">
+      <div id="completion-bar"></div>
+      <span id="completion-percentage">0%</span>
+      <!-- Positioned percentage -->
+    </div>
+
+    <div class="dot-container" id="dot-container">
+      {% for index in range(number_of_images) %}
+      <span class="dot" onclick="currentSlide({{ index + 1 }})"></span>
+      {% endfor %}
+    </div>
+
+    <div class="container">
+      <h2>Image Annotation Task</h2>
+
+      <div class="slideshow-container">
+        <!-- This div will be populated with the slides programmatically -->
+      </div>
+
+      <form style="--min: -100; --val: 0; --max: 100; --n: 10" id="slider-form">
+        <label for="r">Is this image real or modified?</label>
+        <input id="r" type="range" value="0" min="-100" max="100" list="l" />
+        <output id="slideroutput" for="r"></output>
+        <datalist id="l">
+          <option>-100</option>
+          <option>-80</option>
+          <option>-60</option>
+          <option>-40</option>
+          <option>-20</option>
+          <option class="mid">0</option>
+          <option>20</option>
+          <option>40</option>
+          <option>60</option>
+          <option>80</option>
+          <option>100</option>
+        </datalist>
+      </form>
+
+      <button id="continue-button" class="unlocked" onclick="noAnswer()">
+        I don't know
+      </button>
+    </div>
+
+    <script src="{{ url_for('static', filename='mobileDetection.js') }}"></script>
+    <script src="{{ url_for('static', filename='perceived_researcher_unfairness_scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='slider.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      let images;
+      const imc_info = {{ imc_info | tojson }};
+      let slideIndex = 1;
+      const ratings = {{ ratings | tojson}};
+      let numberOfRatings = 0;
+      const numberOfImages = {{ number_of_images }};
+
+      document.addEventListener("DOMContentLoaded", function () {
+        redirectMobileUsers(userAgentString);
+        params = new URLSearchParams(window.location.search);
+
+        setupPopup();
+        createSlides();
+        updateVisuals();
+        });
+
+      function plusSlides(n) {
+        slideIndex += n
+        showSlides(slideIndex);
+        loadAndDisplayImage(slideIndex);
+      }
+
+      function currentSlide(n) {
+        console.log("currentSlide", n);
+        showSlides((slideIndex = n));
+        loadAndDisplayImage(n);
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+
+        logImage();
+        resetSlider();
+        updateSliderLabel();
+
+      }
+
+      function createSlides() {
+        const slideshowContainer = document.querySelector(
+          ".slideshow-container"
+        );
+
+        for (let index = 0; index < numberOfImages; index++) {
+          //const imageUrl = images[index];
+          const slide = document.createElement("div");
+          slide.className = "mySlides fade";
+          // Create the inner HTML of the slide
+          const id = `SlideImage${index}`;
+          slide.innerHTML = `
+              <div class="centered-image-container">
+                  <img data-index="${index}" alt="Image ${index}" id="${id}">
+                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+              </div>`;
+          slideshowContainer.appendChild(slide);
+        };
+
+        showSlides(slideIndex);
+        loadAndDisplayImage(slideIndex);
+      }
+
+      function loadAndDisplayImage(slideIndex) {
+          const slide = document.getElementsByClassName("mySlides")[slideIndex - 1];
+          const img = slide.querySelector("img");
+
+          if (!img.src) {
+              const imageIndex = parseInt(img.getAttribute('data-index'));
+
+              // Ensure imageIndex is a valid number
+              if (isNaN(imageIndex)) {
+                  console.error('Invalid image index:', imageIndex);
+                  return; // Exit the function if the index is not valid
+              }
+
+              fetchImage(imageIndex)
+                  .then(encodedImage => {
+                      if (encodedImage) { // Check if the encoded image data is not undefined
+                          img.src = `data:image/jpeg;base64,${encodedImage}`;
+                      } else {
+                          console.error('No image data returned for index:', imageIndex);
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Failed to load image:', error);
+                  });
+          }
+      }
+
+      function fetchImage(imageIndex) {
+          return fetch('/load-study-images', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ index: imageIndex, PROLIFIC_PID: prolificPid })
+          })
+          .then(response => {
+              if (response.ok) {
+                  return response.json();
+              }
+              throw new Error('Failed to fetch image: Server responded with status ' + response.status);
+          })
+          .then(data => {
+              if (data.status === 'success') {
+                  return data.image;
+              } else {
+                  throw new Error('Data error: ' + (data.message || 'Unknown error'));
+              }
+          });
+      }
+
+      function fetchIMCInfo() {
+        return fetch("/load-imc-info", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ PROLIFIC_PID: prolificPid }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error(
+              "Failed to fetch IMC info: Server responded with status " +
+                response.status
+            );
+          })
+          .then((data) => {
+            if (data.status === "success") {
+              return data.imc_info;
+            } else {
+              throw new Error("Data error: " + (data.message || "Unknown error"));
+            }
+          });
+      }
+
+      function checkIfAllImagesRated() {
+        if (ratings.length !== numberOfImages) {
+            return false;
+        }
+        for (let i = 0; i < numberOfImages; i++) {
+          if (ratings[i] === undefined) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function updateCompletionBar(percentage) {
+        var completionBar = document.getElementById('completion-bar');
+        completionBar.style.width = percentage + '%';
+
+        var completionPercentage = document.getElementById('completion-percentage');
+        completionPercentage.innerHTML = percentage + '%';
+      }
+
+      function updateDotColor(imageIndex) {
+        var dot = document.getElementsByClassName("dot")[imageIndex];
+        dot.style.backgroundColor = "#20BFEE";
+      }
+
+      // Check if slideIndex - 1 is within the imc_info array. If so then append the stored string to the slider label
+      function updateSliderLabel() {
+          var sliderLabel = document.querySelector("#slider-form > label");
+          var labelUpdated = false;
+
+          for (let i = 0; i < imc_info.length; i++) {
+            if (imc_info[i][0] === slideIndex - 1) {
+              var labelText = "Is this image real or modified?" + imc_info[i][1];
+              sliderLabel.innerText = addNewLines(labelText);
+              sliderLabel.style.fontSize = "115%";
+              labelUpdated = true;
+              break;
+            }
+          }
+
+          if (!labelUpdated) {
+              sliderLabel.innerText = "Is this image real or modified?";
+              sliderLabel.style.fontSize = "137.5%";
+          }
+      }
+
+      function addNewLines(text) {
+          var maxLength = 60; // Set the maximum length before a line break
+          var newText = "";
+          var words = text.split(" ");
+
+          var currentLineLength = 0;
+          for (var i = 0; i < words.length; i++) {
+              var word = words[i];
+              if (currentLineLength + word.length > maxLength) {
+                  newText += "\n";
+                  currentLineLength = 0;
+              }
+              newText += word + " ";
+              currentLineLength += word.length + 1;
+          }
+
+          return newText.trim();
+      }
+
+      function updateVisuals() {
+        for (let i = 0; i < numberOfImages; i++) {
+          if (ratings[i] !== null && ratings[i] !== undefined) {
+            updateDotColor(i);
+            numberOfRatings++;
+          }
+          const completionPercentage = Math.round(
+            (numberOfRatings / numberOfImages) * 100
+          );
+          updateCompletionBar(completionPercentage);
+        }
+      }
+
+      function noAnswer(){
+        ratings[slideIndex - 1] = 0;
+        numberOfRatings++;
+        updateDotColor(slideIndex - 1);
+        updateCompletionBar(Math.round((numberOfRatings / numberOfImages) * 100));
+        plusSlides(1);
+      }
+
+      function logImage(){
+        const currentTime = new Date().toISOString(); // ISO 8601 format
+        const imageIndex = slideIndex - 1;
+        const pid = new URLSearchParams(window.location.search).get('PROLIFIC_PID');
+
+        console.log("Image index: " + imageIndex);
+        console.log("Current time: " + currentTime);
+        console.log("Prolific PID: " + pid);
+
+        // Send the data to the server
+        fetch('/log-image', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ imageIndex: imageIndex, time: currentTime, pid: pid})
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+      }
+    </script>
+    {% include 'footer.html' %}
+  </body>
+</html>

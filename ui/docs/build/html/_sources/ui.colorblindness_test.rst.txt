@@ -1,0 +1,18 @@
+ui.colorblindness\_test package
+===============================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ui.colorblindness_test.colorblindness_test
+
+Module contents
+---------------
+
+.. automodule:: ui.colorblindness_test
+   :members:
+   :undoc-members:
+   :show-inheritance:

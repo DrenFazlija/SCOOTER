@@ -4,7 +4,7 @@
 While you can find an exact breakdown of the manual processing below, we also provide the jupyter notebook `SalmanAnalysis.ipynb` which allows to gather the information one by one (simply run all the cells within the script).
 
 > [!NOTE]
-> You will need to download the predictions of the victim model "predictions_salman_clean.csv" to perform the processing. You can find the file in our Zenodo: https://doi.org/10.5281/zenodo.15771502
+> You will need to download the predictions of the victim model "predictions_salman_clean.csv" to perform the processing. You can find the file in our Zenodo: https://doi.org/10.5281/zenodo.15771501
 
 ## Dataset Statistics
 

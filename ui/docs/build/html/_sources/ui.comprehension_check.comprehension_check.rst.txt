@@ -1,0 +1,7 @@
+ui.comprehension\_check.comprehension\_check module
+===================================================
+
+.. automodule:: ui.comprehension_check.comprehension_check
+   :members:
+   :undoc-members:
+   :show-inheritance:

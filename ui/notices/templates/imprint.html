@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Imprint</title>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f3f3f3;
+        }
+        header img {
+            width: 100%;
+            height: auto;
+        }
+        table {
+            width: 100%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            word-wrap: break-word;
+        }
+        .container {
+        width: 80%;
+        max-width: 1500px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <header>
+        <img src="static/images/Branding/ScooterLogoBanner.png" alt="Header Image">
+    </header>
+
+    <div class="container">
+      <h2>Imprint</h2>
+
+      <table>
+        <tr>
+           <td>Forschungszentrum L3S</td>
+           <td>
+                Appelstraße 9a<br>
+                30167 Hannover<br>
+                Tel. +49 511 762 – 17715<br>
+                Fax +49 511 762 – 17779<br>
+            </td>
+        </tr>
+        <tr>
+            <td>Represented by:</td>
+            <td>
+                Prof. Dr. Wolfgang Nejdl (Executive Director)<br>
+                Dr. Claudia Niederée (Managing Director)<br>
+            </td>
+        </tr>
+        <tr>
+            <td>Gottfried Wilhelm Leibniz Universität Hannover</td>
+            <td>
+                Welfengarten 1<br>
+                30167 Hannover<br>
+                Tel. +49 511 762 – 0<br>
+                Fax +49 511 762 – 3456<br>
+            </td>
+        </tr>
+        <tr>
+            <td>Represented by:</td>
+            <td>
+                Präsident der Leibniz Universität
+            </td>
+        </tr>
+        <tr> 
+            <td>Technical Implementation</td>
+            <td>Dren Fazlija, Forschungszentrum L3S<br>
+                Webdesign and Development with Flask and PostgreSQL
+            </td>
+        </tr>
+        <tr>
+            <td>Photos</td>
+            <td>This website contains photos from <a href="https://www.kaggle.com">kaggle.com</a>, <a href="https://www.uni-hannover.de/">uni-hannover.de</a>, <a href="https://github.com/">github.com</a>, <a  href="https://www.image-net.org/">image-net.org</a>, and <a href="https://www.photofilters.com/">photofilters.com</a>
+                <br> Header image by Dren Fazlija
+            </td>
+        </tr>
+        </tr>
+
+      </table>
+
+      <p>The Gottfried Wilhelm Leibniz Universität Hannover is a corporation under public law. It is legally represented by the President Prof. Dr. iur. Volker Epping.
+        Supervisory authority: Stiftung Gottfried Wilhelm Leibniz Universität Hannover, Welfengarten 1, 30167 Hannover
+        Sales tax identification number according to § 27a Umsatzsteuergesetz: DE 811 245 527</p>
+
+        <p>Dren Fazlija (address see above) is responsible for all content.</p>
+
+        <p>Disclaimer: This web app and all contents therein were created for research use only. We neither condone nor hold, in any capacity, responsibility for the actions of those who might intend to use this software in a manner malicious or otherwise illegal.</p>
+    </div>

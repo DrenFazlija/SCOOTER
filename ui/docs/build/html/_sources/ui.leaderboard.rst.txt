@@ -1,0 +1,18 @@
+ui.leaderboard package
+======================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ui.leaderboard.leaderboard
+
+Module contents
+---------------
+
+.. automodule:: ui.leaderboard
+   :members:
+   :undoc-members:
+   :show-inheritance:

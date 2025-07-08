@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recap of the Focal Study Instructions</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='perceived_researcher_unfairness.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+    <style>
+      .image-wrapper {
+        display: flex;
+        justify-content: space-between; /* This spaces the images evenly */
+        align-items: center; /* This aligns the items vertically in the center */
+      }
+
+      .image-container {
+        flex: 1; /* This allows the containers to take up equal space */
+        text-align: center; /* This centers the label and image horizontally */
+        margin: 0 10px; /* This gives a little space between the containers */
+      }
+
+      .image-container img {
+        max-width: 100%; /* This ensures the image doesn't overflow its container */
+        height: auto; /* Maintains the image's aspect ratio */
+      }
+
+      .rule-box {
+        border: 2px solid #d9534f; /* Red border */
+        background-color: #fdf2f2; /* Light red background */
+        padding: 10px 20px 20px;
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+        margin: 20px 0; /* Space above and below the rule box */
+        position: relative; /* To position the pseudo element */
+      }
+
+      .rule-box::before {
+        content: "!";
+        font-size: 50px;
+        font-weight: bold;
+        color: #d9534f; /* Red color */
+        position: absolute;
+        top: 10px;
+        left: -30px; /* Positioning it to the left of the box */
+      }
+
+      .rule-box h3 {
+        color: #d9534f; /* Red color for the heading */
+        border-bottom: 1px solid #d9534f; /* Underline the heading */
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        margin-top: 0;
+      }
+
+      .rule-box p {
+        margin: 0; /* Remove default margins */
+        color: #555; /* Dark grey text */
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include 'perceived_researcher_unfairness.html' %}
+
+    <div class="container">
+      <h2>Recap of the Focal Study Instructions</h2>
+
+      <h2 style="text-align: center">Rules of Thumb</h3>
+
+      <div class="rule-box">
+        <h3>Rule of thumb #1:</h3>
+        <p>
+          If an image looks like it’s straight out of a camera without filters, it’s likely unmodified.
+        </p>
+      </div>
+
+      <div class="rule-box">
+        <h3>Rule of thumb #2:</h3>
+        <p>
+          Some modifications are obvious, while others are hard to notice.
+        </p>
+      </div>
+
+      <div class="rule-box">
+        <h3>Rule of thumb #3:</h3>
+        <p>
+          Some real images may not be as clear as you're used to. 
+            <b><i>Real</i></b> indoor images may have unnatural colors due to artificial lighting.
+        </p>
+      </div>
+
+      <h2 style="text-align: center">Full Explanation</h3>
+
+        <p><b>Read the following explanations carefully.</b></p>
+
+        <p>
+          <b>Task:</b> Rate images based on how modified they appear. 
+          <em>Real/Unmodified</em> images are photographs captured using cameras or other imaging devices, showing scenes or objects as they naturally exist. 
+          <em>Modified</em> images have been edited in any form, such as using Instagram/Snapchat <b>filters</b>, (partially) <b>recoloring pictures</b>, or <b>adding/removing objects</b> in a photo.
+        </p>
+        
+        <div class="image-wrapper">
+          <div class="image-container">
+            <label for="rule1_image1"><b>Real/Unmodified</b></label>
+            <img id="rule1_image1" src="static/images/luh.png" />
+          </div>
+        
+          <div class="image-container">
+            <label for="rule1_image2"
+              ><b>Modified (via Instagram's Perpertua filter)</b></label
+            >
+            <img id="rule1_image2" src="static/images/luh_perpetua.png" />
+          </div>
+        </div>
+        
+        <p>
+          Images with <b>defective (“dead”) pixels or other pixel changes</b> should be rated as “modified.”
+        </p>
+        
+        <div class="image-wrapper">
+          <div class="image-container">
+            <label for="rule1_image1_repeat"><b>Real/Unmodified</b></label>
+            <img id="rule1_image1_repeat" src="static/images/luh.png" />
+          </div>
+        
+          <div class="image-container">
+            <label for="rule1_image3"
+              ><b>Modified (contains dead pixels)</b></label
+            >
+            <img id="rule1_image3" src="static/images/luh_noisy.png" />
+          </div>
+        </div>
+        
+        <p>
+          Images with consistent but <b>unusual or unnatural coloring</b> should also be rated as “modified,” such as greyscaled images.
+        </p>
+        
+        <div class="image-wrapper">
+          <div class="image-container">
+            <label for="rule1_image1_repeat2"><b>Real/Unmodified</b></label>
+            <img id="rule1_image1_repeat2" src="static/images/luh.png" />
+          </div>
+        
+          <div class="image-container">
+            <label for="rule1_image3"><b>Modified (is greyscaled)</b></label>
+            <img id="rule1_image3" src="static/images/luh_greyscale.png" />
+          </div>
+        </div>
+        
+        <p>
+          Images with <b>non-color related modifications</b> like unusually sharp edges and lines should be rated as “modified.”
+        </p>
+        
+        <div class="image-wrapper">
+          <div class="image-container">
+            <label for="rule1_image1_repeat3"><b>Real/Unmodified</b></label>
+            <img id="rule1_image1_repeat3" src="static/images/luh.png" />
+          </div>
+        
+          <div class="image-container">
+            <label for="rule1_image4"
+              ><b>Modified (contains sharp edges)</b></label
+            >
+            <img id="rule1_image4" src="static/images/luh_sharpened_edges.png" />
+          </div>
+        </div>
+        
+        <div class="rule-box">
+          <h3>Rule of thumb #1:</h3>
+          <p>
+            If an image looks like it’s straight out of a camera without filters, it’s likely unmodified.
+          </p>
+        </div>
+        
+        <p>
+          Some edited images may have <b>minimal and subtle</b> signs of modifications, like inconsistent coloring or unusual lines. The right image below has
+          inconsistent bag colors and brown areas between the legs and arms.
+        </p>
+        
+        <div class="image-wrapper">
+          <div class="image-container">
+            <label for="rule2_image1"><b>Real/Unmodified</b></label>
+            <img id="rule2_image1" src="static/images/original_image_suit.png" />
+          </div>
+        
+          <div class="image-container">
+            <label for="rule2_image2"><b>Modified</b></label>
+            <img id="rule2_image2" src="static/images/modified_image_racket.png" />
+          </div>
+        </div>
+        
+        <div class="rule-box">
+          <h3>Rule of thumb #2:</h3>
+          <p>
+            Some modifications are obvious, while others are hard to notice.
+          </p>
+        </div>
+        
+        <p>
+          <b>Image Quality:</b> The images you’ll assess were made in the early 2000s, so the quality might be lower than you're used to. 
+          Also, some images were taken indoors without natural light, affecting their quality. For example, the image below is real, but due to artificial lighting, it appears unnaturally yellowish.
+        </p>
+        
+        <div class="image-wrapper">
+          <div class="image-container">
+            <label for="real_indoor"><b>Real/Unmodified</b></label><br />
+            <img id="real_indoor" src="static/images/real_indoor.png" />
+          </div>
+        </div>
+        
+        <div class="rule-box">
+          <h3>Rule of thumb #3:</h3>
+          <p>
+            Some real images may not be as clear as you're used to. 
+            <b><i>Real</i></b> indoor images may have unnatural colors due to artificial lighting.
+          </p>
+        </div>
+        
+        <p>
+          On the next page, you’ll get some examples to test your understanding of the task.
+        </p>
+        
+        <div class="rule-box">
+          <h3>Important:</h3>
+          <p>
+            After the comprehension check, you’ll only be shown one image. You must decide whether it’s real or modified.
+          </p>
+        </div>
+        
+
+      <button
+        id="continue-button"
+        class="unlocked"
+        onclick="redirectTo('main-study')"
+      >
+        Back to the Main Study
+      </button>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+  <script src="{{ url_for('static', filename='mobileDetection.js') }}"></script>
+  <script src="{{ url_for('static', filename='perceived_researcher_unfairness_scripts.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function redirectTo(url) {
+      fetch("/update-attempted-comprehension-check", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ PROLIFIC_PID: prolificPid }),
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json(); // If OK, return the JSON
+          } else {
+            // If the server responds with a non-OK (error) status, handle it here
+            return response.json().then((errorData) => {
+              // Use the errorData to display a specific message or take action
+              console.error("Error from server:", errorData);
+              throw new Error(
+                `Server responded with status: ${response.status}`
+              );
+            });
+          }
+        })
+        .then((data) => {
+          if (data && data.status === "success") {
+            window.location.replace(url + "?PROLIFIC_PID=" + prolificPid);
+          } else {
+            // Handle any other status received in the data
+            console.error("Error status received:", data.status);
+          }
+        })
+        .catch((error) => {
+          // Handle any error that occurred in any part of the code
+          console.error("An unexpected error occurred:", error);
+          // Optionally, redirect to a generic error page or display an error message
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      redirectMobileUsers(userAgentString);
+      setupPopup();
+      params = new URLSearchParams(window.location.search);
+      prolificPid = params.get("PROLIFIC_PID");
+
+      if (prolificPid === null) {
+        window.location.replace("/error");
+      }
+      fetch("/check-for-illegal-behavior", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          PROLIFIC_PID: prolificPid,
+          current_page: "introduction-focal-study",
+        }),
+      })
+        .then((response) => {
+          // Check the response status code
+          json_code = [403, 404, 500];
+          // For status 200-299, and special error codes (i.e., perhaps the user already failed the colorblindness test)
+          if (response.ok || json_code.includes(response.status)) {
+            return response.json(); // Parse JSON body
+          } else {
+            throw new Error("Server responded with status: " + response.status);
+          }
+        })
+        .then((data) => {
+          if (data.status === "error") {
+            if (data.error === "pid_not_found") {
+              window -
+                location.replace("/consent-form?PROLIFIC_PID=" + prolificPid);
+            } else if (data.error === "colorblindness_not_passed") {
+              window.location.replace(
+                "/introduction-colorblindness?PROLIFIC_PID=" + prolificPid
+              );
+            } else if (data.error === "already_completed_study") {
+              window.location.replace(
+                "/already-participated?PROLIFIC_PID=" + prolificPid
+              );
+            } else {
+              throw new Error("Server responded with error: " + data.error);
+            }
+          } else if (data.status === "success") {
+            // Do nothing
+          } else {
+            throw new Error("Server responded with status: " + data.status);
+          }
+        })
+        .catch((error) => {
+          // Handle any network errors or thrown errors from the status code checks
+          console.error("Fetch Error:", error.message);
+        });
+    });
+  </script>
+</html>

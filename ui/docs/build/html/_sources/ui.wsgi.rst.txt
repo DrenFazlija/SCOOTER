@@ -1,0 +1,7 @@
+ui.wsgi module
+==============
+
+.. automodule:: ui.wsgi
+   :members:
+   :undoc-members:
+   :show-inheritance:

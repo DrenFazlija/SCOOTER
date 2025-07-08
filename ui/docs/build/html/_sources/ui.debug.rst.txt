@@ -1,0 +1,18 @@
+ui.debug package
+================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ui.debug.debug
+
+Module contents
+---------------
+
+.. automodule:: ui.debug
+   :members:
+   :undoc-members:
+   :show-inheritance:

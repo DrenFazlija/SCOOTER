@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to the Main Study!</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='slider.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='perceived_researcher_unfairness.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+  </head>
+
+  <body>
+    {% include 'perceived_researcher_unfairness.html' %}
+
+    <div class="container">
+      <h2>Welcome to the Main Study!</h2>
+
+      <p>
+        You are about to start the main study, which will take approximately
+        <b>11 &frac12 minutes</b>. You will be asked to rate the degree of image
+        modification for <b>106 images</b>. Ensure you have a stable internet
+        connection. If disconnected, you can restart the study via the Prolific
+        URL and continue from where you left off after giving your consent
+        again.
+      </p>
+
+      <p>
+        Unlike the previous test, you will now rate each image on a 5-point
+        scale from "Definitely Modified" to "Definitely Real." The images will
+        appear in random order. Correctly rating more images will improve your
+        position on our
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="{{ url_for('leaderboard.leaderboard') }}"
+          >leaderboard</a
+        >, which you can join after the test. A rating is "correct" if it falls
+        in the correct half of the scale (e.g., if the image is modified, you
+        should rate it as "Definitely/Probably <b>Modified</b>"; if not
+        modified, rate it as "Definitely/Probably <b>Real</b>"). The scale is
+        shown below.
+      </p>
+
+      <img
+        src="{{ url_for('static', filename='images/likert-scale.png') }}"
+        alt="Example of the Likert scale"
+        style="width: 95%; display: block; margin: 0 auto"
+      />
+
+      <p>
+        <b>Warning:</b> This study includes attention checks! Failing more than
+        one will result in a significantly lower payout.
+      </p>
+
+      <p>
+        If unsure, you can select "Unsure" to skip to the next image or use the
+        green arrow buttons to navigate between images. At the top of the
+        screen, you can see which images have been rated and how many are left.
+        Blue dots indicate rated images, while grey dots show images left to
+        rate. You can jump to an image by clicking on the respective dot. See
+        the example below.
+      </p>
+
+      <img
+        src="{{ url_for('static', filename='images/progress-bar.png') }}"
+        alt="Progress bar"
+        style="width: 95%; display: block; margin: 0 auto"
+      />
+
+      <br />
+
+      <button
+        id="continue-button"
+        class="unlocked"
+        onclick="redirectTo('/main-study')"
+      >
+        <b>Continue</b>
+      </button>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+  <script src="{{ url_for('static', filename='mobileDetection.js') }}"></script>
+  <script src="{{ url_for('static', filename='perceived_researcher_unfairness_scripts.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="{{ url_for('static', filename='slider_intro.js') }}"></script>
+  <script>
+    function redirectTo(url) {
+      window.location.assign(url + "?PROLIFIC_PID=" + prolificPid);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      redirectMobileUsers(userAgentString);
+      params = new URLSearchParams(window.location.search);
+      prolificPid = params.get("PROLIFIC_PID");
+
+      setupPopup();
+
+      fetch("/check-for-illegal-behavior", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          PROLIFIC_PID: prolificPid,
+          current_page: "main-study",
+        }),
+      })
+        .then((response) => {
+          // Check the response status code
+          json_code = [403, 404, 500];
+          // For status 200-299, and special error codes (i.e., perhaps the user already failed the colorblindness test)
+          if (response.ok || json_code.includes(response.status)) {
+            return response.json(); // Parse JSON body
+          } else {
+            throw new Error("Server responded with status: " + response.status);
+          }
+        })
+        .then((data) => {
+          if (data.status === "error") {
+            if (data.error === "pid_not_found") {
+              window -
+                location.replace("/consent-form?PROLIFIC_PID=" + prolificPid);
+            } else if (data.error === "already_completed_study") {
+              window.location.replace(
+                "/already-participated?PROLIFIC_PID=" + prolificPid
+              );
+            } else if (data.error === "colorblindness_not_passed") {
+              window.location.replace(
+                "/introduction-colorblindness?PROLIFIC_PID=" + prolificPid
+              );
+            } else if (data.error === "comprehension_not_passed") {
+              window.location.replace(
+                "/focal-study-instructions?PROLIFIC_PID=" + prolificPid
+              );
+            } else {
+              throw new Error("Server responded with error: " + data.error);
+            }
+          }
+        })
+        .catch((error) => {
+          // Handle any network errors or thrown errors from the status code checks
+          console.error("Fetch Error:", error.message);
+        });
+    });
+  </script>
+</html>

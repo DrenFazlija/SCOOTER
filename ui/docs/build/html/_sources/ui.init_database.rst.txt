@@ -1,0 +1,7 @@
+ui.init\_database module
+========================
+
+.. automodule:: ui.init_database
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,18 @@
+ui.endpoints package
+====================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ui.endpoints.endpoints
+
+Module contents
+---------------
+
+.. automodule:: ui.endpoints
+   :members:
+   :undoc-members:
+   :show-inheritance:

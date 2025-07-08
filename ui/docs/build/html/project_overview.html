@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scooter UI Documentation &mdash; SCOOTER 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=e031e9a9"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ui" href="modules.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SCOOTER
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Scooter UI Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#project-overview">Project Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-structure">Project Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#core-files">Core Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modules">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utility-files">Utility Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#database-schema">Database Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#application-flow">Application Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-components">Key Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#illegal-behavior-check">Illegal Behavior Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#leaderboard">Leaderboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-processing">Data Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#development">Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#license-and-credits">License and Credits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SCOOTER</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Scooter UI Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/project_overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scooter-ui-documentation">
+<h1>Scooter UI Documentation<a class="headerlink" href="#scooter-ui-documentation" title="Permalink to this heading"></a></h1>
+<section id="project-overview">
+<h2>Project Overview<a class="headerlink" href="#project-overview" title="Permalink to this heading"></a></h2>
+<p>Scooter UI is a Flask-based web application designed for conducting user studies related to image perception and adversarial examples. The application implements a complete participant workflow including:</p>
+<ul class="simple">
+<li><p>Participant consent forms</p></li>
+<li><p>Colorblindness testing (Ishihara test)</p></li>
+<li><p>Comprehension checks</p></li>
+<li><p>Main study with image classification tasks</p></li>
+<li><p>Feedback collection</p></li>
+<li><p>Leaderboard functionality</p></li>
+</ul>
+<p>The application appears to focus on studies involving participants’ ability to distinguish between real and modified images, likely in the context of adversarial machine learning research.</p>
+</section>
+<section id="system-requirements">
+<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Python 3.x</p></li>
+<li><p>PostgreSQL 16 or compatible version</p></li>
+<li><p>Flask and associated dependencies</p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Clone the repository</p></li>
+<li><p>Install required dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</li>
+<li><p>Set up PostgreSQL database:</p>
+<ul class="simple">
+<li><p>Install PostgreSQL 16</p></li>
+<li><p>Configure the utility file for importing/exporting databases</p></li>
+<li><p>Create a database for the application</p></li>
+<li><p>Run the schema.sql file to create necessary tables</p></li>
+</ul>
+</li>
+<li><p>Configure the application:</p>
+<ul>
+<li><p>Create database.ini file with PostgreSQL credentials:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">postgresql</span><span class="p">]</span>
+<span class="n">host</span><span class="o">=&lt;</span><span class="n">host</span><span class="o">&gt;</span>
+<span class="n">dbname</span><span class="o">=&lt;</span><span class="n">database</span> <span class="n">name</span><span class="o">&gt;</span>
+<span class="n">user</span><span class="o">=&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+<span class="n">password</span><span class="o">=&lt;</span><span class="n">password</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create mail.ini file for email configuration</p></li>
+<li><p>Create secret.key file for Flask application security</p></li>
+</ul>
+</li>
+<li><p>Start the application:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="project-structure">
+<h2>Project Structure<a class="headerlink" href="#project-structure" title="Permalink to this heading"></a></h2>
+<section id="core-files">
+<h3>Core Files<a class="headerlink" href="#core-files" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>app.py</strong>: Main Flask application entry point</p></li>
+<li><p><strong>routes.py</strong>: Primary routes for the application</p></li>
+<li><p><strong>config.py</strong>: Configuration handling for database, mail, and data storage</p></li>
+<li><p><strong>schema.sql</strong>: Database schema definition</p></li>
+<li><p><strong>db_utils.py</strong>: Database utility functions</p></li>
+<li><p><strong>wsgi.py</strong>: WSGI entry point for production deployment</p></li>
+</ul>
+</section>
+<section id="modules">
+<h3>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>consent_form/</strong>: Participant consent form handling</p></li>
+<li><p><strong>colorblindness_test/</strong>: Ishihara test for colorblindness screening</p></li>
+<li><p><strong>comprehension_check/</strong>: Verification of participant understanding</p></li>
+<li><p><strong>main_study/</strong>: Core experiment functionality</p></li>
+<li><p><strong>endpoints/</strong>: API endpoints</p></li>
+<li><p><strong>mail/</strong>: Email functionality</p></li>
+<li><p><strong>notices/</strong>: User notifications</p></li>
+<li><p><strong>leaderboard/</strong>: Performance tracking and comparison</p></li>
+<li><p><strong>debug/</strong>: Debug tools and utilities</p></li>
+</ul>
+</section>
+<section id="utility-files">
+<h3>Utility Files<a class="headerlink" href="#utility-files" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>data_processing.py</strong>: Functions for processing study data</p></li>
+<li><p><strong>utils.py</strong>: General utility functions</p></li>
+<li><p><strong>automations.py</strong>: Automation scripts</p></li>
+<li><p><strong>export_annotations.py</strong>: Tools for exporting study annotations</p></li>
+<li><p><strong>setup_configs.py</strong>: Configuration setup utilities</p></li>
+</ul>
+</section>
+</section>
+<section id="database-schema">
+<h2>Database Schema<a class="headerlink" href="#database-schema" title="Permalink to this heading"></a></h2>
+<p>The database is structured around these main tables:</p>
+<ul class="simple">
+<li><p><strong>participants</strong>: Stores participant information and progress</p></li>
+<li><p><strong>attention_check_images</strong>: Images used to verify participant attention</p></li>
+<li><p><strong>modified_images</strong>: Adversarially modified images for the study</p></li>
+<li><p><strong>real_images</strong>: Unmodified reference images</p></li>
+<li><p><strong>ishihara_test_cards</strong>: Color vision test cards</p></li>
+<li><p><strong>comprehension_check_images</strong>: Images used to verify participant understanding</p></li>
+<li><p><strong>feedback</strong>: Participant feedback data</p></li>
+<li><p><strong>site_logs</strong>: User activity logging</p></li>
+<li><p><strong>image_logs</strong>: Image interaction tracking</p></li>
+<li><p><strong>leaderboard</strong>: Performance tracking and ranking</p></li>
+</ul>
+</section>
+<section id="application-flow">
+<h2>Application Flow<a class="headerlink" href="#application-flow" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Participant Entry</strong>: Users enter with a Prolific ID (PID)</p></li>
+<li><p><strong>Consent Form</strong>: Participants review and agree to study terms</p></li>
+<li><p><strong>Colorblindness Test</strong>: Screening for color vision deficiencies</p></li>
+<li><p><strong>Study Introduction</strong>: Instructions and context for the experiment</p></li>
+<li><p><strong>Comprehension Check</strong>: Verification of participant understanding</p></li>
+<li><p><strong>Main Study</strong>: Image classification tasks</p></li>
+<li><p><strong>Feedback</strong>: Collection of participant feedback</p></li>
+<li><p><strong>Study Completion</strong>: Confirmation and compensation information</p></li>
+</ol>
+</section>
+<section id="key-components">
+<h2>Key Components<a class="headerlink" href="#key-components" title="Permalink to this heading"></a></h2>
+<section id="illegal-behavior-check">
+<h3>Illegal Behavior Check<a class="headerlink" href="#illegal-behavior-check" title="Permalink to this heading"></a></h3>
+<p>The application includes mechanisms to prevent participants from:</p>
+<ul class="simple">
+<li><p>Skipping required steps</p></li>
+<li><p>Retaking completed portions</p></li>
+<li><p>Manipulating the study flow</p></li>
+</ul>
+</section>
+<section id="leaderboard">
+<h3>Leaderboard<a class="headerlink" href="#leaderboard" title="Permalink to this heading"></a></h3>
+<p>Tracks and displays participant performance with:</p>
+<ul class="simple">
+<li><p>Overall accuracy metrics</p></li>
+<li><p>Separate tracking for real vs. modified image detection</p></li>
+<li><p>Comparison by model and attack type</p></li>
+</ul>
+</section>
+<section id="data-processing">
+<h3>Data Processing<a class="headerlink" href="#data-processing" title="Permalink to this heading"></a></h3>
+<p>Includes tools for:</p>
+<ul class="simple">
+<li><p>Exporting annotations</p></li>
+<li><p>Processing participant data</p></li>
+<li><p>Analyzing results</p></li>
+</ul>
+</section>
+</section>
+<section id="development">
+<h2>Development<a class="headerlink" href="#development" title="Permalink to this heading"></a></h2>
+<p>The project is actively under development with ongoing tasks including:</p>
+<ul class="simple">
+<li><p>Restructuring code for improved maintainability</p></li>
+<li><p>Implementing additional security features</p></li>
+<li><p>Adding Docker support</p></li>
+<li><p>Creating automated setup scripts</p></li>
+</ul>
+</section>
+<section id="license-and-credits">
+<h2>License and Credits<a class="headerlink" href="#license-and-credits" title="Permalink to this heading"></a></h2>
+<p>See Copyright.md for information on third-party code used in the UI.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="ui" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Dren Fazlija.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

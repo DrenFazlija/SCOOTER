@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+    <style>
+      form,
+      ul {
+        margin-top: 20px;
+      }
+      label,
+      select,
+      textarea,
+      input[type="submit"] {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+      }
+      textarea {
+        height: 100px;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      .wrap {
+        font: 14px Arial, sans-serif;
+      }
+      .wrap p {
+        font-weight: bold;
+      }
+      h2 {
+        margin-top: 20px;
+      }
+      form .statement {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 30px 0 0 4.25%;
+        margin-bottom: 10px;
+      }
+      form .likert {
+        list-style: none;
+        width: 100%;
+        margin: 0;
+        padding: 0 0 35px;
+        display: block;
+        border-bottom: 2px solid #efefef;
+      }
+      form .likert:last-of-type {
+        border-bottom: 0;
+      }
+      form .likert:before {
+        content: "";
+        position: relative;
+        top: 11px;
+        left: 9.5%;
+        display: block;
+        background-color: #efefef;
+        height: 4px;
+        width: 78%;
+      }
+      form .likert li {
+        display: inline-block;
+        width: 19%;
+        text-align: center;
+        vertical-align: top;
+      }
+      form .likert li input[type="radio"] {
+        display: block;
+        position: relative;
+        top: 0;
+        left: 50%;
+        margin-left: -6px;
+      }
+      form .likert li label {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Response Quality</h2>
+      <div class="wrap">
+        <p>
+          Please answer the following questions about your responses to the
+          survey. Responses made on this page will not affect your payment and
+          are for research purposes only. This is optional but we would greatly
+          appreciate your feedback.
+        </p>
+        <form id="feedback-form" onsubmit="send_feedback(event)">
+          <label class="statement"
+            >My responses to items on this survey are accurate.</label
+          >
+          <ul class="likert">
+            <li>
+              <input type="radio" name="q1" value="5" />
+              <label>Strongly agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q1" value="4" />
+              <label>Agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q1" value="3" />
+              <label>Neutral</label>
+            </li>
+            <li>
+              <input type="radio" name="q1" value="2" />
+              <label>Disagree</label>
+            </li>
+            <li>
+              <input type="radio" name="q1" value="1" />
+              <label>Strongly disagree</label>
+            </li>
+          </ul>
+
+          <label class="statement"
+            >I exerted sufficient effort on this survey.</label
+          >
+          <ul class="likert">
+            <li>
+              <input type="radio" name="q2" value="5" />
+              <label>Strongly agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q2" value="4" />
+              <label>Agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q2" value="3" />
+              <label>Neutral</label>
+            </li>
+            <li>
+              <input type="radio" name="q2" value="2" />
+              <label>Disagree</label>
+            </li>
+            <li>
+              <input type="radio" name="q2" value="1" />
+              <label>Strongly disagree</label>
+            </li>
+          </ul>
+
+          <label class="statement"
+            >I answered items on this survey without reading them.</label
+          >
+          <ul class="likert">
+            <li>
+              <input type="radio" name="q3" value="5" />
+              <label>Strongly agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q3" value="4" />
+              <label>Agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q3" value="3" />
+              <label>Neutral</label>
+            </li>
+            <li>
+              <input type="radio" name="q3" value="2" />
+              <label>Disagree</label>
+            </li>
+            <li>
+              <input type="radio" name="q3" value="1" />
+              <label>Strongly disagree</label>
+            </li>
+          </ul>
+
+          <label class="statement"
+            >I randomly responded to some survey items.</label
+          >
+          <ul class="likert">
+            <li>
+              <input type="radio" name="q4" value="5" />
+              <label>Strongly agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q4" value="4" />
+              <label>Agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q4" value="3" />
+              <label>Neutral</label>
+            </li>
+            <li>
+              <input type="radio" name="q4" value="2" />
+              <label>Disagree</label>
+            </li>
+            <li>
+              <input type="radio" name="q4" value="1" />
+              <label>Strongly disagree</label>
+            </li>
+          </ul>
+
+          <label class="statement">I rushed through this survey.</label>
+          <ul class="likert">
+            <li>
+              <input type="radio" name="q5" value="5" />
+              <label>Strongly agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q5" value="4" />
+              <label>Agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q5" value="3" />
+              <label>Neutral</label>
+            </li>
+            <li>
+              <input type="radio" name="q5" value="2" />
+              <label>Disagree</label>
+            </li>
+            <li>
+              <input type="radio" name="q5" value="1" />
+              <label>Strongly disagree</label>
+            </li>
+          </ul>
+
+          <label class="statement"
+            >I thought carefully about each of my responses on this
+            survey.</label
+          >
+          <ul class="likert">
+            <li>
+              <input type="radio" name="q6" value="5" />
+              <label>Strongly agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q6" value="4" />
+              <label>Agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q6" value="3" />
+              <label>Neutral</label>
+            </li>
+            <li>
+              <input type="radio" name="q6" value="2" />
+              <label>Disagree</label>
+            </li>
+            <li>
+              <input type="radio" name="q6" value="1" />
+              <label>Strongly disagree</label>
+            </li>
+          </ul>
+
+          <label class="statement"
+            >The researchers should include my data in the results.</label
+          >
+          <ul class="likert">
+            <li>
+              <input type="radio" name="q7" value="5" />
+              <label>Strongly agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q7" value="4" />
+              <label>Agree</label>
+            </li>
+            <li>
+              <input type="radio" name="q7" value="3" />
+              <label>Neutral</label>
+            </li>
+            <li>
+              <input type="radio" name="q7" value="2" />
+              <label>Disagree</label>
+            </li>
+            <li>
+              <input type="radio" name="q7" value="1" />
+              <label>Strongly disagree</label>
+            </li>
+          </ul>
+
+          <h2>Feedback</h2>
+          <p>
+            We are always looking to improve our survey design. Please let us
+            know how we can improve.
+          </p>
+          <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+  <script src="{{ url_for('static', filename='mobileDetection.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      redirectMobileUsers(userAgentString);
+      params = new URLSearchParams(window.location.search);
+      prolificPid = params.get("PROLIFIC_PID");
+
+      if (prolificPid === null) {
+        window.location.replace("/error");
+      }
+
+      fetch("/check-for-illegal-behavior", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          PROLIFIC_PID: prolificPid,
+          current_page: "feedback",
+        }),
+      })
+        .then((response) => {
+          // Check the response status code
+          json_code = [403, 500];
+          if (response.ok || json_code.includes(response.status)) {
+            return response.json(); // Parse JSON body
+          } else {
+            throw new Error("Server responded with status: " + response.status);
+          }
+        })
+        .then((data) => {
+          if (data.status === "error") {
+            if (data.error === "feedback_already_submitted") {
+              window.location.replace("/already-participated");
+            } else {
+              window.location.replace("/unexpected-error");
+            }
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          window.location.replace("/error");
+        });
+    });
+    function send_feedback(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      prolificPid = params.get("PROLIFIC_PID");
+
+      const getSelectedValue = (name) => {
+        const radio = document.querySelector(`input[name="${name}"]:checked`);
+        return radio ? radio.value : null;
+      };
+
+      const data = {
+        prolific_pid: prolificPid,
+        q1: getSelectedValue("q1"),
+        q2: getSelectedValue("q2"),
+        q3: getSelectedValue("q3"),
+        q4: getSelectedValue("q4"),
+        q5: getSelectedValue("q5"),
+        q6: getSelectedValue("q6"),
+        q7: getSelectedValue("q7"),
+        feedback: document.getElementById("feedback").value,
+      };
+
+      // Send the form data using fetch
+      fetch("/send-feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          window.location.replace("/thank-you");
+        })
+        .catch((error) => console.error("Error:", error));
+    }
+  </script>
+</html>

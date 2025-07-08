@@ -1,0 +1,7 @@
+ui.automations module
+=====================
+
+.. automodule:: ui.automations
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+ui.routes module
+================
+
+.. automodule:: ui.routes
+   :members:
+   :undoc-members:
+   :show-inheritance:

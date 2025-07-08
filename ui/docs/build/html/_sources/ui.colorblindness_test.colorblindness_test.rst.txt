@@ -1,0 +1,7 @@
+ui.colorblindness\_test.colorblindness\_test module
+===================================================
+
+.. automodule:: ui.colorblindness_test.colorblindness_test
+   :members:
+   :undoc-members:
+   :show-inheritance:

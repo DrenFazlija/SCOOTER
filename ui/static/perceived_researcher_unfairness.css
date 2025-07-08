@@ -1,0 +1,212 @@
+/*
+CSS file that contains the styling for components that mitigate perceived researcher unfairness.
+Current components: "Contact Researcher" button (with corresponding popup form) and "Return to Task" button.
+*/
+
+
+
+#contact-researcher, #return-task, #finish-study, #check-instructions {
+  position: fixed; /* Fixed position */
+  min-width: 200px; /* Set a minimum width */
+  padding: 15px 30px; /* Increased padding for larger button */
+  background-color: #006fe6; /* Button background color */
+  color: white; /* Button text color */
+  font-size: 18px; /* Larger font size */
+  font-weight: bold; /* Bold font for prominence */
+  border: none; /* Remove border */
+  border-radius: 8px; /* Slightly larger rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  z-index: 1000; /* Ensure it's above other elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+#contact-researcher {
+  top: 45%; /* Start at half of page height */
+  right: 0; /* Positioned on the right side */
+  transform: translateX(-50%); /* Adjust for perfect horizontal centering */
+}
+
+#return-task {
+  top: 55%; /* Start at half of page height */
+  right: 0; /* Positioned on the right side */
+  transform: translateX(-50%); /* Adjust for perfect horizontal centering */
+}
+
+#finish-study {
+  top: 55%; /* Start at half of page height */
+  left: -10; /* Positioned on the left side */
+  transform: translateX(50%); /* Adjust for perfect horizontal centering */
+}
+
+#check-instructions {
+  top: 45%; /* Start at half of page height */
+  left: -10; /* Positioned on the left side */
+  transform: translateX(50%); /* Adjust for perfect horizontal centering */
+}
+
+#contact-researcher:hover, #return-task:hover, #check-instructions:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+}
+
+/* Popup Container */
+
+.popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  width: 80%; /* Responsive width */
+  max-width: 500px; /* Maximum width */
+  box-sizing: border-box; /* Box-sizing */
+  z-index: 1001; /* Above other elements */
+  display: none; /* Hidden by default */
+}
+
+/* Popup Form Styling */
+.popup-container form {
+    margin: 0;
+    padding: 0;
+}
+
+.popup-container h2 {
+    color: #333; /* Dark text for heading */
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center; /* Center the title */
+}
+
+.popup-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666; /* Lighter text for labels */
+}
+
+.popup-container input[type="text"],
+.popup-container textarea {
+    width: 100%; /* Full width */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Slightly rounded corners for input fields */
+}
+
+/* Buttons inside the form */
+.popup-container button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.popup-container button[type="submit"] {
+    background-color: #38803a; /* Green background */
+    color: white; 
+    position: fixed;
+    bottom: 5%;
+    left: 0;
+    transform: translateX(50%);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+}
+
+
+.popup-container button[type="submit"]:hover {
+  background-color: #0c640f;
+}
+
+.popup-container button[type="button"] {
+    background-color: #AE1409; /* Red background for close button */
+    color: white;
+    position: fixed;
+    bottom: 5%;
+    right: 0;
+    transform: translateX(-50%);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+}
+
+.popup-container button[type="button"]:hover {
+  background-color: #7b0f07;
+}
+
+#contact-researcher,
+#return-task, #finish-study, #check-instructions {
+  display: inline-flex; /* Align icon and text */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  gap: 10px; /* Space between icon and text */
+}
+
+.material-symbols-outlined {
+  font-size: 24px; /* Adjust the icon size as needed */
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+#finish-study {
+  background-color: #717171;
+  cursor: not-allowed;
+  transition: all 0.3s;
+}
+
+#finish-study.unlocked {
+  background-color: #38803a;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+}
+
+#finish-study.unlocked:hover {
+  background-color: #0c640f;
+}
+
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 1800px) {
+  #contact-researcher, #return-task, #finish-study, #check-instructions {
+    min-width: 200px; /* Reduce minimum width */
+    padding: 10px 20px; /* Reduce padding */
+    font-size: 16px; /* Smaller font size */
+  }
+
+  #contact-researcher {
+    right: -20px; /* Adjust position */
+  }
+
+  #return-task {
+    right: -50px; /* Adjust position */
+  }
+
+  #check-instructions {
+    left: -20px; /* Adjust position */
+  }
+
+  #finish-study {
+    left: -20px; /* Adjust position */
+  }
+}
+
+@media (max-width: 1400px) {
+  #contact-researcher, #return-task, #finish-study, #check-instructions {
+    min-width: 130px; /* Reduce minimum width */
+    padding: 5px 10px; /* Reduce padding */
+    font-size: 16px; /* Smaller font size */
+  }
+
+  #contact-researcher {
+    right: -55px; /* Adjust position */
+  }
+
+  #check-instructions {
+    left: -55px; /* Adjust position */
+  }
+
+  #finish-study {
+    left: -55px; /* Adjust position */
+  }
+}

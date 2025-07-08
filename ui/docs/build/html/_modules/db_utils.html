@@ -1,0 +1,544 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>db_utils &mdash; SCOOTER 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e031e9a9"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SCOOTER
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_overview.html">Scooter UI Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Overview:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Module Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Base Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#web-modules">Web Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SCOOTER</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">db_utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for db_utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+
+<span class="n">db_config</span> <span class="o">=</span> <span class="n">config</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="database_connection"><a class="viewcode-back" href="../api.html#db_utils.database_connection">[docs]</a><span class="k">def</span> <span class="nf">database_connection</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="n">dbname</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;dbname&quot;</span><span class="p">],</span>
+            <span class="n">user</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span>
+            <span class="n">password</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">],</span>
+            <span class="n">host</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="c1">#print(&quot;Connection to database successful.&quot;)</span>
+        <span class="k">return</span> <span class="n">conn</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error connecting to database:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="execute_sql_file"><a class="viewcode-back" href="../api.html#db_utils.execute_sql_file">[docs]</a><span class="k">def</span> <span class="nf">execute_sql_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="c1"># Read the SQL file</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">sql_script</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># Connect to the database</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+        <span class="n">dbname</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;dbname&quot;</span><span class="p">],</span>
+        <span class="n">user</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span>
+        <span class="n">password</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">],</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Create a cursor</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Execute the SQL script</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_script</span><span class="p">)</span>
+
+        <span class="c1"># Commit the changes</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="c1"># Close the cursor</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SQL script executed successfully.&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error during execution of SQL script:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># Rollback in case of error</span>
+        <span class="k">if</span> <span class="n">conn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="c1"># Close the connection</span>
+        <span class="k">if</span> <span class="n">conn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="configure_image_db"><a class="viewcode-back" href="../api.html#db_utils.configure_image_db">[docs]</a><span class="k">def</span> <span class="nf">configure_image_db</span><span class="p">(</span>
+    <span class="n">path</span><span class="p">,</span> <span class="n">name_of_db</span><span class="p">,</span> <span class="n">is_imc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">table_exists</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Salman2020Do_R50&quot;</span>
+<span class="p">):</span>
+    <span class="c1"># Read all the images in the directory</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="c1"># Connect to the database</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+        <span class="n">dbname</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;dbname&quot;</span><span class="p">],</span>
+        <span class="n">user</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span>
+        <span class="n">password</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">],</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Create a cursor</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create the table</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">table_exists</span><span class="p">:</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="s2">&quot;CREATE TABLE &quot;</span> <span class="o">+</span> <span class="n">name_of_db</span> <span class="o">+</span> <span class="s2">&quot; (id SERIAL PRIMARY KEY, image BYTEA)&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Add additional columns based on name of the database</span>
+        <span class="k">if</span> <span class="n">name_of_db</span> <span class="o">==</span> <span class="s2">&quot;ishihara_test_cards&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">table_exists</span><span class="p">:</span>
+                <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="s2">&quot;ALTER TABLE &quot;</span>
+                    <span class="o">+</span> <span class="n">name_of_db</span>
+                    <span class="o">+</span> <span class="s2">&quot; ADD COLUMN color_type VARCHAR(255), ADD COLUMN digit VARCHAR(255)&quot;</span>
+                <span class="p">)</span>
+            <span class="c1"># Insert the images into the database</span>
+            <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+                <span class="c1"># Ishihare images are named as follows: 0_AveriaLibre-LightItalictheme_1 type_1.png</span>
+                <span class="n">color_info</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+
+                <span class="n">digit</span> <span class="o">=</span> <span class="n">color_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># in our example: 0</span>
+
+                <span class="c1"># check if digit character is a number</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">digit</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                    <span class="n">color_type</span> <span class="o">=</span> <span class="s2">&quot;4&quot;</span>
+                    <span class="n">digit</span> <span class="o">=</span> <span class="s2">&quot;I don&#39;t see a digit&quot;</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">image</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                            <span class="s2">&quot;INSERT INTO &quot;</span>
+                            <span class="o">+</span> <span class="n">name_of_db</span>
+                            <span class="o">+</span> <span class="s2">&quot; (image, color_type, digit) VALUES (</span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span>
+                            <span class="p">(</span><span class="n">psycopg2</span><span class="o">.</span><span class="n">Binary</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()),</span> <span class="n">color_type</span><span class="p">,</span> <span class="n">digit</span><span class="p">),</span>
+                        <span class="p">)</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">color_type</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">color_info</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">color_info</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="p">)</span>  <span class="c1"># in our example: 11 -&gt; first 1 from &quot;1 type&quot; and second 1 from &quot;1.png&quot;</span>
+
+                    <span class="k">if</span> <span class="n">color_type</span> <span class="o">==</span> <span class="s2">&quot;11&quot;</span><span class="p">:</span>
+                        <span class="n">color_type</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+
+                    <span class="k">elif</span> <span class="n">color_type</span> <span class="o">==</span> <span class="s2">&quot;22&quot;</span><span class="p">:</span>
+                        <span class="n">color_type</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+
+                    <span class="k">elif</span> <span class="n">color_type</span> <span class="o">==</span> <span class="s2">&quot;33&quot;</span><span class="p">:</span>
+                        <span class="n">color_type</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+
+                    <span class="k">elif</span> <span class="n">color_type</span> <span class="o">==</span> <span class="s2">&quot;43&quot;</span><span class="p">:</span>
+                        <span class="n">color_type</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span>
+
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">color_type</span> <span class="o">=</span> <span class="s2">&quot;4&quot;</span>
+
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">image</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                            <span class="s2">&quot;INSERT INTO &quot;</span>
+                            <span class="o">+</span> <span class="n">name_of_db</span>
+                            <span class="o">+</span> <span class="s2">&quot; (image, color_type, digit) VALUES (</span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span>
+                            <span class="p">(</span><span class="n">psycopg2</span><span class="o">.</span><span class="n">Binary</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()),</span> <span class="n">color_type</span><span class="p">,</span> <span class="n">digit</span><span class="p">),</span>
+                        <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">name_of_db</span> <span class="o">==</span> <span class="s2">&quot;attention_check_images&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">table_exists</span><span class="p">:</span>
+                <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;ALTER TABLE &quot;</span> <span class="o">+</span> <span class="n">name_of_db</span> <span class="o">+</span> <span class="s2">&quot; ADD COLUMN is_imc BOOLEAN&quot;</span><span class="p">)</span>
+            <span class="c1"># Insert the images into the database</span>
+            <span class="n">insert_attention_check_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">cur</span><span class="p">,</span> <span class="n">is_imc</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">table_exists</span><span class="p">:</span>
+                <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="s2">&quot;ALTER TABLE &quot;</span> <span class="o">+</span> <span class="n">name_of_db</span> <span class="o">+</span> <span class="s2">&quot; ADD COLUMN model_name VARCHAR(255)&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">name_of_db</span> <span class="o">==</span> <span class="s2">&quot;real_images&quot;</span><span class="p">:</span>
+                <span class="n">main_study_real_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">cur</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">name_of_db</span> <span class="o">==</span> <span class="s2">&quot;modified_images&quot;</span><span class="p">:</span>
+                <span class="n">main_study_modified_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">cur</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)</span>
+
+        <span class="c1"># Commit the changes</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="c1"># Close the cursor</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Images uploaded successfully.&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error during execution of SQL script:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># Rollback in case of error</span>
+        <span class="k">if</span> <span class="n">conn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="insert_attention_check_images"><a class="viewcode-back" href="../api.html#db_utils.insert_attention_check_images">[docs]</a><span class="k">def</span> <span class="nf">insert_attention_check_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">cur</span><span class="p">,</span> <span class="n">is_imc</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># These are our very noisy images from ImageNet-C</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_imc</span><span class="p">:</span>
+        <span class="n">folders</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;gaussian_noise</span><span class="se">\\</span><span class="s2">5&quot;</span><span class="p">,</span> <span class="s2">&quot;shot_noise</span><span class="se">\\</span><span class="s2">5&quot;</span><span class="p">,</span> <span class="s2">&quot;impulse_noise</span><span class="se">\\</span><span class="s2">5&quot;</span><span class="p">]</span>
+
+        <span class="c1"># for each folder, we take one image per class -&gt; in total: 3k images</span>
+        <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folders</span><span class="p">:</span>
+            <span class="n">class_directories</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">folder</span><span class="p">)</span>
+
+            <span class="c1"># for each class directory, we take one random image</span>
+            <span class="k">for</span> <span class="n">current_directory</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">class_directories</span><span class="p">):</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">folder</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">current_directory</span><span class="p">)</span>
+
+                <span class="c1"># randomly choose one index between 0 and len(images)</span>
+                <span class="n">random_index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">image</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="n">random_index</span><span class="p">]</span>
+
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+                    <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">folder</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">current_directory</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">image</span><span class="p">,</span>
+                    <span class="s2">&quot;rb&quot;</span><span class="p">,</span>
+                <span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                        <span class="s2">&quot;INSERT INTO &quot;</span>
+                        <span class="o">+</span> <span class="s2">&quot;attention_check_images&quot;</span>
+                        <span class="o">+</span> <span class="s2">&quot; (image, is_imc) VALUES (</span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span>
+                        <span class="p">(</span><span class="n">psycopg2</span><span class="o">.</span><span class="n">Binary</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()),</span> <span class="n">is_imc</span><span class="p">),</span>
+                    <span class="p">)</span>
+
+    <span class="c1"># These are clean sample images from ImageNet (Source: Eli Schwartz Repository)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">id</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+            <span class="c1"># Check if image path is valid</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">image</span><span class="p">):</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">image</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">image</span><span class="p">]</span>
+                    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                        <span class="s2">&quot;INSERT INTO &quot;</span>
+                        <span class="o">+</span> <span class="s2">&quot;attention_check_images&quot;</span>
+                        <span class="o">+</span> <span class="s2">&quot; (id, image, is_imc, correct_value) VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span>
+                        <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">Binary</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()),</span> <span class="n">is_imc</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span>
+                    <span class="p">)</span>
+                <span class="nb">id</span> <span class="o">+=</span> <span class="mi">1</span></div>
+<div class="viewcode-block" id="add_new_cc_images"><a class="viewcode-back" href="../api.html#db_utils.add_new_cc_images">[docs]</a><span class="k">def</span> <span class="nf">add_new_cc_images</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">indicator</span><span class="o">=</span><span class="s2">&quot;v2&quot;</span><span class="p">):</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="c1"># Connect to the database</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+        <span class="n">dbname</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;dbname&quot;</span><span class="p">],</span>
+        <span class="n">user</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span>
+        <span class="n">password</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">],</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Create a cursor</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">superclasses</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;birds&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;containers&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dogs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;furniture&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;other_mammals&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;vehicles&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;clothing&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;devices&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;food_plants_fungi&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;invertebrates&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;reptiles&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+        <span class="n">modification_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;coloring&quot;</span><span class="p">,</span> <span class="s2">&quot;filters&quot;</span><span class="p">,</span> <span class="s2">&quot;pixels&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Insert the modified images into the database</span>
+        <span class="c1"># Loop over all modification types and image classes</span>
+        <span class="k">for</span> <span class="n">img_class</span> <span class="ow">in</span> <span class="n">superclasses</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">modification</span> <span class="ow">in</span> <span class="n">modification_types</span><span class="p">:</span>
+                <span class="n">path_to_class</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">img_class</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">modification</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">f</span>
+                    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path_to_class</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_class</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
+                <span class="p">]</span>
+                <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">indicator</span> <span class="ow">in</span> <span class="n">image</span><span class="p">:</span>
+                        <span class="n">img_number</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Updating the following entry Superclass:&quot;</span><span class="p">,</span> <span class="n">img_class</span><span class="p">,</span> <span class="s2">&quot;Modification:&quot;</span><span class="p">,</span> <span class="n">modification</span><span class="p">,</span> <span class="s2">&quot;Image Number:&quot;</span><span class="p">,</span> <span class="n">img_number</span><span class="p">)</span>
+                        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_to_class</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">image</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                            <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                                <span class="s2">&quot;UPDATE comprehension_check_images SET image = </span><span class="si">%s</span><span class="s2"> WHERE class = </span><span class="si">%s</span><span class="s2"> AND modification = </span><span class="si">%s</span><span class="s2"> AND img_number = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                                <span class="p">(</span>
+                                    <span class="n">psycopg2</span><span class="o">.</span><span class="n">Binary</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()),</span>
+                                    <span class="nb">str</span><span class="p">(</span><span class="n">img_class</span><span class="p">),</span>
+                                    <span class="nb">str</span><span class="p">(</span><span class="n">modification</span><span class="p">),</span>
+                                    <span class="nb">str</span><span class="p">(</span><span class="n">img_number</span><span class="p">),</span>
+                                <span class="p">),</span>
+                            <span class="p">)</span>
+    
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error during execution of SQL script.&quot;</span> <span class="o">+</span> <span class="n">e</span><span class="p">)</span>
+    
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="comprehension_check_images"><a class="viewcode-back" href="../api.html#db_utils.comprehension_check_images">[docs]</a><span class="k">def</span> <span class="nf">comprehension_check_images</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">name_of_db</span><span class="p">,</span> <span class="n">table_exists</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># Read all the images in the directory</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="c1"># Connect to the database</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+        <span class="n">dbname</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;dbname&quot;</span><span class="p">],</span>
+        <span class="n">user</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span>
+        <span class="n">password</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">],</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Create a cursor</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create the table</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">table_exists</span><span class="p">:</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="s2">&quot;CREATE TABLE &quot;</span>
+                <span class="o">+</span> <span class="n">name_of_db</span>
+                <span class="o">+</span> <span class="s2">&quot; (id SERIAL PRIMARY KEY, image BYTEA, is_modified BOOLEAN, modification VARCHAR(255), class VARCHAR(255), img_number VARCHAR(1))&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">superclasses</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;birds&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;containers&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dogs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;furniture&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;other_mammals&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;vehicles&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;clothing&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;devices&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;food_plants_fungi&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;invertebrates&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;reptiles&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+        <span class="c1"># 1. Insert the unmodified images into the database</span>
+        <span class="k">for</span> <span class="n">img_class</span> <span class="ow">in</span> <span class="n">superclasses</span><span class="p">:</span>
+            <span class="n">path_to_class</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">img_class</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">f</span>
+                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path_to_class</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_class</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
+            <span class="p">]</span>
+            <span class="n">img_number</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_to_class</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">image</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                        <span class="s2">&quot;INSERT INTO &quot;</span>
+                        <span class="o">+</span> <span class="n">name_of_db</span>
+                        <span class="o">+</span> <span class="s2">&quot; (image, is_modified, class, img_number) VALUES (</span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span>
+                        <span class="p">(</span>
+                            <span class="n">psycopg2</span><span class="o">.</span><span class="n">Binary</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()),</span>
+                            <span class="kc">False</span><span class="p">,</span>
+                            <span class="nb">str</span><span class="p">(</span><span class="n">img_class</span><span class="p">),</span>
+                            <span class="nb">str</span><span class="p">(</span><span class="n">img_number</span><span class="p">),</span>
+                        <span class="p">),</span>
+                    <span class="p">)</span>
+                    <span class="n">img_number</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">modification_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;coloring&quot;</span><span class="p">,</span> <span class="s2">&quot;filters&quot;</span><span class="p">,</span> <span class="s2">&quot;pixels&quot;</span><span class="p">]</span>
+
+        <span class="c1"># 2. Insert the modified images into the database</span>
+        <span class="c1"># Loop over all modification types and image classes</span>
+        <span class="k">for</span> <span class="n">img_class</span> <span class="ow">in</span> <span class="n">superclasses</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">modification</span> <span class="ow">in</span> <span class="n">modification_types</span><span class="p">:</span>
+                <span class="n">path_to_class</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">img_class</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">modification</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">f</span>
+                    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path_to_class</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_class</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
+                <span class="p">]</span>
+                <span class="n">img_number</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_to_class</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">image</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                            <span class="s2">&quot;INSERT INTO &quot;</span>
+                            <span class="o">+</span> <span class="n">name_of_db</span>
+                            <span class="o">+</span> <span class="s2">&quot; (image, is_modified, modification, class, img_number) VALUES (</span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span>
+                            <span class="p">(</span>
+                                <span class="n">psycopg2</span><span class="o">.</span><span class="n">Binary</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()),</span>
+                                <span class="kc">True</span><span class="p">,</span>
+                                <span class="n">modification</span><span class="p">,</span>
+                                <span class="nb">str</span><span class="p">(</span><span class="n">img_class</span><span class="p">),</span>
+                                <span class="nb">str</span><span class="p">(</span><span class="n">img_number</span><span class="p">),</span>
+                            <span class="p">),</span>
+                        <span class="p">)</span>
+                        <span class="n">img_number</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Commit the changes</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="c1"># Close the cursor</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Images uploaded successfully.&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error during execution of SQL script:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># Rollback in case of error</span>
+        <span class="k">if</span> <span class="n">conn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="main_study_real_images"><a class="viewcode-back" href="../api.html#db_utils.main_study_real_images">[docs]</a><span class="k">def</span> <span class="nf">main_study_real_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">cur</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Salman2020Do_R50&quot;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">subdirectory</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
+        <span class="n">sub_images</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">subdirectory</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">sub_images</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">subdirectory</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">image</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="s2">&quot;INSERT INTO &quot;</span>
+                    <span class="o">+</span> <span class="s2">&quot;real_images&quot;</span>
+                    <span class="o">+</span> <span class="s2">&quot; (image, model_name) VALUES (</span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="n">psycopg2</span><span class="o">.</span><span class="n">Binary</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()),</span> <span class="n">model_name</span><span class="p">),</span>
+                <span class="p">)</span></div>
+                
+<div class="viewcode-block" id="main_study_modified_images"><a class="viewcode-back" href="../api.html#db_utils.main_study_modified_images">[docs]</a><span class="k">def</span> <span class="nf">main_study_modified_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">cur</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Salman2020Do_R50&quot;</span><span class="p">,</span> <span class="n">attack_name</span><span class="o">=</span><span class="s2">&quot;ncf&quot;</span><span class="p">,</span> <span class="n">start_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">start_known</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">file_extension</span><span class="o">=</span><span class="s2">&quot;.JPEG&quot;</span><span class="p">):</span>
+    <span class="c1"># Filter out images that are not the correct file extension</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">image</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span> <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">file_extension</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">start_known</span><span class="p">:</span>
+        <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT MAX(id) FROM modified_images&quot;</span><span class="p">)</span>
+        <span class="n">start_id</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting ID:&quot;</span><span class="p">,</span> <span class="n">start_id</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">image</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                <span class="s2">&quot;INSERT INTO &quot;</span>
+                <span class="o">+</span> <span class="s2">&quot;modified_images&quot;</span>
+                <span class="o">+</span> <span class="s2">&quot; (id, image, model_name, attack_name) VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span>
+                <span class="p">(</span><span class="n">start_id</span><span class="p">,</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">Binary</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()),</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">attack_name</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">start_id</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">database_connection</span><span class="p">()</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="n">images</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span>
+        <span class="s2">&quot;/home/dren.fazlija/data/Scooter/attacks/diffattack&quot;</span><span class="p">,</span>    
+    <span class="p">)</span>
+
+    <span class="n">main_study_modified_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="s2">&quot;/home/dren.fazlija/data/Scooter/attacks/diffattack&quot;</span><span class="p">,</span> <span class="n">cur</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Salman2020Do_R50&quot;</span><span class="p">,</span> <span class="n">attack_name</span><span class="o">=</span><span class="s2">&quot;diffattack&quot;</span><span class="p">,</span> <span class="n">file_extension</span><span class="o">=</span><span class="s2">&quot;.JPEG&quot;</span><span class="p">)</span>
+    
+    <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Dren Fazlija.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

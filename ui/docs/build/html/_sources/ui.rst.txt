@@ -1,0 +1,46 @@
+ui package
+==========
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ui.colorblindness_test
+   ui.comprehension_check
+   ui.consent_fom
+   ui.debug
+   ui.endpoints
+   ui.leaderboard
+   ui.mail
+   ui.main_study
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ui.app
+   ui.automations
+   ui.config
+   ui.data_processing
+   ui.db_utils
+   ui.export_annotations
+   ui.init_database
+   ui.playground_leaderboard
+   ui.routes
+   ui.setup
+   ui.setup_configs
+   ui.streamlit_automations
+   ui.utils
+   ui.wsgi
+
+Module contents
+---------------
+
+.. automodule:: ui
+   :members:
+   :undoc-members:
+   :show-inheritance:

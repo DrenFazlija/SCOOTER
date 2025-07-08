@@ -1,0 +1,7 @@
+ui.main\_study.main\_study module
+=================================
+
+.. automodule:: ui.main_study.main_study
+   :members:
+   :undoc-members:
+   :show-inheritance:

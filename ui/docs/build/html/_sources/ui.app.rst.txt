@@ -1,0 +1,7 @@
+ui.app module
+=============
+
+.. automodule:: ui.app
+   :members:
+   :undoc-members:
+   :show-inheritance:

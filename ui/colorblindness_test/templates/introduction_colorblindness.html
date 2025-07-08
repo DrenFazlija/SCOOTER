@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to the Colorblindness Test</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='perceived_researcher_unfairness.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+  </head>
+
+  <body>
+    {% include 'perceived_researcher_unfairness.html' %}
+
+    <div class="container">
+      <h2>Introduction to the Colorblindness Test</h2>
+
+      <p>
+        Before we start the study, please complete a quick (approx. 30 seconds)
+        test to check your ability to see different colors. To ensure accuracy,
+        turn up your screen brightness to 100% and deactivate any screen filters
+        (e.g., blue light filter). We also recommend removing eyewear with
+        colored lenses.
+      </p>
+
+      <p>
+        You will be shown images of different digits and asked to select the
+        correct one.
+        <b
+          >If you cannot see a digit, be sure to select the "I don't see a
+          digit" option.</b
+        >
+      </p>
+
+      <p>
+        <b>Warning:</b> Failing this test will result in you not being able to
+        continue the study and you will only be compensated for
+        <b>30 seconds of work</b>.
+      </p>
+
+      <button
+        id="continue-button"
+        onclick="redirectTo('/colorblindness-test')"
+        class="unlocked"
+      >
+        <b>Continue</b>
+      </button>
+
+      <!--<div class="button-container">
+            <a href="javascript:void(0);" onclick="redirectTo('consent_form.html');" class="button">Back to Consent Form</a>
+            <a href="javascript:void(0);" onclick="redirectTo('demographics_new.html');" class="button">Start the Test</a>
+        </div>-->
+    </div>
+    {% include 'footer.html' %}
+  </body>
+  <script src="{{ url_for('static', filename='mobileDetection.js') }}"></script>
+  <script src="{{ url_for('static', filename='perceived_researcher_unfairness_scripts.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    // Assuming window.location.href is 'https://l3s.scooter.com?PROLIFIC_PID=5a9d64f5f6dfdd0001eaa73d'
+    var params = null;
+    var prolificPid = null;
+
+    // Load and check the prolific pid as soon as the page loads
+    document.addEventListener("DOMContentLoaded", (event) => {
+      redirectMobileUsers(userAgentString);
+      params = new URLSearchParams(window.location.search);
+      prolificPid = params.get("PROLIFIC_PID");
+      setupPopup();
+
+      if (prolificPid === null) {
+        window.location.replace("/error");
+      }
+
+      fetch("/check-for-illegal-behavior", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          PROLIFIC_PID: prolificPid,
+          current_page: "introduction-colorblindness",
+        }),
+      })
+        .then((response) => {
+          // Check the response status code
+          json_code = [403, 404, 500];
+          // For status 200-299, and special error codes (i.e., perhaps the user already failed the colorblindness test)
+          if (response.ok || json_code.includes(response.status)) {
+            console.log("Response status: " + response.status);
+            return response.json(); // Parse JSON body
+          } else {
+            throw new Error("Server responded with status: " + response.status);
+          }
+        })
+        .then((data) => {
+          if (data.status === "error") {
+            if (data.error === "pid_not_found") {
+              window -
+                location.replace("/consent-form?PROLIFIC_PID=" + prolificPid);
+            } else if (
+              data.error === "colorblindness_not_passed" ||
+              data.error === "already_completed_study"
+            ) {
+              window.location.replace(
+                "/already-participated?PROLIFIC_PID=" + prolificPid
+              );
+            } else if (data.error === "colorblindness_already_passed") {
+              window.location.replace(
+                "/focal-study-instructions?PROLIFIC_PID=" + prolificPid
+              );
+            } else if (data.error === "participant_not_correctly_redirected") {
+              window.location.replace(
+                "/colorblindness-test?PROLIFIC_PID=" + prolificPid
+              ); // Try to redirect again to the test page
+            } else {
+              throw new Error("Server responded with error: " + data.error);
+            }
+          }
+        })
+        .catch((error) => {
+          // Handle any network errors or thrown errors from the status code checks
+          console.error("Fetch Error:", error.message);
+        });
+    });
+
+    function redirectTo(url) {
+      //window.location.replace(url + '?PROLIFIC_PID=' + prolificPid);
+
+      fetch("/update-attempted-colorblindness-test", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ PROLIFIC_PID: prolificPid }),
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json(); // If OK, return the JSON
+          } else {
+            // If the server responds with a non-OK (error) status, handle it here
+            return response.json().then((errorData) => {
+              // Use the errorData to display a specific message or take action
+              console.error("Error from server:", errorData);
+              if (response.status === 409) {
+                // Conflict, meaning already participated
+                window.location.replace(
+                  "/already-participated?PROLIFIC_PID=" + prolificPid
+                );
+              } else {
+                // For any other error status, throw an error to catch it later
+                throw new Error(
+                  `Server responded with status: ${response.status}`
+                );
+              }
+            });
+          }
+        })
+        .then((data) => {
+          if (data && data.status === "success") {
+            window.location.replace(url + "?PROLIFIC_PID=" + prolificPid);
+          } else {
+            // Handle any other status received in the data
+            console.error("Error status received:", data.status);
+          }
+        })
+        .catch((error) => {
+          // Handle any error that occurred in any part of the code
+          console.error("An unexpected error occurred:", error);
+          // Optionally, redirect to a generic error page or display an error message
+        });
+    }
+  </script>
+</html>

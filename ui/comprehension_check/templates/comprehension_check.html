@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to the Focal Study</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='perceived_researcher_unfairness.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+  </head>
+  <style>
+    .container {
+      max-width: 1000px;
+    }
+
+    /* For screens up to 1800px */
+    @media (max-width: 1800px) {
+      .container {
+        max-width: 900px; /* Adjust max-width */
+      }
+    }
+
+    /* For screens up to 1500px */
+    @media (max-width: 1500px) {
+      .container {
+        max-width: 750px; /* Adjust max-width */
+      }
+    }
+
+    /* For screens up to 1200px */
+    @media (max-width: 1200px) {
+      .container {
+        max-width: 650px; /* Adjust max-width */
+      }
+    }
+
+    .image-wrapper {
+      display: flex;
+      justify-content: space-between; /* This spaces the images evenly */
+      align-items: center; /* This aligns the items vertically in the center */
+      margin: 20px 0; /* This gives a little space between the pairs */
+    }
+
+    .image-container {
+      flex: 1; /* This allows the containers to take up equal space */
+      text-align: center; /* This centers the label and image horizontally */
+      margin: 0 10px; /* This gives a little space between the containers */
+      display: flex;
+      flex-direction: column; /* Stack children vertically */
+      align-items: center; /* Center-align flex items horizontally */
+      position: relative; /* Needed for absolute positioning of children */
+      cursor: pointer; /* Change cursor on hover */
+      padding: 30px;
+      box-sizing: border-box; /* Ensures the padding doesn't increase the overall size of the boxes */
+    }
+
+    .image-container img {
+      max-height: 500px; /* This ensures the image doesn't overflow its container */
+      width: auto; /* Maintains the image's aspect ratio */
+      max-width: 85%; /* Ensures the image doesn't overflow its container */
+      transition: transform 0.3s ease; /* Smooth transform for animations */
+    }
+
+    .image-container:hover img {
+      transform: scale(1.05); /* Slight zoom on hover */
+    }
+
+    /* Radio Button Styles */
+    .radio-container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      user-select: none;
+    }
+
+    /* Hide the browser's default radio button */
+    .radio-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+    }
+
+    /* On mouse-over, add a border color */
+    .radio-container:hover input ~ .checkmark {
+      border-color: #4caf50;
+    }
+
+    /* When the radio button is checked, change background and border color */
+    .radio-container input:checked ~ .checkmark {
+      background-color: #4caf50;
+      border-color: #4caf50;
+    }
+
+    /* Create the indicator (the dot/circle inside the radio button) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .radio-container input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .radio-container .checkmark:after {
+      top: 9px;
+      left: 9px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: white;
+    }
+
+    /* Improve label readability */
+    .radio-container label {
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    #back-button {
+      position: fixed;
+      top: 50%; /* Vertically positioned right in the middle of the page*/
+      left: 0px; /* Align to the left side */
+      transform: translateX(50%); /* Adjust for perfect horizontal centering */
+      padding: 15px 30px; /* Increased padding for larger button */
+      background-color: #006fe6; /* Button background color */
+      color: white; /* Button text color */
+      font-size: 18px; /* Larger font size */
+      font-weight: bold; /* Bold font for prominence */
+      border: none; /* Remove border */
+      border-radius: 8px; /* Slightly larger rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      z-index: 1000; /* Ensure it's above other elements */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+      transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+    }
+
+    #back-button:hover {
+      background-color: #0056b3; /* Darker shade on hover */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+    }
+
+    .view-large-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 5px 20px;
+      margin-top: 40px;
+      cursor: pointer;
+      display: inline-flex; /* Align icon and text */
+      align-items: center; /* Center items vertically */
+      justify-content: center; /* Center items horizontally */
+      gap: 10px; /* Space between icon and text */
+      font-weight: bold; /* Bold font for prominence */
+      border-radius: 8px; /* Slightly larger rounded corners */
+      /*Push button to the front*/
+      z-index: ;
+    }
+
+    .swal2-image-fit {
+      max-width: 85%; // Ensure the image is not wider than the modal
+      max-height: 75vh; // Ensure the image is not taller than 75% of the viewport height
+      object-fit: contain; // Maintain the aspect ratio and fit the image within the given width and height
+    }
+
+    .material-symbols-outlined {
+      font-size: 24px; /* Adjust the icon size as needed */
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+
+    .image-container.selected {
+      border: 3px solid #4caf50; /* Green border for selected images */
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Optional: add a subtle glow */
+    }
+
+    .checkmark-icon {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: #4caf50; /* Green checkmark */
+    }
+
+    .image-container.selected .checkmark-icon {
+      display: block; /* Show checkmark on selected images */
+    }
+
+    /* Media Queries for Smaller Screens */
+    @media (max-width: 1800px) {
+      #back-button {
+        min-width: 200px; /* Reduce minimum width */
+        padding: 10px 20px; /* Reduce padding */
+        font-size: 16px; /* Smaller font size */
+        left: -20px; /* Adjust position */
+      }
+    }
+
+    @media (max-width: 1400px) {
+      #back-button {
+        min-width: 130px; /* Reduce minimum width */
+        padding: 5px 10px; /* Reduce padding */
+        font-size: 16px; /* Smaller font size */
+        left: -55px; /* Adjust position */
+      }
+    }
+  </style>
+
+  <body>
+    <button id="back-button" onclick="goBackInstruction()">
+      Go Back to <br />
+      Instructions
+    </button>
+
+    {% include 'perceived_researcher_unfairness.html' %}
+
+    <div class="container">
+      <h2>Comprehension Check</h2>
+
+      <p>
+        We will now test whether you understood the instructions from the
+        previous page. Of course, you can go back to the previous page to
+        re-read the instructions by clicking the "Go Back to Instructions"
+        button on the left hand side of your screen.
+      </p>
+
+      <p>
+        For this purpose, we will show you six image pairs. For each pair, you
+        will have to decide which of the two is a modified image. Each pair
+        consists of one real image and one modified image.
+      </p>
+
+      <p>
+        For each of the six pairs below, please select the image you believe to
+        be <b>modified</b>. Please do this for each pair. You will be able to
+        change your answers until you press the "Submit" button. Once you have
+        submitted your answer, you will not be able to change it.
+      </p>
+
+      <p>
+        <b>Warning:</b> Failing to correctly classify
+        <b>at least 5 out of the 6 pairs</b>
+        will disqualify you from participating in the main study (though, we
+        will compensate you for <b>6 minutes of work</b>). Please take your time
+        and make sure you understand the instructions.
+      </p>
+
+      <div id="dynamic-content-placeholder"></div>
+
+      <button
+        type="submit"
+        id="continue-button"
+        class="unlocked"
+        onclick="submitChoices()"
+      >
+        Submit
+      </button>
+    </div>
+
+    {% include 'footer.html' %}
+  </body>
+  <script src="{{ url_for('static', filename='mobileDetection.js') }}"></script>
+  <script src="{{ url_for('static', filename='perceived_researcher_unfairness_scripts.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    var params;
+    var prolificPid;
+    var images;
+
+    function goBackInstruction() {
+      window.location.href =
+        "/focal-study-instructions?PROLIFIC_PID=" + prolificPid;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      redirectMobileUsers(userAgentString);
+      setupPopup();
+      params = new URLSearchParams(window.location.search);
+      prolificPid = params.get("PROLIFIC_PID");
+
+      if (prolificPid === null) {
+        window.location.replace("/error");
+      }
+
+      var emailForm = document.getElementById("emailForm");
+      emailForm.onsubmit = function (e) {
+        e.preventDefault();
+        var formData = new FormData(emailForm);
+        fetch("/send_email", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status === "success") {
+              //alert(data.message); // Or display the message in a more elegant way
+              Swal.fire({
+                title: "Thank you!",
+                text: "Your message has been sent.",
+                icon: "success",
+              });
+              closePopup("popup-form"); // Close the popup if email sent successfully
+            } else {
+              //alert("Failed to send the email. Please try again.");
+              Swal.fire({
+                title: "Sorry...",
+                text: "Failed to send the email. Please try again.",
+                icon: "error",
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+
+      fetch("/check-for-illegal-behavior", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          PROLIFIC_PID: prolificPid,
+          current_page: "comprehension-check",
+        }),
+      })
+        .then((response) => {
+          // Check the response status code
+          json_code = [403, 404, 500];
+          // For status 200-299, and special error codes (i.e., perhaps the user already failed the colorblindness test)
+          if (response.ok || json_code.includes(response.status)) {
+            return response.json(); // Parse JSON body
+          } else {
+            throw new Error("Server responded with status: " + response.status);
+          }
+        })
+        .then((data) => {
+          if (data.status === "error") {
+            if (data.error === "pid_not_found") {
+              window -
+                location.replace("/consent-form?PROLIFIC_PID=" + prolificPid);
+            } else if (data.error === "colorblindness_not_passed") {
+              window.location.replace(
+                "/introduction-colorblindness?PROLIFIC_PID=" + prolificPid
+              );
+            } else if (data.error === "already_passed_comprehension") {
+              window.location.replace(
+                "/main-study?PROLIFIC_PID=" + prolificPid
+              );
+            } else if (
+              data.error === "already_attempted_comprehension" ||
+              data.error === "already_completed_study"
+            ) {
+              window.location.replace(
+                "/already-participated?PROLIFIC_PID=" + prolificPid
+              ); // Try to redirect again to the test page
+            } else if (data.error === "send_to_focal_study_instructions") {
+              window.location.replace(
+                "/focal-study-instructions?PROLIFIC_PID=" + prolificPid
+              );
+            } else {
+              throw new Error("Server responded with error: " + data.error);
+            }
+          }
+        })
+        .catch((error) => {
+          // Handle any network errors or thrown errors from the status code checks
+          console.error("Fetch Error:", error.message);
+        });
+
+      fetch("/load-comprehension-check", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ PROLIFIC_PID: prolificPid }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            return response.json().then((errorData) => {
+              // Handle the JSON error here
+              console.error("Error from server:", errorData);
+              throw new Error("Server responded with an error!");
+            });
+          }
+          return response.json(); // If OK, return the JSON
+        })
+        .then((data) => {
+          if (data.status === "success") {
+            images = data.images;
+            createImagePairs(6, images); // Create 6 pairs of images
+          } else {
+            // Handle the situation where the server says something went wrong
+            console.error("Error status received:", data.status);
+          }
+        })
+        .catch((error) => {
+          // Handle any error that occurred in any part of the code
+          window.location.replace("/unexpected-error");
+        });
+    });
+
+    function createImagePairs(k, images) {
+      //const form = document.getElementById("image-selection-form");
+      const placeholder = document.getElementById(
+        "dynamic-content-placeholder"
+      );
+
+      for (let i = 1; i <= k; i++) {
+        // Create paragraph
+        const paragraph = document.createElement("p");
+        paragraph.innerHTML =
+          "<b>Pair " + i + ": Which of the two images is modified?</b>";
+
+        // Create wrapper for image pair
+        const pairDiv = document.createElement("div");
+        pairDiv.className = "image-wrapper";
+        pairDiv.id = "pair" + i;
+
+        // Create two image containers
+        for (let j = 0; j < 2; j++) {
+          const index = (i - 1) * 2 + j; // Calculate index in the images array
+          const imageContainer = document.createElement("div");
+          imageContainer.className = "image-container";
+          imageContainer.id = "choice" + (i * 2 - 1 + j);
+
+          const img = document.createElement("img");
+          img.src = "data:image/jpeg;base64," + images[index];
+          img.alt = `Image ${index + 1}`;
+
+          // Create check
+          const checkmark = document.createElement("span");
+          checkmark.className = "material-symbols-outlined checkmark-icon";
+          checkmark.innerHTML = "check_circle";
+
+          // Append check to image container
+          imageContainer.appendChild(checkmark);
+
+          // Create and append the view larger button
+          const viewLargeButton = document.createElement("button");
+          viewLargeButton.innerHTML =
+            '<span class="material-symbols-outlined">zoom_in</span>View Larger';
+          viewLargeButton.type = "button"; // Specify the button type as 'button'
+          viewLargeButton.className = "view-large-button"; // Add this class for styling
+          viewLargeButton.onclick = function () {
+            Swal.fire({
+              imageUrl: "data:image/jpeg;base64," + images[index],
+              imageAlt: "A large image",
+              confirmButtonText: "Close",
+              width: "auto", // Allows the modal to resize based on the image's width
+              heightAuto: true, // Allows modal height to adjust to image proportionally
+              imageHeight: "auto", // Allows the image height to be set automatically
+              imageWidth: "auto", // Allows the image width to be set automatically
+              customClass: {
+                image: "swal2-image-fit", // Custom class to control image size
+              },
+            });
+          };
+
+          // Trigger Swal on image hover
+          /*img.addEventListener("mouseover", function () {
+            Swal.fire({
+              imageUrl: "data:image/jpeg;base64," + images[index],
+              imageAlt: "A large image",
+              confirmButtonText: "Close",
+              width: "auto",
+              heightAuto: true,
+              imageHeight: "auto",
+              imageWidth: "auto",
+              customClass: {
+                image: "swal2-image-fit",
+              },
+            });
+          });*/
+
+          imageContainer.appendChild(img);
+          imageContainer.appendChild(viewLargeButton);
+          pairDiv.appendChild(imageContainer);
+        }
+
+        // Insert elements into the placeholder
+        placeholder.appendChild(paragraph);
+        placeholder.appendChild(pairDiv);
+      }
+      const imagePairs = document.querySelectorAll(".image-wrapper");
+      imagePairs.forEach((pair) => {
+        const containers = pair.querySelectorAll(".image-container");
+        containers.forEach((container) => {
+          // Get image within the container
+          const container_img = container.querySelector("img");
+
+          // Add event listener to the image within the container
+          container_img.addEventListener("click", function () {
+            // Deselect all containers in this pair
+            containers.forEach((c) => c.classList.remove("selected"));
+
+            // Select the clicked container
+            container.classList.add("selected");
+          });
+        });
+      });
+    }
+
+    function submitChoices() {
+      // Get id of the selected images
+      const selectedImages = document.querySelectorAll(
+        ".image-container.selected"
+      );
+      const selectedIds = [];
+      selectedImages.forEach((image) => {
+        selectedIds.push(image.id);
+      });
+
+      // Check if the user has selected 6 images
+      if (selectedIds.length < 6) {
+        Swal.fire({
+          title: "Please select an image for each pair.",
+          icon: "warning",
+        });
+        return;
+      }
+
+      // Get the index of the selected images
+      const selectedIndices = [];
+      selectedIds.forEach((id) => {
+        selectedIndices.push(parseInt(id.slice(6)) - 1); // ID-format: choice1, choice2, ..., choice12
+      });
+
+      fetch("/send-comprehension-answers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          PROLIFIC_PID: prolificPid,
+          answers: selectedIndices,
+        }),
+      })
+        .then((response) => {
+          // Check the response status code
+          json_code = [400, 500];
+          // For status 200-299, and special error codes (i.e., perhaps the user failed the comprehension check)
+          if (response.ok || json_code.includes(response.status)) {
+            return response.json(); // Parse JSON body
+          } else {
+            throw new Error("Server responded with status: " + response.status);
+          }
+        })
+        .then((data) => {
+          if (data.status === "success") {
+            window.location.replace(
+              "/main-study-instructions?PROLIFIC_PID=" + prolificPid
+            );
+          } else {
+            if (data.error === "Participant failed comprehension check") {
+              // Forward the participant to the screened out prolific page
+              window.location.replace(
+                "https://app.prolific.com/submissions/complete?cc=C4FSNIDI"
+              );
+            }
+          }
+        })
+        .catch((error) => {
+          // Handle any error that occurred in any part of the code
+          console.error("An unexpected error occurred:", error);
+        });
+    }
+  </script>
+</html>

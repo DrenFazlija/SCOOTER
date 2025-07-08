@@ -1,0 +1,41 @@
+
+#debug-button {
+    position: fixed; /* Fixed position */
+    padding: 15px 30px; /* Increased padding for larger button */
+    background-color: #006fe6; /* Button background color */
+    color: white; /* Button text color */
+    font-size: 18px; /* Larger font size */
+    font-weight: bold; /* Bold font for prominence */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Slightly larger rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    z-index: 1000; /* Ensure it's above other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+  }
+  
+  #debug-button {
+    top: 25%; /* Start at half of page height */
+    left: 0; /* Positioned on the left side */
+    transform: translateX(50%); /* Adjust for perfect horizontal centering */
+  }
+  
+  #debug-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+  }
+  
+  #debug-button {
+    display: inline-flex; /* Align icon and text */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    gap: 10px; /* Space between icon and text */
+  }
+  
+  .material-symbols-outlined {
+    font-size: 24px; /* Adjust the icon size as needed */
+  }
+  
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  }

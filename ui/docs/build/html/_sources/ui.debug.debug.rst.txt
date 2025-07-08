@@ -1,0 +1,7 @@
+ui.debug.debug module
+=====================
+
+.. automodule:: ui.debug.debug
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+ui.config module
+================
+
+.. automodule:: ui.config
+   :members:
+   :undoc-members:
+   :show-inheritance:

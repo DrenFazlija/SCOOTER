@@ -1,0 +1,38 @@
+<button id="contact-researcher">
+  Contact <br />
+  Researcher <span class="material-symbols-outlined"> mail </span>
+</button>
+<button id="return-task">
+  Return <br />
+  Task <span class="material-symbols-outlined"> assignment_return </span>
+</button>
+
+<!-- Popup Form (initially hidden) -->
+<div id="popup-form" class="popup-container" style="display: none">
+  <form id="emailForm">
+    <h2>Contact Researcher</h2>
+    <label for="userID">Your Prolific ID:</label>
+    <input type="text" id="userID" name="userID" /><br /><br />
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="subject" /><br /><br />
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="4" cols="50"></textarea
+    ><br /><br />
+    <button type="submit"><b>Send</b></button>
+    <button type="button"><b>Close</b></button>
+  </form>
+</div>
+
+<!-- Popup Form (initially hidden) -->
+<div id="popup-warning" class="popup-container" style="display: none">
+  <h2>Abort the task?</h2>
+
+  <p>
+    If you return the task, you will not be able to continue the study later on.
+    However, you will still be compensated for your time up until now.
+  </p>
+
+  <br /><br />
+  <button type="submit" onclick="returnTask()"><b>Abort Task</b></button>
+  <button type="button"><b>Close</b></button>
+</div>

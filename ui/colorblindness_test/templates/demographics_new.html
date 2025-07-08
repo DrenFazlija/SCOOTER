@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Colorblindness Test</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='perceived_researcher_unfairness.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+    <style>
+      #content {
+        padding: 2em;
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .button {
+        display: inline-block;
+        margin: 10px 0;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .button:hover {
+        background-color: #45a049;
+      }
+
+      @media screen and (min-width: 768px) {
+        #content {
+          font-size: 18px;
+          line-height: 1.6;
+        }
+      }
+      .question {
+        margin-bottom: 15px;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 600px;
+        position: relative;
+        margin: auto;
+        margin-top: 5.5%;
+      }
+      /* Fading animation */
+      .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+      @-webkit-keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes fade {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .prev,
+        .next,
+        .text {
+          font-size: 11px;
+        }
+      }
+
+      .image-container {
+        text-align: center;
+        margin-bottom: 15px;
+        position: relative; /* Add this to make the positioning of buttons relative to this div */
+      }
+      .image-container img {
+        display: block;
+        margin: 0 auto;
+      }
+      .number-pad {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5.5%;
+      }
+      .number-button {
+        padding: 10px 15px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'perceived_researcher_unfairness.html' %}
+
+    <div class="container">
+      <h2>Colorblindness Test</h2>
+
+      <div class="question">
+        <p><b>Please enter the digit you see in the image.</b></p>
+
+        <div class="slideshow-container">
+          <!-- This div will be populated with the slides programmatically -->
+        </div>
+
+        <br />
+
+        <div class="number-pad">
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 0)"
+            id="btn-0"
+          >
+            0
+          </button>
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 1)"
+            id="btn-1"
+          >
+            1
+          </button>
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 2)"
+            id="btn-2"
+          >
+            2
+          </button>
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 3)"
+            id="btn-3"
+          >
+            3
+          </button>
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 4)"
+            id="btn-4"
+          >
+            4
+          </button>
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 5)"
+            id="btn-5"
+          >
+            5
+          </button>
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 6)"
+            id="btn-6"
+          >
+            6
+          </button>
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 7)"
+            id="btn-7"
+          >
+            7
+          </button>
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 8)"
+            id="btn-8"
+          >
+            8
+          </button>
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 9)"
+            id="btn-9"
+          >
+            9
+          </button>
+          <button
+            class="number-button"
+            onclick="rateImage(slideIndex, 'I don\'t see a digit')"
+            id="btn-nochoice"
+          >
+            I don't see a digit
+          </button>
+        </div>
+      </div>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+  <script src="{{ url_for('static', filename='mobileDetection.js') }}"></script>
+  <script src="{{ url_for('static', filename='perceived_researcher_unfairness_scripts.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    let images = [];
+    let slideIndex = 1;
+
+    var params = null;
+    var prolificPid = null;
+
+    // Load the associated Ishihara images as soon as the page loads
+    document.addEventListener("DOMContentLoaded", (event) => {
+      redirectMobileUsers(userAgentString);
+      params = new URLSearchParams(window.location.search);
+      prolificPid = params.get("PROLIFIC_PID");
+      setupPopup();
+
+      if (prolificPid === null) {
+        window.location.replace("/error");
+      }
+
+      fetch("/check-for-illegal-behavior", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          PROLIFIC_PID: prolificPid,
+          current_page: "demographics",
+        }),
+      })
+        .then((response) => {
+          // Check the response status code for potential errors that we may want to handle via the frontend
+          json_code = [400, 403, 404, 500];
+          if (response.ok || json_code.includes(response.status)) {
+            // For status 200-299 and special error cases
+            return response.json(); // Parse JSON body
+          } else {
+            throw new Error("Server responded with status: " + response.status);
+          }
+        })
+        .then((data) => {
+          if (data.status === "error") {
+            if (data.error === "pid_not_found") {
+              window.location.replace(
+                "/consent-form?PROLIFIC_PID=" + prolificPid
+              );
+            } else if (data.error === "colorblindness_not_attempted") {
+              window.location.replace(
+                "/introduction-colorblindness?PROLIFIC_PID=" + prolificPid
+              );
+            } else if (
+              data.error === "colorblindness_not_passed" ||
+              data.error === "already_completed_study"
+            ) {
+              window.location.replace(
+                "/already-participated?PROLIFIC_PID=" + prolificPid
+              );
+            } else if (data.error === "colorblindness_already_passed") {
+              window.location.replace(
+                "/focal-study-instructions?PROLIFIC_PID=" + prolificPid
+              );
+            } else {
+              throw new Error(
+                "Server responded with status: " + response.status
+              ); // Handle the situation where the server says something went wrong
+            }
+          }
+        })
+        .catch((error) => {
+          // Handle any network errors or thrown errors from the status code checks
+          console.error("Fetch Error:", error.message);
+        });
+
+      fetch("/load-ishihara", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ PROLIFIC_PID: prolificPid }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            return response.json().then((errorData) => {
+              // Handle the JSON error here
+              console.error("Error from server:", errorData);
+              throw new Error("Server responded with an error!");
+            });
+          }
+          return response.json(); // If OK, return the JSON
+        })
+        .then((data) => {
+          if (data.status === "success") {
+            // Handle success, fetch the image path array
+            images = data.image_paths;
+            createSlides();
+            // console.log(images);
+          } else {
+            // Handle the situation where the server says something went wrong
+            console.error("Error status received:", data.status);
+          }
+        })
+        .catch((error) => {
+          // Handle any error that occurred in any part of the code
+          console.error("An unexpected error occurred:", error);
+        });
+    });
+
+    const ratings = [];
+    // Get all the number-pad buttons
+    const numberPadButtons = document.querySelectorAll(".number-button");
+
+    function plusSlides(n) {
+      showSlides((slideIndex += n));
+    }
+
+    function currentSlide(n) {
+      showSlides((slideIndex = n));
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex - 1].style.display = "block";
+    }
+
+    function createSlides() {
+      const slideshowContainer = document.querySelector(".slideshow-container");
+
+      images.forEach((imageUrl, index) => {
+        const slide = document.createElement("div");
+        slide.className = "mySlides fade";
+        slide.innerHTML = `
+                    <div class="image-container">
+                        <img src="${imageUrl}" alt="Image ${
+          index + 1
+        }" width="300">
+                    </div>
+                `;
+        slideshowContainer.appendChild(slide);
+      });
+
+      showSlides(slideIndex);
+    }
+
+    function rateImage(slideIndex, rating) {
+      ratings[slideIndex - 1] = rating;
+
+      const params = new URLSearchParams(window.location.search);
+      const prolificPid = params.get("PROLIFIC_PID");
+      const finished = ratings.length === images.length;
+      const first_rating = ratings.length === 1;
+
+      fetch("/submit-rating", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          rating: rating,
+          PROLIFIC_PID: prolificPid,
+          finished: finished,
+          first_rating: first_rating,
+        }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            return response.json().then((errorData) => {
+              // Handle the JSON error here
+              console.error("Error from server:", errorData);
+              throw new Error("Server responded with an error!");
+            });
+          }
+          return response.json(); // If OK, return the JSON
+        })
+        .then((data) => {
+          if (data.status === "success") {
+            // Handle success, fetch the image path array
+            // Check if all images have been rated
+            if (finished) {
+              passed = data.passed;
+
+              if (passed) {
+                window.location.replace(
+                  "/focal-study-instructions?PROLIFIC_PID=" + prolificPid
+                );
+              } else {
+                window.location.replace(
+                  "/thank-you?PROLIFIC_PID=" + prolificPid
+                );
+              }
+            } else {
+              // Move to the next image
+              plusSlides(1);
+            }
+          } else {
+            // Handle the situation where the server says something went wrong
+            console.error("Error status received:", data.status);
+          }
+        })
+        .catch((error) => {
+          // Handle any error that occurred in any part of the code
+          console.error("An unexpected error occurred:", error);
+        });
+    }
+
+    function processCSV(csvData) {
+      const rows = csvData.split("\n");
+      const answers = {};
+
+      rows.forEach((row) => {
+        const [image, correctAnswer] = row.split(",");
+        answers[image.trim()] = correctAnswer.trim();
+      });
+
+      return answers;
+    }
+
+    function compareAnswers(correctAnswers) {
+      let correctCount = 0;
+      images.forEach((image, index) => {
+        const imageName = image.split("/").pop(); // Extract image name from URL
+        if (correctAnswers[imageName] == ratings[index]) {
+          correctCount++;
+        }
+      });
+
+      return correctCount == images.length;
+    }
+  </script>
+</html>

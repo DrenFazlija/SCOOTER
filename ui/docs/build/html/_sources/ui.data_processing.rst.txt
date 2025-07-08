@@ -1,0 +1,7 @@
+ui.data\_processing module
+==========================
+
+.. automodule:: ui.data_processing
+   :members:
+   :undoc-members:
+   :show-inheritance:

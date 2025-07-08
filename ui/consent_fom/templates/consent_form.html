@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Consent Form</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+  </head>
+  <style>
+    #return-task-button {
+      display: block;
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #b30024;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #return-task-button:hover {
+      background-color: #8a001c;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h2>Consent Form</h2>
+
+      <p>
+        This study's purpose is to learn how humans judge the realism of images
+        modified by AI (Artificial Intelligence) systems. Your task is to assess
+        different images based on their realism (i.e., is the given image real
+        or modified?). Please assume that every real image represents an
+        unmodified photograph of a real-world object. With your input you will
+        contribute to the reliability and safety of future image-processing AI
+        systems.
+      </p>
+
+      <p>
+        To participate, you must be <b>at least 18 years of age</b>. Your
+        participation should take about <b>18 minutes</b> and you must complete
+        it in one sitting. You must complete this task on a
+        <b>laptop or desktop computer</b>.
+      </p>
+
+      <p>
+        Although it may not directly benefit you, this study may benefit society
+        by improving our knowledge on the shortcomings of AI systems for images.
+        There are no risks for participating in this study beyond those
+        associated with normal computer use.
+      </p>
+
+      <p>
+        If you complete the study, you will receive
+        <b>£2.70</b> to compensate you for your participation. You will be paid
+        via Prolific’s payment system. Please note that this study contains
+        several checks to make sure that participants are finishing the tasks
+        honestly and completely. In accordance with the policies set by
+        Prolific, we may reject your work if you do not complete the task
+        correctly or if you do not follow the relevant instructions.
+      </p>
+
+      <p>
+        Please understand that your participation is voluntary, and you have the
+        right to withdraw your consent or discontinue participation at any time
+        without penalty. To stop, click on the “Return Task" button, or close
+        your browser window.
+      </p>
+
+      <p>
+        Your responses will be confidential and can be identified only by your
+        Prolific ID number, which will be kept confidential and will not appear
+        in any reports or publications of this study. All your responses will
+        only be analyzed and reported at a group level. You may print this form
+        for your records.
+      </p>
+
+      <p>
+        If you have questions about this research study or your participation,
+        please contact Dren Fazlija, L3S Reseach Center at Leibniz University of
+        Hannover by email at
+        <a href="mailto:dren.fazlija@l3s.de">dren.fazlija@l3s.de</a>.
+      </p>
+
+      <p>Thank you very much for your participation.</p>
+
+      <p>
+        By clicking the “I consent” button below, you indicate that you are 18
+        years of age or older, that you have read and understood the description
+        of the study, and that you agree to participate. You also agree to our
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="{{ url_for('notices.privacy_policy') }}"
+          >Privacy Policy</a
+        >
+        and our
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="{{ url_for('notices.cookie_policy_eu') }}"
+          >Cookie Policy</a
+        >.
+      </p>
+
+      <p>
+        <b>Warning:</b> This is the only time we will provide you the print
+        option on this website. Please contact
+        <a href="mailto:dren.fazlija@l3s.de">dren.fazlija@l3s.de</a> if you
+        would like to receive the consent form at a later point.
+      </p>
+
+      <div id="recaptcha-container"></div>
+      <label> <input type="checkbox" id="consent-checkbox" /> I consent </label>
+      <input type="hidden" id="prolific_pid" name="PROLIFIC_PID" value="" />
+      <button id="continue-button" disabled><b>Continue</b></button>
+
+      <button id="print-button"><b>Print Consent Form</b></button>
+
+      <button id="return-task-button">
+        <b>Return Task / I do not consent!</b>
+      </button>
+    </div>
+    <script src="{{ url_for('static', filename='mobileDetection.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      // Assuming window.location.href is 'https://l3s.scooter.com?PROLIFIC_PID=5a9d64f5f6dfdd0001eaa73d'
+      var params = null;
+      var prolificPid = null;
+
+      // Load and check the prolific pid as soon as the page loads
+      document.addEventListener("DOMContentLoaded", (event) => {
+        params = new URLSearchParams(window.location.search);
+        prolificPid = params.get("PROLIFIC_PID");
+        //attack_name = params.get("EVAL");
+
+        if (prolificPid === null) {
+          window.location.replace("/error");
+        }
+      });
+
+      const returnTaskButton = document.getElementById("return-task-button");
+      returnTaskButton.addEventListener("click", noConsent);
+
+      function noConsent() {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "If you return the task, you will not be able to start the study later on. You will receive no compensation.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, return the task!",
+          cancelButtonText: "No, keep working",
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Forward users to No Consent submission page of Prolific
+            window.location.replace(
+              "https://app.prolific.com/submissions/complete?cc=CV82BFTN"
+            );
+          }
+        });
+      }
+
+      // Function to handle the continue button click
+      function submitPID() {
+        //var prolificPid = getQueryParam('PROLIFIC_PID');
+        if (prolificPid) {
+          // Make an AJAX request to your Flask server
+          fetch("/submit-pid", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              PROLIFIC_PID: prolificPid,
+              //attack_name: attack_name,
+            }),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw response.json(); // If not OK, throw the JSON error promise
+                console.log(response);
+              }
+              return response.json(); // If OK, return the success JSON
+            })
+            .then((data) => {
+              if (data.status === "success") {
+                // Handle success, navigate to the next page
+                window.location.replace(
+                  "/introduction-colorblindness?PROLIFIC_PID=" + prolificPid
+                ); // Redirects to Flask route
+              }
+            })
+            .catch((errorPromise) => {
+              // Since we threw the error as a promise, we need to get the result of the promise
+              errorPromise.then((errorData) => {
+                if (errorData && errorData.error === "already_participated") {
+                  fetch("/check-for-illegal-behavior", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      PROLIFIC_PID: prolificPid,
+                      current_page: "consent-form",
+                    }),
+                  })
+                    .then((response) => {
+                      // Check the response status code
+                      json_code = [500, 403];
+                      // For status 200-299, and special error codes (i.e., perhaps the user already failed the colorblindness test)
+                      if (response.ok || json_code.includes(response.status)) {
+                        return response.json(); // Parse JSON body
+                      } else {
+                        throw new Error(
+                          "Server responded with status: " + response.status
+                        );
+                      }
+                    })
+                    .then((data) => {
+                      if (data.status === "error") {
+                        if (data.error === "pid_not_found") {
+                          window -
+                            location.replace(
+                              "/consent-form?PROLIFIC_PID=" + prolificPid
+                            );
+                        } else if (
+                          data.error === "already_attempted_test" ||
+                          data.error === "already_completed_study"
+                        ) {
+                          window.location.replace(
+                            "/already-participated?PROLIFIC_PID=" + prolificPid
+                          );
+                        } else if (data.error === "send_to_focal_study") {
+                          window.location.replace(
+                            "/focal-study-instructions?PROLIFIC_PID=" +
+                              prolificPid
+                          );
+                        } else if (
+                          data.error === "participant_not_correctly_redirected"
+                        ) {
+                          window.location.replace(
+                            "/comprehension-check?PROLIFIC_PID=" + prolificPid
+                          ); // Try to redirect again to the test page
+                        } else if (
+                          data.error === "send_to_colorblindness_intro"
+                        ) {
+                          window.location.replace(
+                            "/introduction-colorblindness?PROLIFIC_PID=" +
+                              prolificPid
+                          );
+                        } else {
+                          throw new Error(
+                            "Server responded with error: " + data.error
+                          );
+                        }
+                      }
+                    })
+                    .catch((error) => {
+                      // Handle any network errors or thrown errors from the status code checks
+                      window.location.replace("/unexpected-error");
+                    });
+                } else {
+                  // General error handling or logging
+                  window.location.replace("/unexpected-error");
+                }
+              });
+            });
+        }
+      }
+
+      // Replace 'YOUR_RECAPTCHA_SITE_KEY' with your actual reCAPTCHA site key
+      const RECAPTCHA_SITE_KEY = "YOUR_RECAPTCHA_SITE_KEY";
+
+      const recaptchaContainer = document.getElementById("recaptcha-container");
+      const consentCheckbox = document.getElementById("consent-checkbox");
+      const continueButton = document.getElementById("continue-button");
+
+      // Function to redirect to demographics.html when the button is clicked
+      function navigateToColorblindTest() {
+        if (consentCheckbox.checked) {
+          if (isMobileDevice(userAgentString)) {
+            /*alert(
+              "Please use a laptop or desktop computer to complete this task."
+            );*/
+            Swal.fire({
+              title: "Important!",
+              text: "Please use a laptop or desktop computer to complete this task.",
+              icon: "info",
+            }).then((result) => {
+              if (result.isDismissed) {
+                window.location.replace("https://www.prolific.com/");
+              }
+            });
+          } else {
+            submitPID();
+          }
+        }
+      }
+
+      // Listen for changes to the consent checkbox
+      consentCheckbox.addEventListener("change", function () {
+        // Enable or disable the continue button based on the checkbox state
+        if (consentCheckbox.checked) {
+          continueButton.classList.add("unlocked");
+          continueButton.removeAttribute("disabled");
+          continueButton.onclick = navigateToColorblindTest;
+        } else {
+          continueButton.classList.remove("unlocked");
+          continueButton.setAttribute("disabled", "true");
+          continueButton.onclick = null; // Remove the click event if checkbox is unchecked
+        }
+      });
+
+      const printButton = document.getElementById("print-button");
+
+      // Function to trigger the browser's print dialog
+      function printConsentForm() {
+        window.print();
+      }
+
+      // Add event listener to the print button
+      printButton.addEventListener("click", printConsentForm);
+    </script>
+    {% include 'footer.html' %}
+  </body>
+</html>

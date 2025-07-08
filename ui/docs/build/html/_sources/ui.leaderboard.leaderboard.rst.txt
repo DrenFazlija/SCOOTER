@@ -1,0 +1,7 @@
+ui.leaderboard.leaderboard module
+=================================
+
+.. automodule:: ui.leaderboard.leaderboard
+   :members:
+   :undoc-members:
+   :show-inheritance:

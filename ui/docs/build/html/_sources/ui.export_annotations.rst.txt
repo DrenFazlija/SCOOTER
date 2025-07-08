@@ -1,0 +1,7 @@
+ui.export\_annotations module
+=============================
+
+.. automodule:: ui.export_annotations
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+ui.endpoints.endpoints module
+=============================
+
+.. automodule:: ui.endpoints.endpoints
+   :members:
+   :undoc-members:
+   :show-inheritance:

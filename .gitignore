@@ -1,5 +1,9 @@
 predictions_salman_clean.csv
-images/
 .Rhistory
 .env
 .DS_Store
+val/
+credentials.json
+token.json
+*.ini
+*.key

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+    <style>
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Debug Login</h2>
+
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Enter the PID of the subject"
+        required
+      />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Enter your debug password"
+        required
+      />
+      <button id="print-button"><b>Login</b></button>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+  <script>
+    const loginButton = document.getElementById("print-button");
+    loginButton.addEventListener("click", loginAttempt);
+
+    function loginAttempt() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      fetch("/login-processing", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ debug_pid: username, debug_password: password }),
+      }).then((response) => {
+        if (response.status === "success") {
+          window.location.href = "/debug-overview";
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Login failed",
+            text: "Please check your PID and password",
+          });
+          console.log(response);
+        }
+      });
+    }
+  </script>
+</html>

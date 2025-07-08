@@ -25,11 +25,14 @@ Assuming that everything went smoothly, you should now be able to create virtual
 git clone https://github.com/DrenFazlija/SCOOTER.git
 ```
 
+> [!NOTE]
+> Please go to the `ui` directory to setup the web app demo – the below steps only cover data processing!
+
 Next, a virtual Python environment must be set up using `conda` and configured with the appropriate Python packages. The Python version used for this project is `3.10.0`.
 
 **1. Create Conda Environment**
 ```bash 
-conda create -n scooter python=3.13.5
+conda create -n scooter python=3.10.0
 ```
 
 **2. Activate Conda Environment and Install Packages**
@@ -57,10 +60,11 @@ The repository is organized into the following main directories:
   - `anonymized_*.csv`: Anonymized collection of ratings of all participants of the specified attack
   - `mixed_effect_TOST.R`: Performes the equivalence test based on anonymized ratings collection
   - `scooter_metrics.py`: Handle automated grading
+- `ui/`: The codebase behind the SCOOTER web app (documentation will be expanded upon throughout Q3 2025)
 
 ## More Data
 You can find the generated images and some more data at our Zenodo repository!
-https://doi.org/10.5281/zenodo.15771502
+https://doi.org/10.5281/zenodo.15771501
 
 ## License
 This project is made available under the MIT License. You are free to:

@@ -1,0 +1,18 @@
+ui.consent\_fom package
+=======================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ui.consent_fom.consent_form
+
+Module contents
+---------------
+
+.. automodule:: ui.consent_fom
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+ui.streamlit\_automations module
+================================
+
+.. automodule:: ui.streamlit_automations
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,18 @@
+ui.comprehension\_check package
+===============================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ui.comprehension_check.comprehension_check
+
+Module contents
+---------------
+
+.. automodule:: ui.comprehension_check
+   :members:
+   :undoc-members:
+   :show-inheritance:

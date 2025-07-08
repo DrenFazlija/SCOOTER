@@ -1,0 +1,18 @@
+ui.mail package
+===============
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ui.mail.email
+
+Module contents
+---------------
+
+.. automodule:: ui.mail
+   :members:
+   :undoc-members:
+   :show-inheritance:

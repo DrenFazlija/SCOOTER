@@ -1,0 +1,585 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; SCOOTER 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=e031e9a9"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="ui.main_study package" href="ui.main_study.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SCOOTER
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_overview.html">Scooter UI Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">ui</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-app">App</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.create_app"><code class="docutils literal notranslate"><span class="pre">create_app()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.page_not_found"><code class="docutils literal notranslate"><span class="pre">page_not_found()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-routes">Routes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#routes.check_for_illegal_behavior"><code class="docutils literal notranslate"><span class="pre">check_for_illegal_behavior()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routes.handle_colorblindness_check_page"><code class="docutils literal notranslate"><span class="pre">handle_colorblindness_check_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routes.handle_comprehension_check_page"><code class="docutils literal notranslate"><span class="pre">handle_comprehension_check_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routes.handle_consent_form_page"><code class="docutils literal notranslate"><span class="pre">handle_consent_form_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routes.handle_feedback"><code class="docutils literal notranslate"><span class="pre">handle_feedback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routes.handle_introduction_colorblindness_page"><code class="docutils literal notranslate"><span class="pre">handle_introduction_colorblindness_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routes.handle_introduction_focal_study_page"><code class="docutils literal notranslate"><span class="pre">handle_introduction_focal_study_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routes.handle_main_study_page"><code class="docutils literal notranslate"><span class="pre">handle_main_study_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routes.log"><code class="docutils literal notranslate"><span class="pre">log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routes.study_completed"><code class="docutils literal notranslate"><span class="pre">study_completed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#database-utilities">Database Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#db_utils.add_new_cc_images"><code class="docutils literal notranslate"><span class="pre">add_new_cc_images()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db_utils.comprehension_check_images"><code class="docutils literal notranslate"><span class="pre">comprehension_check_images()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db_utils.configure_image_db"><code class="docutils literal notranslate"><span class="pre">configure_image_db()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db_utils.database_connection"><code class="docutils literal notranslate"><span class="pre">database_connection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db_utils.execute_sql_file"><code class="docutils literal notranslate"><span class="pre">execute_sql_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db_utils.insert_attention_check_images"><code class="docutils literal notranslate"><span class="pre">insert_attention_check_images()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db_utils.main_study_modified_images"><code class="docutils literal notranslate"><span class="pre">main_study_modified_images()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db_utils.main_study_real_images"><code class="docutils literal notranslate"><span class="pre">main_study_real_images()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-processing">Data Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.accumulate_ls_stats"><code class="docutils literal notranslate"><span class="pre">accumulate_ls_stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.add_to_ratings_table"><code class="docutils literal notranslate"><span class="pre">add_to_ratings_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.analyze_sd_subsample_run"><code class="docutils literal notranslate"><span class="pre">analyze_sd_subsample_run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.analyze_subsample_run"><code class="docutils literal notranslate"><span class="pre">analyze_subsample_run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.are_method"><code class="docutils literal notranslate"><span class="pre">are_method()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.cb_test_mistakes"><code class="docutils literal notranslate"><span class="pre">cb_test_mistakes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.display_image_from_bytes"><code class="docutils literal notranslate"><span class="pre">display_image_from_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.even_odd_consistency"><code class="docutils literal notranslate"><span class="pre">even_odd_consistency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.export_study_data_numba"><code class="docutils literal notranslate"><span class="pre">export_study_data_numba()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.filtered_users_stats"><code class="docutils literal notranslate"><span class="pre">filtered_users_stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_average_image_time"><code class="docutils literal notranslate"><span class="pre">get_average_image_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_booleans"><code class="docutils literal notranslate"><span class="pre">get_booleans()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_colorblind_answers"><code class="docutils literal notranslate"><span class="pre">get_colorblind_answers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_colorblind_image"><code class="docutils literal notranslate"><span class="pre">get_colorblind_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_colorblindness_time"><code class="docutils literal notranslate"><span class="pre">get_colorblindness_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_comprehension_check_answers"><code class="docutils literal notranslate"><span class="pre">get_comprehension_check_answers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_comprehension_check_image"><code class="docutils literal notranslate"><span class="pre">get_comprehension_check_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_comprehension_check_performance"><code class="docutils literal notranslate"><span class="pre">get_comprehension_check_performance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_comprehension_check_time"><code class="docutils literal notranslate"><span class="pre">get_comprehension_check_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_leaderboard_pids"><code class="docutils literal notranslate"><span class="pre">get_leaderboard_pids()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_main_study_image_ids"><code class="docutils literal notranslate"><span class="pre">get_main_study_image_ids()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_main_study_ratings"><code class="docutils literal notranslate"><span class="pre">get_main_study_ratings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_ratings"><code class="docutils literal notranslate"><span class="pre">get_ratings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_ratings_per_image"><code class="docutils literal notranslate"><span class="pre">get_ratings_per_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_returned_tasks"><code class="docutils literal notranslate"><span class="pre">get_returned_tasks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_sample_averages"><code class="docutils literal notranslate"><span class="pre">get_sample_averages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_sample_feedback"><code class="docutils literal notranslate"><span class="pre">get_sample_feedback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_time_stats"><code class="docutils literal notranslate"><span class="pre">get_time_stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_time_stats_for_phase"><code class="docutils literal notranslate"><span class="pre">get_time_stats_for_phase()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_total_time"><code class="docutils literal notranslate"><span class="pre">get_total_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.get_wrong_image"><code class="docutils literal notranslate"><span class="pre">get_wrong_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.image_time_tracking"><code class="docutils literal notranslate"><span class="pre">image_time_tracking()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.long_string"><code class="docutils literal notranslate"><span class="pre">long_string()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.ls_percentiles"><code class="docutils literal notranslate"><span class="pre">ls_percentiles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.noether"><code class="docutils literal notranslate"><span class="pre">noether()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.performance_versus_time"><code class="docutils literal notranslate"><span class="pre">performance_versus_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.population_overview"><code class="docutils literal notranslate"><span class="pre">population_overview()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.population_std"><code class="docutils literal notranslate"><span class="pre">population_std()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.process_ratings"><code class="docutils literal notranslate"><span class="pre">process_ratings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.process_sd_range"><code class="docutils literal notranslate"><span class="pre">process_sd_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.resampling_consistency"><code class="docutils literal notranslate"><span class="pre">resampling_consistency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.sd_stats"><code class="docutils literal notranslate"><span class="pre">sd_stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.site_time_tracking"><code class="docutils literal notranslate"><span class="pre">site_time_tracking()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.study_overview"><code class="docutils literal notranslate"><span class="pre">study_overview()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.subsampling"><code class="docutils literal notranslate"><span class="pre">subsampling()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.threshold_subsampling_overview"><code class="docutils literal notranslate"><span class="pre">threshold_subsampling_overview()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data_processing.write_ratings_to_file"><code class="docutils literal notranslate"><span class="pre">write_ratings_to_file()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SCOOTER</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading"></a></h1>
+<section id="module-app">
+<span id="app"></span><h2>App<a class="headerlink" href="#module-app" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.create_app">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">create_app</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#create_app"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.create_app" title="Permalink to this definition"></a></dt>
+<dd><p>Create and configure the Flask application.</p>
+<p>This function sets up the Flask application with necessary configurations,
+initializes extensions, registers blueprints, and sets up error handling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The configured Flask application instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Flask</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.page_not_found">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">page_not_found</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#page_not_found"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.page_not_found" title="Permalink to this definition"></a></dt>
+<dd><p>Handle 404 errors by rendering a custom error page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>Exception</em>) – The exception that triggered the 404 error.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the rendered error template and the HTTP status code 404.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-routes">
+<span id="routes"></span><h2>Routes<a class="headerlink" href="#module-routes" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="routes.check_for_illegal_behavior">
+<span class="sig-prename descclassname"><span class="pre">routes.</span></span><span class="sig-name descname"><span class="pre">check_for_illegal_behavior</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#check_for_illegal_behavior"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routes.check_for_illegal_behavior" title="Permalink to this definition"></a></dt>
+<dd><p>Endpoint to check for illegal behavior based on the current page and participant’s PID.</p>
+<p>This endpoint handles various stages of a study by checking the participant’s progress
+and ensuring they have not already completed the study. It routes the request to the
+appropriate handler based on the current page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>JSON response indicating the status of the request and any relevant error messages.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Request Body:</dt><dd><p>“PROLIFIC_PID”: str,  # The participant’s Prolific PID
+“current_page”: str   # The current page the participant is on</p>
+</dd>
+<dt>Responses:</dt><dd><p>200: Successful handling of the request.
+403: Participant has already completed the study.
+404: Participant PID not found in the database.
+500: Internal server error.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – If any error occurs during database operations or request handling.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routes.handle_colorblindness_check_page">
+<span class="sig-prename descclassname"><span class="pre">routes.</span></span><span class="sig-name descname"><span class="pre">handle_colorblindness_check_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prolific_pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempted_colorblindness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_colorblindness</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#handle_colorblindness_check_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routes.handle_colorblindness_check_page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routes.handle_comprehension_check_page">
+<span class="sig-prename descclassname"><span class="pre">routes.</span></span><span class="sig-name descname"><span class="pre">handle_comprehension_check_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prolific_pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempted_colorblindness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_colorblindness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempted_comprehension</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_comprehension</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#handle_comprehension_check_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routes.handle_comprehension_check_page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routes.handle_consent_form_page">
+<span class="sig-prename descclassname"><span class="pre">routes.</span></span><span class="sig-name descname"><span class="pre">handle_consent_form_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prolific_pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempted_colorblindness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_colorblindness</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#handle_consent_form_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routes.handle_consent_form_page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routes.handle_feedback">
+<span class="sig-prename descclassname"><span class="pre">routes.</span></span><span class="sig-name descname"><span class="pre">handle_feedback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prolific_pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#handle_feedback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routes.handle_feedback" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routes.handle_introduction_colorblindness_page">
+<span class="sig-prename descclassname"><span class="pre">routes.</span></span><span class="sig-name descname"><span class="pre">handle_introduction_colorblindness_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prolific_pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempted_colorblindness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_colorblindness</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#handle_introduction_colorblindness_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routes.handle_introduction_colorblindness_page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routes.handle_introduction_focal_study_page">
+<span class="sig-prename descclassname"><span class="pre">routes.</span></span><span class="sig-name descname"><span class="pre">handle_introduction_focal_study_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prolific_pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempted_colorblindness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_colorblindness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempted_comprehension</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_comprehension</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#handle_introduction_focal_study_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routes.handle_introduction_focal_study_page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routes.handle_main_study_page">
+<span class="sig-prename descclassname"><span class="pre">routes.</span></span><span class="sig-name descname"><span class="pre">handle_main_study_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prolific_pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempted_colorblindness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_colorblindness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempted_comprehension</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_comprehension</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#handle_main_study_page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routes.handle_main_study_page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routes.log">
+<span class="sig-prename descclassname"><span class="pre">routes.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routes.log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routes.study_completed">
+<span class="sig-prename descclassname"><span class="pre">routes.</span></span><span class="sig-name descname"><span class="pre">study_completed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#study_completed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routes.study_completed" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="database-utilities">
+<h2>Database Utilities<a class="headerlink" href="#database-utilities" title="Permalink to this heading"></a></h2>
+<span class="target" id="module-db_utils"></span><dl class="py function">
+<dt class="sig sig-object py" id="db_utils.add_new_cc_images">
+<span class="sig-prename descclassname"><span class="pre">db_utils.</span></span><span class="sig-name descname"><span class="pre">add_new_cc_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'v2'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db_utils.html#add_new_cc_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#db_utils.add_new_cc_images" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_utils.comprehension_check_images">
+<span class="sig-prename descclassname"><span class="pre">db_utils.</span></span><span class="sig-name descname"><span class="pre">comprehension_check_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_exists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db_utils.html#comprehension_check_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#db_utils.comprehension_check_images" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_utils.configure_image_db">
+<span class="sig-prename descclassname"><span class="pre">db_utils.</span></span><span class="sig-name descname"><span class="pre">configure_image_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_of_db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_imc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_exists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Salman2020Do_R50'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db_utils.html#configure_image_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#db_utils.configure_image_db" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_utils.database_connection">
+<span class="sig-prename descclassname"><span class="pre">db_utils.</span></span><span class="sig-name descname"><span class="pre">database_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/db_utils.html#database_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#db_utils.database_connection" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_utils.execute_sql_file">
+<span class="sig-prename descclassname"><span class="pre">db_utils.</span></span><span class="sig-name descname"><span class="pre">execute_sql_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db_utils.html#execute_sql_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#db_utils.execute_sql_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_utils.insert_attention_check_images">
+<span class="sig-prename descclassname"><span class="pre">db_utils.</span></span><span class="sig-name descname"><span class="pre">insert_attention_check_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_imc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db_utils.html#insert_attention_check_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#db_utils.insert_attention_check_images" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_utils.main_study_modified_images">
+<span class="sig-prename descclassname"><span class="pre">db_utils.</span></span><span class="sig-name descname"><span class="pre">main_study_modified_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Salman2020Do_R50'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attack_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ncf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_known</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_extension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.JPEG'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db_utils.html#main_study_modified_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#db_utils.main_study_modified_images" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="db_utils.main_study_real_images">
+<span class="sig-prename descclassname"><span class="pre">db_utils.</span></span><span class="sig-name descname"><span class="pre">main_study_real_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Salman2020Do_R50'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/db_utils.html#main_study_real_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#db_utils.main_study_real_images" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="data-processing">
+<h2>Data Processing<a class="headerlink" href="#data-processing" title="Permalink to this heading"></a></h2>
+<span class="target" id="module-data_processing"></span><dl class="py function">
+<dt class="sig sig-object py" id="data_processing.accumulate_ls_stats">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">accumulate_ls_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visualize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_means</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#accumulate_ls_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.accumulate_ls_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.add_to_ratings_table">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">add_to_ratings_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real_images_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modified_images_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attention_check_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imc_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#add_to_ratings_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.add_to_ratings_table" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.analyze_sd_subsample_run">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">analyze_sd_subsample_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#analyze_sd_subsample_run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.analyze_sd_subsample_run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.analyze_subsample_run">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">analyze_subsample_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#analyze_subsample_run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.analyze_subsample_run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.are_method">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">are_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std_2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#are_method"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.are_method" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.cb_test_mistakes">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">cb_test_mistakes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#cb_test_mistakes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.cb_test_mistakes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.display_image_from_bytes">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">display_image_from_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_bytes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#display_image_from_bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.display_image_from_bytes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.even_odd_consistency">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">even_odd_consistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#even_odd_consistency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.even_odd_consistency" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.export_study_data_numba">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">export_study_data_numba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#export_study_data_numba"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.export_study_data_numba" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.filtered_users_stats">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">filtered_users_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_hard_indicators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_soft_indicators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#filtered_users_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.filtered_users_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_average_image_time">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_average_image_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_average_image_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_average_image_time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_booleans">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_booleans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_booleans"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_booleans" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_colorblind_answers">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_colorblind_answers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_colorblind_answers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_colorblind_answers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_colorblind_image">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_colorblind_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_colorblind_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_colorblind_image" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_colorblindness_time">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_colorblindness_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_colorblindness_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_colorblindness_time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_comprehension_check_answers">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_comprehension_check_answers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_comprehension_check_answers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_comprehension_check_answers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_comprehension_check_image">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_comprehension_check_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_comprehension_check_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_comprehension_check_image" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_comprehension_check_performance">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_comprehension_check_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_comprehension_check_performance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_comprehension_check_performance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_comprehension_check_time">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_comprehension_check_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_comprehension_check_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_comprehension_check_time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_leaderboard_pids">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_leaderboard_pids</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_leaderboard_pids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_leaderboard_pids" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_main_study_image_ids">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_main_study_image_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_main_study_image_ids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_main_study_image_ids" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_main_study_ratings">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_main_study_ratings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_main_study_ratings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_main_study_ratings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_ratings">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_ratings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_ratings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_ratings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_ratings_per_image">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_ratings_per_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_ratings_per_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_ratings_per_image" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_returned_tasks">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_returned_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pids_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_returned_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_returned_tasks" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_sample_averages">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_sample_averages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_arrays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_sample_averages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_sample_averages" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_sample_feedback">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_sample_feedback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anonymous</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_sample_feedback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_sample_feedback" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_time_stats">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_time_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_time_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_time_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_time_stats_for_phase">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_time_stats_for_phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'comprehension_check'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_time_stats_for_phase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_time_stats_for_phase" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_total_time">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_total_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_total_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_total_time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.get_wrong_image">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">get_wrong_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#get_wrong_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.get_wrong_image" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.image_time_tracking">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">image_time_tracking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#image_time_tracking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.image_time_tracking" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.long_string">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">long_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#long_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.long_string" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.ls_percentiles">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">ls_percentiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#ls_percentiles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.ls_percentiles" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.noether">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">noether</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#noether"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.noether" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.performance_versus_time">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">performance_versus_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#performance_versus_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.performance_versus_time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.population_overview">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">population_overview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#population_overview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.population_overview" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.population_std">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">population_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">times_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_mean</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#population_std"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.population_std" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.process_ratings">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">process_ratings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_hoc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#process_ratings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.process_ratings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.process_sd_range">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">process_sd_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sd_range</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#process_sd_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.process_sd_range" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.resampling_consistency">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">resampling_consistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_resamples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#resampling_consistency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.resampling_consistency" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.sd_stats">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">sd_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visualize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#sd_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.sd_stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.site_time_tracking">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">site_time_tracking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#site_time_tracking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.site_time_tracking" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.study_overview">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">study_overview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#study_overview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.study_overview" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.subsampling">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">subsampling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#subsampling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.subsampling" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.threshold_subsampling_overview">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">threshold_subsampling_overview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#threshold_subsampling_overview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.threshold_subsampling_overview" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_processing.write_ratings_to_file">
+<span class="sig-prename descclassname"><span class="pre">data_processing.</span></span><span class="sig-name descname"><span class="pre">write_ratings_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real_images_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modified_images_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attention_check_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imc_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ratings.csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processing.html#write_ratings_to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processing.write_ratings_to_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ui.main_study.html" class="btn btn-neutral float-left" title="ui.main_study package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Dren Fazlija.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

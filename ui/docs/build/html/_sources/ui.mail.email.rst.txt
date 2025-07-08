@@ -1,0 +1,7 @@
+ui.mail.email module
+====================
+
+.. automodule:: ui.mail.email
+   :members:
+   :undoc-members:
+   :show-inheritance:

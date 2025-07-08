@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thank You!</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='final_page.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/Branding/ScooterFavicon.png') }}"
+      sizes="32x32"
+    />
+  </head>
+
+  <body>
+    <div class="containerFinalPage">
+      <h2>Thank you for your participation!</h2>
+
+      <p>
+        You have successfully completed the study. Please copy the completion
+        code below and paste it into the Prolific platform to receive your
+        payment.
+      </p>
+
+      <p>
+        If you rated all images, you can also sign up for our
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="{{ url_for('leaderboard.leaderboard') }}"
+          >leaderboard</a
+        >!
+      </p>
+
+      <div>
+        <div id="codeToCopy">C1EGF8LX</div>
+      </div>
+
+      <br />
+
+      <button onclick="copyToClipboard()">
+        Copy<span id="copyFeedback">Copied!</span>
+      </button>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+      //TODO: Add logic that prevents users to see this page without completing the study
+
+      // Assuming window.location.href is 'https://l3s.scooter.com?PROLIFIC_PID=5a9d64f5f6dfdd0001eaa73d'
+      var params = null;
+      var prolificPid = null;
+
+      // Load and check the prolific pid as soon as the page loads
+      document.addEventListener("DOMContentLoaded", (event) => {
+        redirectMobileUsers(userAgentString);
+        params = new URLSearchParams(window.location.search);
+        prolificPid = params.get("PROLIFIC_PID");
+
+        if (prolificPid === null) {
+          window.location.replace("/error");
+        }
+      });
+
+      function copyToClipboard() {
+        var range = document.createRange();
+        range.selectNode(document.getElementById("codeToCopy"));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+
+        var btn = document.querySelector("button");
+        btn.classList.add("show-feedback");
+        setTimeout(function () {
+          btn.classList.remove("show-feedback");
+        }, 1500);
+      }
+    </script>
+    {% include 'footer.html' %}
+  </body>
+</html>
