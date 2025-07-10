@@ -1,4 +1,4 @@
-# <img src="project_page/favicon.png" width="30" style="vertical-align: text-bottom; margin-right: 6px;" alt="lock icon"/> SCOOTER – A Human Evaluation Framework for Unrestricted Adversarial Examples
+# SCOOTER – A Human Evaluation Framework for Unrestricted Adversarial Examples
 
 [![license badge](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Zenodo](https://img.shields.io/badge/Dataset-10.5281/zenodo.15771501-%231682D4?logo=zenodo)](https://doi.org/10.5281/zenodo.15771501)
@@ -32,7 +32,11 @@
 
 <details>
   <summary>Abstract (click to expand)</summary>
-  <em>Large language models (LLMs) are increasingly becoming valuable to corporate data management due to their ability to process text from various document formats and facilitate user interactions through natural language queries. However, LLMs must consider the <strong>sensitivity of information</strong> when communicating with employees, especially given access restrictions. Simple filtering based on user clearance levels can pose both performance and privacy challenges. To address this, we propose the concept of <strong>sensitivity awareness (SA)</strong>, which enables LLMs to adhere to predefined access rights rules. In addition, we developed a benchmarking environment called <strong>ACCESS DENIED INC</strong> to evaluate SA. Our experimental findings reveal significant variations in model behavior, particularly in managing unauthorized data requests while effectively addressing legitimate queries. This work establishes a foundation for benchmarking sensitivity-aware language models and provides insights to enhance privacy-centric AI systems in corporate environments.</em>
+  <em>Unrestricted adversarial attacks aim to fool computer vision models without being constrained by ℓₚ-norm bounds to remain imperceptible to humans, for example, by changing an object's color. This allows attackers to circumvent traditional, norm-bounded defense strategies such as adversarial training or certified defense strategies. However, due to their unrestricted nature, there are also no guarantees of norm-based imperceptibility, necessitating human evaluations to verify just how authentic these adversarial examples look. While some related work assesses this vital quality of adversarial attacks, none provide statistically significant insights. This issue necessitates a unified framework that supports and streamlines such an assessment for evaluating and comparing unrestricted attacks. To close this gap, we introduce <strong>SCOOTER</strong> – an open-source, statistically powered framework for evaluating unrestricted adversarial examples.  Our contributions are: <strong>(i)</strong> best-practice guidelines for crowd-study power, compensation, and Likert equivalence bounds to measure imperceptibility;
+<strong>(ii)</strong> the first large-scale human vs. model comparison across 346 human participants showing that three color-space attacks and three diffusion-based attacks fail to produce imperceptible images. Furthermore, we found that GPT-4o can serve as a preliminary test for imperceptibility, but it only consistently detects adversarial examples for four out of six tested attacks;
+<strong>(iii)</strong> open-source software tools, including a browser-based task template to collect annotations and analysis scripts in Python and R;
+<strong>(iv)</strong> an ImageNet-derived benchmark dataset containing 3K real images, 7K adversarial examples, and over 34K human ratings.
+Our findings demonstrate that automated vision systems do not align with human perception, reinforcing the need for a ground-truth SCOOTER benchmark.</em>
 </details>
 
 ## Motivation of this Project
@@ -95,7 +99,7 @@
 
 
 
-- Because these attacks aren't limited by traditional $\ell_p$-norm “imperceptibility” constraints, we **must involve people** to judge how convincing the images really are.
+- Because these attacks aren't limited by traditional ℓₚ-norm “imperceptibility” constraints, we **must involve people** to judge how convincing the images really are.
 
 ## Meet **SCOOTER** — *Systemizing Confusion Over Observations To Evaluate Realness*
 - An **open-source, statistically powered** framework for human-in-the-loop evaluation of unrestricted adversarial images, making studies easier to run and results easier to compare.
