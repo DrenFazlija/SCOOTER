@@ -1,4 +1,4 @@
-theme: jekyll-text-theme
+theme: minimal
 
 plugins:
   - jekyll-titles-from-headings
@@ -7,7 +7,3 @@ titles_from_headings:
   enabled:     true
   strip_title: true
   collections: true
-
-# Optional TeXt-specific settings:
-text_skin: default        # or choose 'dark', 'forest', etc.
-highlight_theme: tomorrow # code highlighting style
