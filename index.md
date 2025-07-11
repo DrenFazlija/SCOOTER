@@ -11,13 +11,14 @@
   <img src="project_page/l3s-logo-c.webp" align="middle" width="200" style="margin-right:40px;"/>
   <img src="project_page/eon.png" align="middle" width="200" style="margin-right:40px;">
   <img src="project_page/UNI-Logo-en-rgb.png" align="middle" width="200" style="margin-right:40px;">
+  <img src="project_page/CAIMed ENG CMYK.png" align="middle" width="200" style="margin-right:40px;">
   <img src="project_page/zlga.jpg" align="middle" width="200">
 </p>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/drenfazlija">Dren Fazlija</a><sup>1</sup>,
   <a href="https://scholar.google.com/citations?user=Fv4Gf-wAAAAJ">Monty-Maximilian Zühlke</a><sup>1</sup>,
-  <a href="https://www.linkedin.com/in/johanna-schrader-570558219/">Johanna Schrader</a><sup>1</sup>,
+  <a href="https://www.linkedin.com/in/johanna-schrader-570558219/">Johanna Schrader</a><sup>1,4</sup>,
   <br>
   <a href="https://www.linkedin.com/in/arkadijorlov/">Arkadij Orlov</a><sup>2</sup>,
   <a href="https://www.linkedin.com/in/clara-stein-503061201/">Clara Stein</a><sup>1</sup>, 
@@ -29,6 +30,8 @@
   <sup>2</sup>E.ON Grid Solutions
   <br>
   <sup>3</sup>University of Luxembourg
+  <br>
+  <sup>4</sup>CAIMed – Lower Saxony Center for Artiﬁcial Intelligence and Causal Methods in Medicine
 </p>
 
 <details>
@@ -47,7 +50,7 @@ Our findings demonstrate that automated vision systems do not align with human p
   <!-- Row 1: Labels for Color-based Attack -->
   <div style="display: flex; justify-content: center; align-items: flex-end; margin-bottom: 0;">
     <div style="width:150px; margin:8px;"></div>
-    <div style="width:450px; margin:8px; font-weight: bold; font-size: 16px; text-align: center;">Color-based Attack</div>
+    <div style="width:450px; margin:8px; font-weight: bold; font-size: 16px; text-align: center;">Color-based Attacks</div>
   </div>
   <!-- Row 2: Color-based Attack Images -->
   <div style="display: flex; justify-content: center; align-items: flex-end;">
@@ -80,7 +83,7 @@ Our findings demonstrate that automated vision systems do not align with human p
   <!-- Row 4: Labels for Diffusion-based Attack -->
   <div style="display: flex; justify-content: center; align-items: flex-end; margin-bottom: 0;">
     <div style="width:150px; margin:8px;"></div>
-    <div style="width:450px; margin:8px; font-weight: bold; font-size: 16px; text-align: center;">Diffusion-based Attack</div>
+    <div style="width:450px; margin:8px; font-weight: bold; font-size: 16px; text-align: center;">Diffusion-based Attacks</div>
   </div>
   <!-- Row 5: Diffusion-based Attack Images -->
   <div style="display: flex; justify-content: center; align-items: flex-end;">
