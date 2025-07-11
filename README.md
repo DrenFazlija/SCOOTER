@@ -1,5 +1,19 @@
 # SCOOTER: A Human Evaluation Framework for Unrestricted Adversarial Examples
 
+## Citation
+If you use this code in your research, please cite our paper:
+```bibtex
+@misc{fazlija2025scooterhumanevaluationframework,
+      title={SCOOTER: A Human Evaluation Framework for Unrestricted Adversarial Examples}, 
+      author={Dren Fazlija and Monty-Maximilian Zühlke and Johanna Schrader and Arkadij Orlov and Clara Stein and Iyiola E. Olatunji and Daniel Kudenko},
+      year={2025},
+      eprint={2507.07776},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2507.07776}, 
+}
+```
+
 ## Table of Contents
 
 1. **[Setting up the Environment](#setting-up-the-environment)**

@@ -3,6 +3,7 @@
 [![license badge](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Zenodo](https://img.shields.io/badge/Dataset-10.5281/zenodo.15771501-%231682D4?logo=zenodo)](https://doi.org/10.5281/zenodo.15771501)
 [![GitHub](https://img.shields.io/badge/Code-Work%20in%20Progress!-orange?logo=github)](https://github.com/DrenFazlija/Scooter)
+[![arXiv](https://img.shields.io/badge/Preprint-2507.07776-%23B31B1B?logo=arxiv)](https://arxiv.org/abs/2507.07776)
 
 
 
@@ -121,3 +122,16 @@ Our findings demonstrate that automated vision systems do not align with human p
 ## Take-home message
 - Current automated vision defenses and detectors **do not align** with human perception.  
 - **SCOOTER** provides the community with a **ground-truth benchmark** and ready-made tools to close that gap, accelerating research on truly “stealthy” attacks and genuinely robust models.
+
+## Citation
+```bibtex
+@misc{fazlija2025scooterhumanevaluationframework,
+      title={SCOOTER: A Human Evaluation Framework for Unrestricted Adversarial Examples}, 
+      author={Dren Fazlija and Monty-Maximilian Zühlke and Johanna Schrader and Arkadij Orlov and Clara Stein and Iyiola E. Olatunji and Daniel Kudenko},
+      year={2025},
+      eprint={2507.07776},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2507.07776}, 
+}
+```
